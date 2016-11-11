@@ -45,6 +45,10 @@ public class Deck {
         carteList[count]=new Carte(Carte.Figure.PHENIX, Carte.Couleur.JAUNE);
     }
 
+    public Carte[] getTabCarte(){
+        return carteList;
+    }
+
     public String toString(){
         String message="Deck =\n";
         message+="Size="+carteList.length;
@@ -56,4 +60,11 @@ public class Deck {
         return message;
     }
 
+    public List<Carte> getCarteList() {
+        List<Carte> list = new ArrayList<>();
+        for (int i=0; i<carteList.length; i++){
+            list.add(carteList[i]);
+        }
+        return list;
+    }
 }
