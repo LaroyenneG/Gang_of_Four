@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Objects;
+
 /**
  * Created by guillaume on 11/11/16.
  */
@@ -57,13 +59,31 @@ public class Carte {
         if(figure==Figure.PHENIX&&couleur==Couleur.ROUGE){
             System.err.println("Carte : PHENIX invalid color");
         }
-        valeur=0;
+        if(figure==Figure.DRAGON){
+            valeur=12;
+        }else {
+            valeur=11;
+        }
+
         this.couleur=couleur;
         this.figure=figure;
     }
 
+    public boolean equals(Object carte){
+        if(!(carte instanceof Carte)){
+            return false;
+        }
+
+        Carte test = (Carte)carte;
+
+        if(valeur==test.valeur&&figure==test.figure&&couleur==test.couleur){
+            return true;
+        }
+        return false;
+    }
+
     public String toString(){
-        String message="Carte : \n valeur="+valeur+"\n couleur="+couleur+"\n figure="+figure+"\n";
+        String message="\nCarte : \n valeur="+valeur+"\n couleur="+couleur+"\n figure="+figure+"\n";
         return message;
     }
 }
