@@ -1,4 +1,5 @@
 import controleur.ControlGroup;
+import model.Jeu;
 import vue.Fenetre;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class Appli {
 
     public static void main(String[] args) throws IOException, SQLException {
 
-        Fenetre fen = new Fenetre();
-        ControlGroup controlGroup = new ControlGroup();
+        Jeu jeu = new Jeu();
+        ControlGroup controlGroup = new ControlGroup(jeu);
     }
 }
