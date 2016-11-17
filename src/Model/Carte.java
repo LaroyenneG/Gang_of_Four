@@ -1,6 +1,4 @@
-package Model;
-
-import java.util.Objects;
+package model;
 
 /**
  * Created by guillaume on 11/11/16.
