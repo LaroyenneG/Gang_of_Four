@@ -1,6 +1,5 @@
 package controleur;
 
-import model.Jeu;
 import vue.Fenetre;
 
 import java.io.IOException;
@@ -13,7 +12,7 @@ public class ControlGroup {
 
     public Fenetre fenetre;
 
-    public ControlGroup(Jeu jeu) throws IOException {
+    public ControlGroup() throws IOException {
         fenetre = new Fenetre();
 
         ControlFenetrePlateau controlFenetrePlateau = new ControlFenetrePlateau();
