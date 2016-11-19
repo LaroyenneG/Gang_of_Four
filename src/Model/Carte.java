@@ -12,6 +12,7 @@ import java.util.Objects;
     Car les données des cartes non pas besoin d'etre modifié en dehors du constructeur. Donc pas besoin de faire un contrôle des données.
  */
 public class Carte {
+
     public enum Couleur {
         ROUGE,
         JAUNE,
@@ -67,6 +68,18 @@ public class Carte {
 
         this.couleur=couleur;
         this.figure=figure;
+    }
+
+    /*
+    getFileName()
+    cette methode returne le String correspondant au non du fichier de l'image de la carte.
+    PS : ne pas oublier de completer les testes dans la methode testGetFileName.
+     */
+    public String getFileName() {
+        /*
+        a completer
+         */
+        return "";
     }
 
     public boolean equals(Object carte){

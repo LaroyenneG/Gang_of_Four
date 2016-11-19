@@ -59,12 +59,24 @@ public class TestCarte {
         Carte carte3 =new Carte(3, Carte.Couleur.VERT);
         Carte carte4 =new Carte(Carte.Figure.DRAGON, Carte.Couleur.ROUGE);
         Carte carte5 =new Carte(Carte.Figure.PHENIX, Carte.Couleur.VERT);
+        Carte carte6 =new Carte(Carte.Figure.PHENIX, Carte.Couleur.VERT);
+        Carte carte7 =new Carte(Carte.Couleur.MULTI);
 
-        Assert.assertTrue(carte5.equals(carte5));
-        Assert.assertTrue(carte1.equals(carte1));
+        Assert.assertTrue(carte5.equals(carte6));
+        Assert.assertTrue(carte1.equals(carte7));
         Assert.assertFalse(carte2.equals(carte3));
         Assert.assertFalse(carte3.equals(carte4));
         Assert.assertFalse(carte1.equals(carte4));
         Assert.assertFalse(carte1.equals(carte2));
+    }
+
+    @Test
+    public void testGetFileName(){
+        Carte carte1 =new Carte(Carte.Couleur.MULTI);
+        String name1 = carte1.getFileName();
+        Assert.assertEquals("1multicolore.jpg", name1);
+        /*
+        a completer
+         */
     }
 }
