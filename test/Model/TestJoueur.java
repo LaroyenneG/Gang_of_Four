@@ -33,6 +33,7 @@ public class TestJoueur {
         list.add(new Carte(Carte.Figure.PHENIX, Carte.Couleur.JAUNE));
         list.add(new Carte(1, Carte.Couleur.JAUNE));
         list.add(new Carte(Carte.Couleur.MULTI));
+
         Joueur joueur = new Joueur(list);
         joueur.ordoMain();
 

@@ -7,6 +7,9 @@ import java.util.List;
  */
 public class AlgoCarte {
 
+    /*
+    L'algo fonctionne mais il transforme provisoirement la liste en tableau.
+     */
     static List<Carte> trierCarte(List<Carte> carteList){
         Carte tabcarte[] =new Carte[carteList.size()];
 
@@ -45,7 +48,6 @@ public class AlgoCarte {
             }
 
         }
-
         for (int i=0; i<tabcarte.length;i++){
             carteList.add(tabcarte[i]);
         }

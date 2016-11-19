@@ -9,7 +9,7 @@ import java.util.List;
 public class TestModel {
     public static void main(String args[]){
         Deck deck = new Deck();
-        //System.out.println(deck);
+        System.out.println(deck);
 
         List<Carte> list =new ArrayList<>();
         list.add(new Carte(8, Carte.Couleur.ROUGE));

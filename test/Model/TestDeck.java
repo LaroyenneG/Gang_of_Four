@@ -23,7 +23,9 @@ public class TestDeck {
     public void testGetListCarte(){
         Deck deck = new Deck();
         List<Carte> carteList=deck.getCarteList();
+
         Assert.assertEquals(64, carteList.size());
+
         for (int i=0; i<carteList.size(); i++){
             Assert.assertNotNull(carteList.get(i));
         }
@@ -44,7 +46,7 @@ public class TestDeck {
         int cnbfigue=0;
 
         for (int i=0; i<carteList.size();i++){
-            if (carteList.get(i).valeur!=0){
+            if (carteList.get(i).valeur<11){
                 cnbNombre++;
             }
             if (carteList.get(i).couleur== Carte.Couleur.ROUGE){
@@ -64,11 +66,11 @@ public class TestDeck {
             }
         }
 
-        Assert.assertEquals(nbNombre, cnbNombre);
-        Assert.assertEquals(nbrouge, cnbrouge);
-        Assert.assertEquals(nbjaune, cnbjaune);
-        Assert.assertEquals(nbverte, cnbverte);
-        Assert.assertEquals(nbfigue, cnbfigue);
-        Assert.assertEquals(nbmulti, cnbmulti);
+        Assert.assertEquals(cnbNombre, nbNombre);
+        Assert.assertEquals(cnbrouge, nbrouge);
+        Assert.assertEquals(cnbjaune, nbjaune);
+        Assert.assertEquals(cnbverte, nbverte);
+        Assert.assertEquals(cnbfigue, nbfigue);
+        Assert.assertEquals(cnbmulti, nbmulti);
     }
 }
