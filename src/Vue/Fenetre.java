@@ -44,4 +44,8 @@ public class Fenetre extends JFrame{
     public void setControlBarreMenu (ControlBarreMenu controlBarreMenu){
         barreMenu.setControl(controlBarreMenu);
     }
+    /*public void setControlCarte (ControlCarte controlCarte){
+        carte.setControl(controlCarte);
+    }*/
+
 }

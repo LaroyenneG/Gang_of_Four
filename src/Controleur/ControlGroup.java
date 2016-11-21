@@ -15,5 +15,6 @@ public class ControlGroup {
         fenetre = new Fenetre();
 
         ControlFenetrePlateau controlFenetrePlateau = new ControlFenetrePlateau(fenetre);
+        //ControlCarte controlCarte = new ControlCarte(fenetre);
     }
 }

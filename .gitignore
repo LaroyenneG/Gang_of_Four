@@ -1,0 +1,4 @@
+*.xml
+out/production/TestS3/Appli.class
+*.class
+*.iml
