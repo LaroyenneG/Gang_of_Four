@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,13 +8,16 @@ import java.util.List;
  */
 public class Joueur {
     private List<Carte> main;
+    private int score;
 
     public Joueur(){
-        main=null;
+        main=new ArrayList<Carte>();
+        score=0;
     }
 
     public Joueur(List<Carte> main){
         this.main=main;
+        score=0;
     }
 
     /*
@@ -31,5 +35,9 @@ public class Joueur {
         for (int i=0; i<main.size();i++){
             System.out.print(main.get(i));
         }
+    }
+
+    public void addALaMain(Carte carteAAdd) {
+        main.add(carteAAdd);
     }
 }

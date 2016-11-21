@@ -73,4 +73,48 @@ public class TestDeck {
         Assert.assertEquals(cnbfigue, nbfigue);
         Assert.assertEquals(cnbmulti, nbmulti);
     }
+
+    @Test
+    public void testMelangeCarte(){
+        Deck deck1 = new Deck();
+        Deck deck2 = new Deck();
+        Carte[] tab1 = deck1.getTabCarte();
+        Carte[] tab2 = deck2.getTabCarte();
+        int compteur = 0;
+        for (int i =0; i< 64; i++){
+            if (tab1[i].equals(tab2[i]))
+                compteur++;
+        }
+        Assert.assertEquals(compteur,tab2.length);
+
+        deck2.melangerDeck();
+        int compteur2 = 0;
+        for (int i =0; i< 64; i++){
+            if (tab1[i].equals(tab2[i]))
+                compteur2++;
+        }
+        Assert.assertNotEquals(compteur2,tab2.length);
+
+
+    }
+
+    @Test
+    public void TestMelangeSansPerte(){
+        Deck deck1 = new Deck();
+        Deck deck2 = new Deck();
+        Carte[] tab1 = deck1.getTabCarte();
+        Carte[] tab2 = deck2.getTabCarte();
+
+        Carte[] tableau1=AlgoCarte.trierCarte(tab1);
+
+        deck2.melangerDeck();
+        Carte[] tableau2=AlgoCarte.trierCarte(tab2);
+
+        int compteur = 0;
+        for (int i =0; i< 64; i++){
+            if (tableau1[i].equals(tableau2[i]))
+                compteur++;
+        }
+        Assert.assertEquals(compteur,tableau2.length);
+    }
 }

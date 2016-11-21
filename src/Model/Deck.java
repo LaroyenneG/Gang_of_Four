@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by guillaume on 11/11/16.
@@ -43,6 +44,7 @@ public class Deck {
         carteList[count]=new Carte(Carte.Figure.PHENIX, Carte.Couleur.VERT);
         count++;
         carteList[count]=new Carte(Carte.Figure.PHENIX, Carte.Couleur.JAUNE);
+
     }
 
     public Carte[] getTabCarte(){
@@ -66,5 +68,17 @@ public class Deck {
             list.add(carteList[i]);
         }
         return list;
+    }
+
+    public void melangerDeck(){
+        for (int nbMelange=0; nbMelange < 100; nbMelange++) {
+            for (int i = 0; i < 64; i++) {
+                Random rand = new Random();
+                int r = rand.nextInt(64);
+                Carte tampon = carteList[i];
+                carteList[i] = carteList[r];
+                carteList[r] = tampon;
+            }
+        }
     }
 }

@@ -53,6 +53,16 @@ public class TestJoueur {
         for (int i=0; i<listTrie.size();i++){
             Assert.assertTrue(list.get(i).equals(listTrie.get(i)));
         }
-
     }
+
+    @Test
+    public void TestAddCarte(){
+        List<Carte> main;
+        Carte carte = new Carte(1, Carte.Couleur.VERT);
+        Joueur joueur = new Joueur();
+        joueur.addALaMain(carte);
+        main=joueur.getMain();
+        Assert.assertTrue (main.contains(carte));
+    }
+
 }
