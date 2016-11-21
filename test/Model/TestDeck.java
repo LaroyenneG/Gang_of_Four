@@ -94,12 +94,10 @@ public class TestDeck {
                 compteur2++;
         }
         Assert.assertNotEquals(compteur2,tab2.length);
-
-
     }
 
     @Test
-    public void TestMelangeSansPerte(){
+    public void testMelangeSansPerte(){
         Deck deck1 = new Deck();
         Deck deck2 = new Deck();
         Carte[] tab1 = deck1.getTabCarte();

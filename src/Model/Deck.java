@@ -70,6 +70,10 @@ public class Deck {
         return list;
     }
 
+    public void ordoDeck(){
+        carteList=AlgoCarte.trierCarte(carteList);
+    }
+
     public void melangerDeck(){
         for (int nbMelange=0; nbMelange < 100; nbMelange++) {
             for (int i = 0; i < 64; i++) {
