@@ -26,7 +26,7 @@ public class Fenetre extends JFrame{
         setUndecorated(false);
         setContentPane(panelFenetrePlateau);
         pack();
-        setTitle("Jeu");
+        setTitle("Gang Of Four");
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

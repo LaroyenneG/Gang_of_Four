@@ -4,6 +4,7 @@ import Controleur.ControlFenetrePlateau;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 import static Vue.Fenetre.X;
 import static Vue.Fenetre.Y;
@@ -24,10 +25,8 @@ public class FenetrePlateau extends JPanel{
         jouer = new JButton("");
         jouer.setActionCommand("Jouer");
 
-
         add(jouer);
     }
-
 
     public void setControl(ControlFenetrePlateau controlFenetrePlateau) {
         jouer.addActionListener(controlFenetrePlateau);
@@ -42,7 +41,8 @@ public class FenetrePlateau extends JPanel{
         jouer.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jouer.setBorder(null);
 
-        Image img = getToolkit().getImage("cartes/fond.jpg");
-        g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+
+        Image img = getToolkit().getImage("cartes/DragonRouge.jpg");
+        g.drawImage(img, 300, 200, 300, 500, this);
     }
 }

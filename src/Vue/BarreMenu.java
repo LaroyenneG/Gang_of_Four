@@ -10,17 +10,12 @@ import java.awt.*;
  */
 public class BarreMenu extends JMenuBar {
 
-
-    public JMenu test;
     public JMenuItem menu;
 
     public BarreMenu() {
 
-
         menu = new JMenuItem("Menu");
         menu.setActionCommand("Menu");
-
-        test = null;
 
         add(menu);
     }
