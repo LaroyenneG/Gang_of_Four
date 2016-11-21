@@ -72,14 +72,22 @@ public class Carte {
 
     /*
     getFileName()
-    cette methode returne le String correspondant au non du fichier de l'image de la carte.
-    PS : ne pas oublier de completer les testes dans la methode testGetFileName.
+    cette methode returne le String correspondant au nom du fichier de l'image de la carte.
+    PS : ne pas oublier de completer les tests dans la methode testGetFileName.
      */
     public String getFileName() {
-        /*
-        a completer
-         */
-        return "";
+        String color = "";
+        String fileName = "";
+        if (couleur == Couleur.VERT) color = "vert";
+        else if (couleur == Couleur.JAUNE) color = "jaune";
+        else if (couleur == Couleur.ROUGE) color = "rouge";
+        else if (couleur == Couleur.MULTI) color = "multicolor";
+
+        if (figure == Figure.NOMBRE) fileName = valeur+color;
+        else if (figure == Figure.PHENIX) fileName = figure+color;
+        else if (figure == Figure.DRAGON) fileName = figure+color;
+
+        return fileName+".jpg";
     }
 
     public boolean equals(Object carte){

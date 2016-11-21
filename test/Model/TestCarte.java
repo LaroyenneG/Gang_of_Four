@@ -72,11 +72,38 @@ public class TestCarte {
 
     @Test
     public void testGetFileName(){
-        Carte carte1 =new Carte(Carte.Couleur.MULTI);
+        // Test du 1 multicolor
+        Carte carte0 =new Carte(Carte.Couleur.MULTI);
+        String name0 = carte0.getFileName();
+        Assert.assertEquals("1multicolor.jpg", name0);
+
+        for (int i =1; i<=10; i++){ //Vert
+            Carte carte =new Carte(i,Carte.Couleur.VERT);
+            String name = carte.getFileName();
+            Assert.assertEquals(i+"vert.jpg", name);
+        }
+
+        for (int i =1; i<=10; i++){ //Jaune
+            Carte carte =new Carte(i,Carte.Couleur.JAUNE);
+            String name = carte.getFileName();
+            Assert.assertEquals(i+"jaune.jpg", name);
+        }
+
+        for (int i =1; i<=10; i++){ //Rouge
+            Carte carte =new Carte(i,Carte.Couleur.ROUGE);
+            String name = carte.getFileName();
+            Assert.assertEquals(i+"rouge.jpg", name);
+        }
+
+        //Test des phénix
+        Carte carte1 =new Carte(Carte.Figure.PHENIX,Carte.Couleur.VERT);
+        Carte carte2 =new Carte(Carte.Figure.PHENIX,Carte.Couleur.JAUNE);
+        Carte carte3 =new Carte(Carte.Figure.DRAGON,Carte.Couleur.ROUGE);
         String name1 = carte1.getFileName();
-        Assert.assertEquals("1multicolore.jpg", name1);
-        /*
-        a completer
-         */
+        String name2 = carte2.getFileName();
+        String name3 = carte3.getFileName();
+        Assert.assertEquals("PHENIXvert.jpg", name1);
+        Assert.assertEquals("PHENIXjaune.jpg", name2);
+        Assert.assertEquals("DRAGONrouge.jpg", name3);
     }
 }
