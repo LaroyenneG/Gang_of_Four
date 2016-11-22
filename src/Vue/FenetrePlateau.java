@@ -29,11 +29,11 @@ public class FenetrePlateau extends JPanel{
 
         add(jouer);
         add(retour);
-
     }
 
     public void setControl(ControlFenetrePlateau controlFenetrePlateau) {
         jouer.addActionListener(controlFenetrePlateau);
+        retour.addActionListener(controlFenetrePlateau);
     }
 
     protected void paintComponent(Graphics g) {
