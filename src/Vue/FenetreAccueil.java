@@ -51,13 +51,13 @@ public class FenetreAccueil extends JPanel{
         jouer.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jouer.setBorder(null);
 
-        quitter.setBounds((int) (1 / 30.0 * X), (int) (49 / 54.0 * Y), (int) (2 / 15.0 * X), (int) (2 / 45.0 * Y));
+        quitter.setBounds((int) (11 / 30.0 * X), (int) (12.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         quitter.setBackground(new Color(0, 0, 0, 0));
         quitter.setFocusable(false);
         quitter.setCursor(new Cursor(Cursor.HAND_CURSOR));
         quitter.setBorder(null);
 
-        Image img = getToolkit().getImage("cartes/fond.jpg");
+        Image img = getToolkit().getImage("image/fondprinci.jpg");
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
     }
 }
