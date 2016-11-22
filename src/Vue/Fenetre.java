@@ -1,6 +1,7 @@
 package Vue;
 
 import Controleur.ControlBarreMenu;
+import Controleur.ControlFenetreAccueil;
 import Controleur.ControlFenetrePlateau;
 
 import javax.swing.*;
@@ -11,20 +12,21 @@ import java.awt.*;
  */
 public class Fenetre extends JFrame{
     public static Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-    public static final int X = 1200;//(int)tailleEcran.getWidth();
-    public static final int Y = 800;//(int)tailleEcran.getHeight();
+    public static final int X = (int)tailleEcran.getWidth();//1600;//(int)tailleEcran.getWidth();
+    public static final int Y = (int)tailleEcran.getHeight();//1000;//(int)tailleEcran.getHeight();
 
     public FenetrePlateau panelFenetrePlateau;
+    public FenetreAccueil panelFenetreAccueil;
     public BarreMenu barreMenu;
 
 
     public Fenetre(){
 
         init();
-        barreMenu.setVisible(true);
+        barreMenu.setVisible(false);
         setJMenuBar(barreMenu);
-        setUndecorated(false);
-        setContentPane(panelFenetrePlateau);
+        setUndecorated(true);
+        setContentPane(panelFenetreAccueil);
         pack();
         setTitle("Gang Of Four");
         setResizable(false);
@@ -34,12 +36,16 @@ public class Fenetre extends JFrame{
     }
 
     public void init(){
+        panelFenetreAccueil = new FenetreAccueil();
         panelFenetrePlateau = new FenetrePlateau();
         barreMenu = new BarreMenu();
     }
 
     public void setControlFenetrePlateau(ControlFenetrePlateau controlFenetrePlateau){
         panelFenetrePlateau.setControl(controlFenetrePlateau);
+    }
+    public void setControlFenetreAccueil(ControlFenetreAccueil controlFenetreAccueil){
+        panelFenetreAccueil.setControl(controlFenetreAccueil);
     }
     public void setControlBarreMenu (ControlBarreMenu controlBarreMenu){
         barreMenu.setControl(controlBarreMenu);

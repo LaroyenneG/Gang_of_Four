@@ -13,4 +13,11 @@ public class Control {
 
         this.fenetre = fenetre;
     }
+
+    protected void changerVue() {
+        fenetre.repaint();
+        fenetre.pack();
+        fenetre.setLocationRelativeTo(null);
+        fenetre.requestFocus();
+    }
 }

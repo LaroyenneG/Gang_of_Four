@@ -16,13 +16,9 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
     }
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case "Jouer":
+            case "Retour":
                 fenetre.setContentPane(fenetre.panelFenetrePlateau);
-                fenetre.repaint();
-                fenetre.pack();
-                fenetre.setLocationRelativeTo(null);
-                fenetre.requestFocus();
-
+                changerVue();
                 break;
         }
     }
