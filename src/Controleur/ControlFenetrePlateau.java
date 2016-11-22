@@ -17,7 +17,8 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Retour":
-                fenetre.setContentPane(fenetre.panelFenetrePlateau);
+                fenetre.setContentPane(fenetre.panelFenetreAccueil);
+                fenetre.barreMenu.setVisible(false);
                 changerVue();
                 break;
         }
