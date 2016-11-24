@@ -9,10 +9,10 @@ import java.io.IOException;
  */
 public class ControlGroup {
 
-    public Fenetre fenetre;
 
-    public ControlGroup() throws IOException {
-        fenetre = new Fenetre();
+
+    public ControlGroup(Fenetre fenetre) throws IOException { // prend la fenettre en param
+
 
         ControlFenetrePlateau controlFenetrePlateau = new ControlFenetrePlateau(fenetre);
         //ControlCarte controlCarte = new ControlCarte(fenetre);

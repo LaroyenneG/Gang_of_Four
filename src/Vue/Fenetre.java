@@ -3,6 +3,7 @@ package Vue;
 import Controleur.ControlBarreMenu;
 import Controleur.ControlFenetreAccueil;
 import Controleur.ControlFenetrePlateau;
+import Model.Game;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,9 +21,9 @@ public class Fenetre extends JFrame{
     public BarreMenu barreMenu;
 
 
-    public Fenetre(){
+    public Fenetre(Game game){
 
-        init();
+        init(game);
         barreMenu.setVisible(false);
         setJMenuBar(barreMenu);
         setUndecorated(true);
@@ -35,9 +36,9 @@ public class Fenetre extends JFrame{
         setVisible(true);
     }
 
-    public void init(){
+    public void init(Game game){
         panelFenetreAccueil = new FenetreAccueil();
-        panelFenetrePlateau = new FenetrePlateau();
+        panelFenetrePlateau = new FenetrePlateau(game);
         barreMenu = new BarreMenu();
     }
 

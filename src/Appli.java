@@ -1,4 +1,6 @@
 import Controleur.ControlGroup;
+import Model.Game;
+import Vue.Fenetre;
 
 import java.io.IOException;
 
@@ -8,6 +10,8 @@ import java.io.IOException;
 public class Appli {
     public static void main(String[] args) throws IOException {
 
-        ControlGroup controlGroup = new ControlGroup();
+        Game game = new Game(); // creation du game
+        Fenetre fenetre = new Fenetre(game); // creation de la fenetre
+        ControlGroup controlGroup = new ControlGroup(fenetre); // on passe la fennetre au controlGroup
     }
 }
