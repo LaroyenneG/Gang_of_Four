@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
@@ -75,9 +76,9 @@ public class Deck {
     }
 
     public void melangerDeck(){
-        for (int nbMelange=0; nbMelange < 100; nbMelange++) {
+        for (int nbMelange=0; nbMelange < 300; nbMelange++) {
             for (int i = 0; i < 64; i++) {
-                Random rand = new Random();
+                Random rand = new Random(Calendar.getInstance().getTimeInMillis());
                 int r = rand.nextInt(64);
                 Carte tampon = carteList[i];
                 carteList[i] = carteList[r];

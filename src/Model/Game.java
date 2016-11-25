@@ -13,6 +13,9 @@ public class Game {
             tabJoueur[i] = new Joueur();
         }
         distribuerCarte();
+        for (int i=0; i<4; i++){
+            tabJoueur[i].ordoMain();
+        }
     }
 
     public Game (Joueur j1, Joueur j2, Joueur j3, Joueur j4){
@@ -21,6 +24,9 @@ public class Game {
         tabJoueur[2] = j3;
         tabJoueur[3] = j4;
         distribuerCarte();
+        for (int i=0; i<4; i++){
+            tabJoueur[i].ordoMain();
+        }
     }
 
     public void distribuerCarte(){
@@ -43,5 +49,12 @@ public class Game {
         return tabJoueur[indexTab];
     }
 
+    public void passerSonTour(int numJoueur){
+        if (numJoueur < 0 || numJoueur > 3 ){
+            System.err.println("Error passer son tour");
+            return ;
+        }
+        tabJoueur[numJoueur].peutJouer=false;
+    }
 }
 

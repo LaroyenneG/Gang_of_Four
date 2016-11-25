@@ -9,6 +9,7 @@ import java.util.List;
 public class Joueur {
     private List<Carte> main;
     private int score;
+    public boolean peutJouer;
 
     public Joueur(){
         main=new ArrayList<Carte>();
