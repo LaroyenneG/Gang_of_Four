@@ -18,7 +18,6 @@ public class TestGame {
         Joueur j4 = new Joueur();
         Game game = new Game(j1,j2,j3,j4);
 
-        game.distribuerCarte();
         List<Carte> l1 = j1.getMain();
         List<Carte> l2 = j2.getMain();
         List<Carte> l3 = j3.getMain();

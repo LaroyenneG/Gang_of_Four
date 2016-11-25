@@ -5,25 +5,21 @@ package Model;
  */
 public class Game {
 
-    private Joueur j1;
-    private Joueur j2;
-    private Joueur j3;
-    private Joueur j4;
+    private Joueur[] tabJoueur = new Joueur[4];
 
 
     public Game (){
-        j1=new Joueur();
-        j2=new Joueur();
-        j3=new Joueur();
-        j4=new Joueur();
+        for (int i=0; i<4; i++){
+            tabJoueur[i] = new Joueur();
+        }
         distribuerCarte();
     }
 
     public Game (Joueur j1, Joueur j2, Joueur j3, Joueur j4){
-        this.j1=j1;
-        this.j2=j2;
-        this.j3=j3;
-        this.j4=j4;
+        tabJoueur[0] = j1;
+        tabJoueur[1] = j2;
+        tabJoueur[2] = j3;
+        tabJoueur[3] = j4;
         distribuerCarte();
     }
 
@@ -32,27 +28,19 @@ public class Game {
         deck.melangerDeck(); // j'ai ajouter la distrib pour voir si ça marche
         Carte[] tab= deck.getTabCarte();
         for (int i=0; i< tab.length; i++){
-            if (i%4 == 0) j1.addALaMain(tab[i]);
-            else if (i%4 == 1) j2.addALaMain(tab[i]);
-            else if (i%4 == 2) j3.addALaMain(tab[i]);
-            else if (i%4 == 3) j4.addALaMain(tab[i]);
+            if (i%4 == 0) tabJoueur[0].addALaMain(tab[i]);
+            else if (i%4 == 1) tabJoueur[1].addALaMain(tab[i]);
+            else if (i%4 == 2) tabJoueur[2].addALaMain(tab[i]);
+            else if (i%4 == 3) tabJoueur[3].addALaMain(tab[i]);
         }
     }
     //// ajout des getters pour les joueurs
-    public Joueur getJ1() {
-        return j1;
+    public Joueur[] getTabJoueur() {
+        return tabJoueur;
     }
 
-    public Joueur getJ2() {
-        return j2;
-    }
-
-    public Joueur getJ3() {
-        return j3;
-    }
-
-    public Joueur getJ4() {
-        return j4;
+    public Joueur getTabJoueurIndex(int indexTab){
+        return tabJoueur[indexTab];
     }
 
 }

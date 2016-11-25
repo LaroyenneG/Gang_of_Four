@@ -52,10 +52,10 @@ public class FenetrePlateau extends JPanel{
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
 
 
-        for (int i=0; i<game.getJ1().getMain().size();i++) // on récupére la taille de la main du j1 de game
+        for (int i=0; i<game.getTabJoueurIndex(0).getMain().size();i++) // on récupére la taille de la main du j1 de game
         {
             // pour chaque cartes en main
-            Image imgi = getToolkit().getImage("cartes/"+game.getJ1().getMain().get(i).getFileName()); // on récup le nom de la carte
+            Image imgi = getToolkit().getImage("cartes/"+game.getTabJoueurIndex(0).getMain().get(i).getFileName()); // on récup le nom de la carte
             g.drawImage(imgi, (200+(125*i)), 800, 100, 150, this); // on dessine
         }
 
