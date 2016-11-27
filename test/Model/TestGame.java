@@ -5,11 +5,26 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by sangry on 21/11/16.
  */
 public class TestGame {
+
+    private int after(int i,boolean horaire){
+        int next;
+        if(horaire){
+            next = (i+1)%4;
+        }else {
+            next = (i-1)%4;
+        }
+        if(next<0){
+            next=next+4;
+        }
+        return next;
+    }
+
     @Test
     public void testDistribution(){
         Joueur j1 = new Joueur();
@@ -60,5 +75,48 @@ public class TestGame {
         Assert.assertTrue(game.getTabJoueur()[0].peutJouer);
         Assert.assertTrue(game.getTabJoueur()[2].peutJouer);
         Assert.assertTrue(game.getTabJoueur()[3].peutJouer);
+    }
+
+    @Test
+    public void testNextJoueur(){
+        Game game = new Game();
+        int manche = game.getManche();
+        for (int i=0; i<20;i++){
+            int player=game.getJoueurPlay();
+            game.nextJoueur();
+            if(manche%2==1){
+                if (game.getTabJoueurIndex(after(player,true)).peutJouer){
+                    Assert.assertEquals(game.getJoueurPlay(),after(player,true));
+                }else {
+                    Assert.assertNotEquals(game.getJoueurPlay(),after(player,true));
+                }
+            }else {
+                if (game.getTabJoueurIndex(after(player, false)).peutJouer) {
+                    Assert.assertEquals(game.getJoueurPlay(), after(player, false));
+                } else {
+                    Assert.assertNotEquals(game.getJoueurPlay(), after(player, false));
+                }
+            }
+            if(i==2||i==12){
+                game.getTabJoueurIndex(2).peutJouer=false;
+            }
+            if(i==3||i==13){
+                game.getTabJoueurIndex(1).peutJouer=false;
+            }
+            if(i==8||i==18){
+                game.getTabJoueurIndex(0).peutJouer=false;
+            }
+            if(i==10){
+                game.nextManche();
+                manche = game.getManche();
+            }
+        }
+    }
+
+    @Test
+    public void testFirstPlayer(){
+        /*
+        a completer
+         */
     }
 }
