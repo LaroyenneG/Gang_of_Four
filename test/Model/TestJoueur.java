@@ -56,7 +56,7 @@ public class TestJoueur {
     }
 
     @Test
-    public void TestAddCarte(){
+    public void testAddCarte(){
         List<Carte> main;
         Carte carte = new Carte(1, Carte.Couleur.VERT);
         Joueur joueur = new Joueur();
@@ -64,5 +64,4 @@ public class TestJoueur {
         main=joueur.getMain();
         Assert.assertTrue (main.contains(carte));
     }
-
 }

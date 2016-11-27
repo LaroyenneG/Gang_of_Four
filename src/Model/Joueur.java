@@ -14,11 +14,13 @@ public class Joueur {
     public Joueur(){
         main=new ArrayList<Carte>();
         score=0;
+        peutJouer=true;
     }
 
     public Joueur(List<Carte> main){
         this.main=main;
         score=0;
+        peutJouer=true;
     }
 
     /*

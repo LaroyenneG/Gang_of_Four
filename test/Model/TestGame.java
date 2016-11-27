@@ -48,4 +48,17 @@ public class TestGame {
         }
         Assert.assertEquals(compteur,tabPrincipale.length);
     }
+
+    @Test
+    public void testPasserSonTour(){
+        Game game = new Game();
+        for(int i=0; i<game.getTabJoueur().length;i++){
+            Assert.assertTrue(game.getTabJoueur()[i].peutJouer);
+        }
+        game.passerSonTour(1);
+        Assert.assertFalse(game.getTabJoueur()[1].peutJouer);
+        Assert.assertTrue(game.getTabJoueur()[0].peutJouer);
+        Assert.assertTrue(game.getTabJoueur()[2].peutJouer);
+        Assert.assertTrue(game.getTabJoueur()[3].peutJouer);
+    }
 }
