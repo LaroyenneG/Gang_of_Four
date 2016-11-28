@@ -13,7 +13,6 @@ public class BarreMenu extends JMenuBar {
     public JMenu menu;
     public JMenuItem nouvellePartie, menuPrincipal, quitter ;
 
-
     public BarreMenu() {
 
         menu = new JMenu("Menu");

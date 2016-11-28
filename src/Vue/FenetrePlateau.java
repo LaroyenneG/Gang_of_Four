@@ -15,7 +15,7 @@ import static Vue.Fenetre.Y;
  */
 public class FenetrePlateau extends JPanel{
 
-    public JButton jouer, retour;
+    public JButton jouer, passertour;
     public Game game;
 
     public FenetrePlateau(Game game) { // ajout d'un game en paramètre pour récupérer les mains des joueurs
@@ -26,27 +26,27 @@ public class FenetrePlateau extends JPanel{
 
         jouer = new JButton("Jouer");
         jouer.setActionCommand("Jouer");
-        retour = new JButton("Retour");
-        retour.setActionCommand("Retour");
+        passertour = new JButton("Passer le Tour");
+        passertour.setActionCommand("Passer le Tour");
 
         add(jouer);
-        add(retour);
+        add(passertour);
     }
 
     public void setControl(ControlFenetrePlateau controlFenetrePlateau) {
         jouer.addActionListener(controlFenetrePlateau);
-        retour.addActionListener(controlFenetrePlateau);
+        passertour.addActionListener(controlFenetrePlateau);
     }
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        retour.setBounds((int) (1 / 30.0 * X), (int) (49 / 54.0 * Y), (int) (2 / 15.0 * X), (int) (2 / 45.0 * Y));
-        retour.setBackground(new Color(0, 0, 0, 0));
-        retour.setForeground(Color.WHITE);
-        retour.setFocusable(false);
-        retour.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        retour.setBorder(null);
+        passertour.setBounds((int) (11 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
+        passertour.setBackground(new Color(0, 0, 0, 0));
+        passertour.setForeground(Color.WHITE);
+        passertour.setFocusable(false);
+        passertour.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        passertour.setBorder(null);
 
         Image img = getToolkit().getImage("image/fondplateau.jpg");
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -58,16 +58,6 @@ public class FenetrePlateau extends JPanel{
             Image imgi = getToolkit().getImage("cartes/"+game.getTabJoueurIndex(0).getMain().get(i).getFileName()); // on récup le nom de la carte
             g.drawImage(imgi, (100+(105*i)), 800, 100, 150, this); // on dessine
         }
-
-
-
-
-
-
-
-
-
-
 
     }
 }
