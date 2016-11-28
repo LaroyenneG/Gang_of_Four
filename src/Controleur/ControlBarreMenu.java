@@ -15,8 +15,23 @@ public class ControlBarreMenu extends Control implements ActionListener {
         fenetre.setControlBarreMenu(this);
     }
 
-    @Override
     public void actionPerformed(ActionEvent e) {
+        switch (e.getActionCommand()) {
+            case "Nouvelle Partie":
+                fenetre.setContentPane(fenetre.panelFenetrePlateau);
+                fenetre.barreMenu.setVisible(true);
+                changerVue();
+                break;
 
+            case "Menu Principal":
+                fenetre.setContentPane(fenetre.panelFenetreAccueil);
+                fenetre.barreMenu.setVisible(false);
+                changerVue();
+                break;
+
+            case "Quitter":
+                System.exit(0);
+                break;
+        }
     }
 }

@@ -20,7 +20,7 @@ import static Vue.Fenetre.Y;
  */
 public class FenetreAccueil extends JPanel{
 
-    public JButton jouer, quitter;
+    public JButton jouer, credits, quitter;
 
     public FenetreAccueil() {
 
@@ -29,16 +29,20 @@ public class FenetreAccueil extends JPanel{
 
         jouer = new JButton("Jouer");
         jouer.setActionCommand("Jouer");
+        credits = new JButton("Credits");
+        credits.setActionCommand("Credits");
         quitter = new JButton("Quitter");
         quitter.setActionCommand("Quitter");
 
         add(jouer);
+        add(credits);
         add(quitter);
 
     }
 
     public void setControl(ControlFenetreAccueil controlFenetreAccueil) {
         jouer.addActionListener(controlFenetreAccueil);
+        credits.addActionListener(controlFenetreAccueil);
         quitter.addActionListener(controlFenetreAccueil);
     }
 
@@ -51,7 +55,13 @@ public class FenetreAccueil extends JPanel{
         jouer.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jouer.setBorder(null);
 
-        quitter.setBounds((int) (11 / 30.0 * X), (int) (12.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
+        credits.setBounds((int) (11 / 30.0 * X), (int) (12.25 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
+        credits.setBackground(new Color(0, 0, 0, 0));
+        credits.setFocusable(false);
+        credits.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        credits.setBorder(null);
+
+        quitter.setBounds((int) (11 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         quitter.setBackground(new Color(0, 0, 0, 0));
         quitter.setFocusable(false);
         quitter.setCursor(new Cursor(Cursor.HAND_CURSOR));

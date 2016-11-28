@@ -9,13 +9,12 @@ import java.io.IOException;
  */
 public class ControlGroup {
 
-
-
     public ControlGroup(Fenetre fenetre) throws IOException { // prend la fenettre en param
-
 
         ControlFenetrePlateau controlFenetrePlateau = new ControlFenetrePlateau(fenetre);
         //ControlCarte controlCarte = new ControlCarte(fenetre);
         ControlFenetreAccueil controlFenetreAccueil = new ControlFenetreAccueil(fenetre);
+        ControlFenetreCredits controlFenetreCredits = new ControlFenetreCredits(fenetre);
+        ControlBarreMenu controlBarreMenu = new ControlBarreMenu(fenetre);
     }
 }

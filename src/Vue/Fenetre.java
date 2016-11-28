@@ -2,6 +2,7 @@ package Vue;
 
 import Controleur.ControlBarreMenu;
 import Controleur.ControlFenetreAccueil;
+import Controleur.ControlFenetreCredits;
 import Controleur.ControlFenetrePlateau;
 import Model.Game;
 
@@ -18,6 +19,7 @@ public class Fenetre extends JFrame{
 
     public FenetrePlateau panelFenetrePlateau;
     public FenetreAccueil panelFenetreAccueil;
+    public FenetreCredits panelFenetreCredits;
     public BarreMenu barreMenu;
 
 
@@ -39,6 +41,7 @@ public class Fenetre extends JFrame{
     public void init(Game game){
         panelFenetreAccueil = new FenetreAccueil();
         panelFenetrePlateau = new FenetrePlateau(game);
+        panelFenetreCredits = new FenetreCredits();
         barreMenu = new BarreMenu();
     }
 
@@ -47,6 +50,9 @@ public class Fenetre extends JFrame{
     }
     public void setControlFenetreAccueil(ControlFenetreAccueil controlFenetreAccueil){
         panelFenetreAccueil.setControl(controlFenetreAccueil);
+    }
+    public void setControlFenetreCredits(ControlFenetreCredits controlFenetreCredits){
+        panelFenetreCredits.setControl(controlFenetreCredits);
     }
     public void setControlBarreMenu (ControlBarreMenu controlBarreMenu){
         barreMenu.setControl(controlBarreMenu);

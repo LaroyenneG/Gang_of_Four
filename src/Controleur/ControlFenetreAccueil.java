@@ -22,6 +22,12 @@ public class ControlFenetreAccueil extends Control implements ActionListener {
                 changerVue();
                 break;
 
+            case "Credits":
+                fenetre.setContentPane(fenetre.panelFenetreCredits);
+                fenetre.barreMenu.setVisible(false);
+                changerVue();
+                break;
+
             case "Quitter":
                 System.exit(0);
                 break;
