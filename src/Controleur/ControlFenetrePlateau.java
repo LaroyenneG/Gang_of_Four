@@ -1,7 +1,11 @@
 package Controleur;
 
+import Model.Game;
 import Vue.Fenetre;
+import Vue.FenetrePlateau;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,15 +14,15 @@ import java.awt.event.ActionListener;
  */
 public class ControlFenetrePlateau extends Control implements ActionListener {
 
-    public ControlFenetrePlateau(Fenetre fenetre){
-        super(fenetre);
+    public ControlFenetrePlateau(Fenetre fenetre, Game game){
+        super(fenetre, game);
         fenetre.setControlFenetrePlateau(this);
     }
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Passer le Tour":
-                fenetre.setContentPane(fenetre.panelFenetreAccueil);
-                fenetre.barreMenu.setVisible(false);
+                game.passerSonTour(0);
+                FenetrePlateau.passertour.setText("Tour Passé!");
                 changerVue();
                 break;
         }

@@ -12,6 +12,6 @@ public class Appli {
 
         Game game = new Game(); // creation du game
         Fenetre fenetre = new Fenetre(game); // creation de la fenetre
-        ControlGroup controlGroup = new ControlGroup(fenetre); // on passe la fennetre au controlGroup
+        ControlGroup controlGroup = new ControlGroup(fenetre, game); // on passe la fennetre au controlGroup
     }
 }

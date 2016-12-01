@@ -1,5 +1,6 @@
 package Controleur;
 
+import Model.Game;
 import Vue.Fenetre;
 
 import java.io.IOException;
@@ -9,12 +10,12 @@ import java.io.IOException;
  */
 public class ControlGroup {
 
-    public ControlGroup(Fenetre fenetre) throws IOException { // prend la fenettre en param
+    public ControlGroup(Fenetre fenetre, Game game) throws IOException { // prend la fenettre en param
 
-        ControlFenetrePlateau controlFenetrePlateau = new ControlFenetrePlateau(fenetre);
+        ControlFenetrePlateau controlFenetrePlateau = new ControlFenetrePlateau(fenetre, game);
         //ControlCarte controlCarte = new ControlCarte(fenetre);
-        ControlFenetreAccueil controlFenetreAccueil = new ControlFenetreAccueil(fenetre);
-        ControlFenetreCredits controlFenetreCredits = new ControlFenetreCredits(fenetre);
-        ControlBarreMenu controlBarreMenu = new ControlBarreMenu(fenetre);
+        ControlFenetreAccueil controlFenetreAccueil = new ControlFenetreAccueil(fenetre, game);
+        ControlFenetreCredits controlFenetreCredits = new ControlFenetreCredits(fenetre, game);
+        ControlBarreMenu controlBarreMenu = new ControlBarreMenu(fenetre, game);
     }
 }

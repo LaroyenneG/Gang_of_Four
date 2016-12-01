@@ -1,5 +1,6 @@
 package Controleur;
 
+import Model.Game;
 import Vue.Fenetre;
 
 import java.awt.event.ActionEvent;
@@ -10,8 +11,8 @@ import java.awt.event.ActionListener;
  */
 public class ControlFenetreAccueil extends Control implements ActionListener {
 
-    public ControlFenetreAccueil(Fenetre fenetre){
-        super(fenetre);
+    public ControlFenetreAccueil(Fenetre fenetre, Game game){
+        super(fenetre, game);
         fenetre.setControlFenetreAccueil(this);
     }
     public void actionPerformed(ActionEvent e) {

@@ -1,5 +1,6 @@
 package Controleur;
 
+import Model.Game;
 import Vue.Fenetre;
 
 /**
@@ -8,10 +9,12 @@ import Vue.Fenetre;
 public class Control {
 
     Fenetre fenetre;
+    Game game;
 
-    protected Control(Fenetre fenetre) {
+    protected Control(Fenetre fenetre, Game game) {
 
         this.fenetre = fenetre;
+        this.game = game;
     }
 
     protected void changerVue() {

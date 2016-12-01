@@ -15,7 +15,8 @@ import static Vue.Fenetre.Y;
  */
 public class FenetrePlateau extends JPanel{
 
-    public JButton jouer, passertour;
+    public JButton jouer;
+    public static JButton passertour;
     public Game game;
 
     public FenetrePlateau(Game game) { // ajout d'un game en paramètre pour récupérer les mains des joueurs
@@ -50,7 +51,6 @@ public class FenetrePlateau extends JPanel{
 
         Image img = getToolkit().getImage("image/fondplateau.jpg");
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-
 
         for (int i=0; i<game.getTabJoueurIndex(0).getMain().size();i++) // on récupére la taille de la main du j1 de game
         {

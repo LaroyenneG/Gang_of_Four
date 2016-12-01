@@ -1,5 +1,6 @@
 package Controleur;
 
+import Model.Game;
 import Vue.Fenetre;
 
 import java.awt.event.ActionEvent;
@@ -10,8 +11,8 @@ import java.awt.event.ActionListener;
  */
 public class ControlBarreMenu extends Control implements ActionListener {
 
-    protected ControlBarreMenu(Fenetre fenetre) {
-        super(fenetre);
+    public ControlBarreMenu(Fenetre fenetre, Game game){
+        super(fenetre, game);
         fenetre.setControlBarreMenu(this);
     }
 
