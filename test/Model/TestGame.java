@@ -114,9 +114,28 @@ public class TestGame {
     }
 
     @Test
+    public void testQuiGagne(){
+        Joueur j1 = new Joueur();
+        Joueur j2 = new Joueur();
+        Joueur j3 = new Joueur();
+        Joueur j4 = new Joueur();
+        List<Carte> l1 = j1.getMain();
+        Game game = new Game(j1,j2,j3,j4);
+        Assert.assertFalse(game.siGagne(j1, 0 ));
+        Assert.assertFalse(game.siGagne(j2, 1 ));
+        Assert.assertFalse(game.siGagne(j3, 2 ));
+        Assert.assertFalse(game.siGagne(j4, 3 ));
+        l1.clear();
+        Assert.assertTrue(game.siGagne(j1,0));
+    }
+
+    @Test
     public void testFirstPlayer(){
-        /*
-        a completer
-         */
+        Joueur j1 = new Joueur();
+        Joueur j2 = new Joueur();
+        Joueur j3 = new Joueur();
+        Joueur j4 = new Joueur();
+        Game game = new Game(j1,j2,j3,j4);
+        game.firstPlayer();
     }
 }

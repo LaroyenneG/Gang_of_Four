@@ -40,6 +40,10 @@ public class Joueur {
         }
     }
 
+    public Carte premièreCarte() {
+        return main.get(0);
+    }
+
     public void addALaMain(Carte carteAAdd) {
         main.add(carteAAdd);
     }

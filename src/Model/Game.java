@@ -9,6 +9,7 @@ public class Game {
     private int joueurPlay;
     
     private Joueur[] tabJoueur = new Joueur[4];
+    private int dernierGagnant;
     
 
     public Game (){
@@ -74,10 +75,27 @@ public class Game {
     }
 
     public int firstPlayer(){
-        /*
-        a completer
-         */
-        return 0;
+        if (manche==1){
+            for (int i=0; i< 4; i++){
+                if (tabJoueur[i].premièreCarte().equals(new Carte(Carte.Couleur.MULTI))){
+                    return i;
+                }
+
+            }
+        }
+        else{
+            return dernierGagnant;
+        }
+        System.err.println("Erreur premier joueur");
+        return -1;
+    }
+
+    public boolean siGagne(Joueur j,int indexJoueur){
+        if (j.getMain().size()==0){
+               dernierGagnant = indexJoueur;
+               return true;
+        }
+        return false;
     }
 
     /*
