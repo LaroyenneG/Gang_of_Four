@@ -136,6 +136,8 @@ public class TestGame {
         Joueur j3 = new Joueur();
         Joueur j4 = new Joueur();
         Game game = new Game(j1,j2,j3,j4);
-        game.firstPlayer();
+        int premierJ = game.firstPlayer();
+        Joueur[] tabJoueur = game.getTabJoueur();
+        Assert.assertTrue(tabJoueur[premierJ].premiereCarte().equals(new Carte(Carte.Couleur.MULTI)));
     }
 }

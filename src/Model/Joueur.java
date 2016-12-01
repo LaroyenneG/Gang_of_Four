@@ -40,8 +40,10 @@ public class Joueur {
         }
     }
 
-    public Carte premièreCarte() {
-        return main.get(0);
+    public Carte premiereCarte() {
+        if (main.size()>0)
+            return main.get(0);
+        else return null;
     }
 
     public void addALaMain(Carte carteAAdd) {

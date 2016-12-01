@@ -64,4 +64,27 @@ public class TestJoueur {
         main=joueur.getMain();
         Assert.assertTrue (main.contains(carte));
     }
+
+    @Test
+    public void testPremiereCarte(){
+        Joueur joueur1 = new Joueur();
+        joueur1.addALaMain(new Carte(8, Carte.Couleur.ROUGE));
+        joueur1.addALaMain(new Carte(2, Carte.Couleur.JAUNE));
+        joueur1.addALaMain(new Carte(Carte.Figure.DRAGON, Carte.Couleur.ROUGE));
+        joueur1.addALaMain(new Carte(3, Carte.Couleur.ROUGE));
+        joueur1.addALaMain(new Carte(8, Carte.Couleur.VERT));
+        Assert.assertTrue(joueur1.premiereCarte().equals(new Carte(8, Carte.Couleur.ROUGE)));
+
+        Joueur joueur2 = new Joueur();
+        joueur2.addALaMain(new Carte(Carte.Figure.DRAGON, Carte.Couleur.ROUGE));
+        joueur2.addALaMain(new Carte(8, Carte.Couleur.ROUGE));
+        joueur2.addALaMain(new Carte(2, Carte.Couleur.JAUNE));
+        joueur2.addALaMain(new Carte(3, Carte.Couleur.ROUGE));
+        joueur2.addALaMain(new Carte(8, Carte.Couleur.VERT));
+        Assert.assertTrue(joueur2.premiereCarte().equals(new Carte(Carte.Figure.DRAGON, Carte.Couleur.ROUGE)));
+        Assert.assertFalse(joueur2.premiereCarte().equals(new Carte(8, Carte.Couleur.ROUGE)));
+
+        Joueur joueur3 = new Joueur();
+        Assert.assertTrue(joueur3.premiereCarte()==null);
+    }
 }

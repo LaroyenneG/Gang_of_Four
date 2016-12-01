@@ -70,14 +70,15 @@ public class Game {
         for(int i=0; i<tabJoueur.length;i++){
             tabJoueur[i]=new Joueur();
         }
-        joueurPlay=firstPlayer();
+        distribuerCarte();
         manche++;
+        joueurPlay=firstPlayer();
     }
 
     public int firstPlayer(){
         if (manche==1){
             for (int i=0; i< 4; i++){
-                if (tabJoueur[i].premièreCarte().equals(new Carte(Carte.Couleur.MULTI))){
+                if (tabJoueur[i].premiereCarte().equals(new Carte(Carte.Couleur.MULTI))){
                     return i;
                 }
 
