@@ -1,5 +1,8 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by sangry on 21/11/16.
  */
@@ -10,7 +13,8 @@ public class Game {
     
     private Joueur[] tabJoueur = new Joueur[4];
     private int dernierGagnant;
-    
+
+    private List<Carte> table;
 
     public Game (){
         for (int i=0; i<4; i++){
@@ -23,6 +27,7 @@ public class Game {
 
         manche=1;
         joueurPlay=firstPlayer();
+        table=new ArrayList<>();
     }
 
     public Game (Joueur j1, Joueur j2, Joueur j3, Joueur j4){
@@ -36,6 +41,7 @@ public class Game {
         }
         manche=1;
         joueurPlay=firstPlayer();
+        table=new ArrayList<>();
     }
 
     public void distribuerCarte(){
@@ -73,6 +79,7 @@ public class Game {
         distribuerCarte();
         manche++;
         joueurPlay=firstPlayer();
+        table.clear();
     }
 
     public int firstPlayer(){
@@ -135,12 +142,23 @@ public class Game {
         joueurPlay=j;
     }
 
+    public void poseTable(List<Carte> jeu){
+        //provisoir
+        for (Carte aJeu : jeu) {
+            table.add(aJeu);
+        }
+    }
+
     public int getJoueurPlay() {
         return joueurPlay;
     }
 
     public int getManche() {
         return manche;
+    }
+
+    public List<Carte> getTable(){
+        return table;
     }
 }
 
