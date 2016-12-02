@@ -21,7 +21,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Jouer":
-                //game.poseTable();
+                game.poseTable(game.getTabJoueur()[0].getMain());
                 game.getTable();
                 changerVue();
                 break;
