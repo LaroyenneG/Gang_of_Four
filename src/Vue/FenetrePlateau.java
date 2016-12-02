@@ -43,12 +43,19 @@ public class FenetrePlateau extends JPanel{
         super.paintComponent(g);
         int posX = ((((X-200))-5*game.getTabJoueurIndex(0).getMain().size())/game.getTabJoueurIndex(0).getMain().size());
 
-        passertour.setBounds((int) (11 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
+        passertour.setBounds((int) (20 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         passertour.setBackground(new Color(0, 0, 0, 0));
         passertour.setForeground(Color.WHITE);
         passertour.setFocusable(false);
         passertour.setCursor(new Cursor(Cursor.HAND_CURSOR));
         passertour.setBorder(null);
+
+        jouer.setBounds((int) (11 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
+        jouer.setBackground(new Color(0, 0, 0, 0));
+        jouer.setForeground(Color.WHITE);
+        jouer.setFocusable(false);
+        jouer.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jouer.setBorder(null);
 
         Image img = getToolkit().getImage("image/fondplateau.jpg");
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
@@ -65,12 +72,18 @@ public class FenetrePlateau extends JPanel{
         g.drawString((Integer.toString(game.getTabJoueurIndex(2).getMain().size())),(int)(X*0.85)+posX,400);
         g.drawString((Integer.toString(game.getTabJoueurIndex(3).getMain().size())),(X/2-(posX/2))+posX, 100);
 
+        for (int i=0; i<game.getTable().size();i++) // on récupére la taille de la main du j1 de game
+        {
+            // pour chaque cartes en main
+            Image imgi = getToolkit().getImage("cartes/"+game.getTabJoueurIndex(0).getMain().get(i).getFileName());// on récup le nom de la carte
+            g.drawImage(imgi, (posX+((posX+5)*i)), (int)(Y*0.50), posX, (int) (posX*1.5), this); // on dessine
+        }
 
         for (int i=0; i<game.getTabJoueurIndex(0).getMain().size();i++) // on récupére la taille de la main du j1 de game
         {
             // pour chaque cartes en main
             Image imgi = getToolkit().getImage("cartes/"+game.getTabJoueurIndex(0).getMain().get(i).getFileName());// on récup le nom de la carte
-            g.drawImage(imgi, (posX+((posX+5)*i)), (int)(Y*0.77), posX, (int) (posX*1.5), this); // on dessine
+            g.drawImage(imgi, (posX+((posX+5)*i)), (int)(Y*0.74), posX, (int) (posX*1.5), this); // on dessine
         }
 
     }
