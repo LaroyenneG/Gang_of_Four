@@ -20,15 +20,24 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
     }
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case "Jouer":
-                game.poseTable(game.getTabJoueur()[0].getMain());
-                game.getTable();
-                changerVue();
-                break;
             case "Passer le Tour":
                 game.passerSonTour(0);
                 FenetrePlateau.passertour.setText("Tour Passé!");
                 changerVue();
+                break;
+            case "Jouer":
+                if (game.getTabJoueur()[0].peutJouer == true) {
+                    game.poseTable(game.getTabJoueur()[0].getMain());
+                    game.getTable();
+                    changerVue();
+                }
+                else{
+                    FenetrePlateau.jouer.setText("Votre Tour est Passé!");
+                    changerVue();
+                }
+                break;
+            case "Annuler":
+
                 break;
         }
     }
