@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class Joueur {
     private List<Carte> main;
+    private List<Carte> combinaisonEnCours;
     private int score;
     public boolean peutJouer;
 
@@ -15,12 +16,14 @@ public class Joueur {
         main=new ArrayList<Carte>();
         score=0;
         peutJouer=true;
+        combinaisonEnCours = new ArrayList<>();
     }
 
     public Joueur(List<Carte> main){
         this.main=main;
         score=0;
         peutJouer=true;
+        combinaisonEnCours = new ArrayList<>();
     }
 
     /*

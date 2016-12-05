@@ -149,6 +149,9 @@ public class Game {
         }
     }
 
+
+
+
     public int getJoueurPlay() {
         return joueurPlay;
     }
