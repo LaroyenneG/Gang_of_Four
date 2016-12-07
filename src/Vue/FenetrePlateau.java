@@ -60,6 +60,7 @@ public class FenetrePlateau extends JPanel{
         jouer.setBounds((int) (20 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         jouer.setBackground(new Color(0, 0, 0, 0));
         jouer.setForeground(Color.WHITE);
+        jouer.setVisible(false);
         jouer.setFocusable(false);
         jouer.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jouer.setBorder(null);
@@ -67,6 +68,7 @@ public class FenetrePlateau extends JPanel{
         annuler.setBounds((int) (2 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         annuler.setBackground(new Color(0, 0, 0, 0));
         annuler.setForeground(Color.WHITE);
+        annuler.setVisible(false);
         annuler.setFocusable(false);
         annuler.setCursor(new Cursor(Cursor.HAND_CURSOR));
         annuler.setBorder(null);
