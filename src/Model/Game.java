@@ -149,8 +149,17 @@ public class Game {
         }
     }
 
+    public void clearTable(){
+        table.clear();
+    }
 
+    public boolean joueurCanPlayCombinaison(int i){
+        if(!tabJoueur[i].peutJouer){
+            return false;
+        }
 
+        return true;
+    }
 
     public int getJoueurPlay() {
         return joueurPlay;

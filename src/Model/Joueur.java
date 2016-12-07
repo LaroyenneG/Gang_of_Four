@@ -49,6 +49,18 @@ public class Joueur {
         else return null;
     }
 
+    public boolean addCombinaisonEnCours(Carte carte){
+        if(combinaisonEnCours.size()<=5){
+            combinaisonEnCours.add(carte);
+            return true;
+        }
+        return false;
+    }
+
+    public List<Carte> getCombinaisonEnCours(){
+        return combinaisonEnCours;
+    }
+
     public void addALaMain(Carte carteAAdd) {
         main.add(carteAAdd);
     }

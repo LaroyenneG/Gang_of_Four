@@ -140,4 +140,17 @@ public class TestGame {
         Joueur[] tabJoueur = game.getTabJoueur();
         Assert.assertTrue(tabJoueur[premierJ].premiereCarte().equals(new Carte(Carte.Couleur.MULTI)));
     }
+
+    @Test
+    public void testJoueurCanPlayCombinaison(){
+        Joueur j1 = new Joueur();
+        Joueur j2 = new Joueur();
+        Joueur j3 = new Joueur();
+        Joueur j4 = new Joueur();
+        Game game = new Game(j1,j2,j3,j4);
+
+        List<Carte> carteList = new ArrayList<>();
+
+        game.poseTable(carteList);
+    }
 }

@@ -87,4 +87,13 @@ public class TestJoueur {
         Joueur joueur3 = new Joueur();
         Assert.assertTrue(joueur3.premiereCarte()==null);
     }
+
+    @Test
+    public void addCombinaisonEnCours(){
+        Joueur joueur = new Joueur();
+        for(int i=0; i<=5;i++){
+            Assert.assertTrue(joueur.addCombinaisonEnCours(new Carte(Carte.Couleur.MULTI)));
+        }
+        Assert.assertFalse(joueur.addCombinaisonEnCours(new Carte(Carte.Couleur.MULTI)));
+    }
 }
