@@ -93,7 +93,7 @@ public class FenetrePlateau extends JPanel{
 
         //Piles Plateau
 
-        for (int i=0; i<game.getTable().size()-11;i++) // on récupére la taille de la main du j1 de game
+        for (int i=0; i<game.getTable().size();i++) // on récupére la taille de la main du j1 de game
         {
             // pour chaque cartes en main
             Image imgi = getToolkit().getImage("cartes/"+game.getTabJoueurIndex(0).getMain().get(i).getFileName());// on récup le nom de la carte
