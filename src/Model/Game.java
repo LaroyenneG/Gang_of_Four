@@ -202,9 +202,13 @@ public class Game {
 
             //5 cartes
             if(AlgoCarte.cestQuoi(table)==5&&AlgoCarte.cestQuoi(combinaisonEnCours)==AlgoCarte.cestQuoi(table)){
-                //suite normale
-                if(AlgoCarte.estUneSuite(combinaisonEnCours)&&!AlgoCarte.estUneCouleur(combinaisonEnCours)&&AlgoCarte.estUneSuite(table)&&!AlgoCarte.estUneCouleur(table)){
+                int levelTable=AlgoCarte.level(table);
+                int levelcombi=AlgoCarte.level(combinaisonEnCours);
+                if( levelTable== levelcombi){
                     return AlgoCarte.estPlusFort(combinaisonEnCours,table);
+                }
+                if( levelTable < levelcombi){
+                    return true;
                 }
             }
 

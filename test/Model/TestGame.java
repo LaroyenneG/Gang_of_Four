@@ -257,6 +257,39 @@ public class TestGame {
 
         Assert.assertTrue(game.joueurCanPlayCombinaison(0));
 
+        game.clearTable();
+        carteList.clear();
+        j1.clearCombinaisonEnCours();
+        carteList.add(new Carte(3, Carte.Couleur.VERT));
+        carteList.add(new Carte(3, Carte.Couleur.JAUNE));
+        carteList.add(new Carte(3, Carte.Couleur.VERT));
+        carteList.add(new Carte(3, Carte.Couleur.ROUGE));
+        game.poseTable(carteList);
+
+        j1.addCombinaisonEnCours(new Carte(3, Carte.Couleur.JAUNE));
+        j1.addCombinaisonEnCours(new Carte(3, Carte.Couleur.JAUNE));
+        j1.addCombinaisonEnCours(new Carte(3, Carte.Couleur.ROUGE));
+        j1.addCombinaisonEnCours(new Carte(3, Carte.Couleur.VERT));
+
+        Assert.assertTrue(game.joueurCanPlayCombinaison(0));
+
+        game.clearTable();
+        carteList.clear();
+        j1.clearCombinaisonEnCours();
+        carteList.add(new Carte(3, Carte.Couleur.VERT));
+        carteList.add(new Carte(3, Carte.Couleur.JAUNE));
+        carteList.add(new Carte(3, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(3, Carte.Couleur.ROUGE));
+        game.poseTable(carteList);
+
+        j1.addCombinaisonEnCours(new Carte(1, Carte.Couleur.JAUNE));
+        j1.addCombinaisonEnCours(new Carte(1, Carte.Couleur.JAUNE));
+        j1.addCombinaisonEnCours(new Carte(1, Carte.Couleur.ROUGE));
+        j1.addCombinaisonEnCours(new Carte(1, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(1, Carte.Couleur.VERT));
+
+        Assert.assertTrue(game.joueurCanPlayCombinaison(0));
+
 
         /*
         pour une suite simple
@@ -278,10 +311,90 @@ public class TestGame {
         j1.addCombinaisonEnCours(new Carte(7, Carte.Couleur.VERT));
         j1.addCombinaisonEnCours(new Carte(8, Carte.Couleur.ROUGE));
         game.poseTable(carteList);
+
         Assert.assertTrue(game.joueurCanPlayCombinaison(0));
+
 
         carteList.clear();
         j1.getCombinaisonEnCours();
         game.clearTable();
+
+        carteList.add(new Carte(4, Carte.Couleur.VERT));
+        carteList.add(new Carte(5, Carte.Couleur.JAUNE));
+        carteList.add(new Carte(6, Carte.Couleur.JAUNE));
+        carteList.add(new Carte(7, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(8, Carte.Couleur.ROUGE));
+
+
+        j1.addCombinaisonEnCours(new Carte(4, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(5, Carte.Couleur.JAUNE));
+        j1.addCombinaisonEnCours(new Carte(6, Carte.Couleur.JAUNE));
+        j1.addCombinaisonEnCours(new Carte(7, Carte.Couleur.ROUGE));
+        j1.addCombinaisonEnCours(new Carte(8, Carte.Couleur.JAUNE));
+        game.poseTable(carteList);
+
+        Assert.assertFalse(game.joueurCanPlayCombinaison(0));
+
+        //suite couleur
+        game.clearTable();
+        carteList.clear();
+        j1.clearCombinaisonEnCours();
+
+        carteList.add(new Carte(2, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(5, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(6, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(7, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(8, Carte.Couleur.ROUGE));
+
+
+        j1.addCombinaisonEnCours(new Carte(2, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(5, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(7, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(8, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(9, Carte.Couleur.VERT));
+        game.poseTable(carteList);
+
+        Assert.assertTrue(game.joueurCanPlayCombinaison(0));
+
+        game.clearTable();
+        carteList.clear();
+        j1.clearCombinaisonEnCours();
+
+        carteList.add(new Carte(2, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(5, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(6, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(7, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(9, Carte.Couleur.ROUGE));
+
+
+        j1.addCombinaisonEnCours(new Carte(2, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(5, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(6, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(7, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(8, Carte.Couleur.VERT));
+        game.poseTable(carteList);
+
+        Assert.assertFalse(game.joueurCanPlayCombinaison(0));
+
+        //suite de couleur
+        game.clearTable();
+        carteList.clear();
+        j1.clearCombinaisonEnCours();
+
+        carteList.add(new Carte(2, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(3, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(4, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(5, Carte.Couleur.ROUGE));
+        carteList.add(new Carte(6, Carte.Couleur.ROUGE));
+
+
+        j1.addCombinaisonEnCours(new Carte(3, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(4, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(5, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(6, Carte.Couleur.VERT));
+        j1.addCombinaisonEnCours(new Carte(7, Carte.Couleur.VERT));
+        game.poseTable(carteList);
+
+        Assert.assertTrue(game.joueurCanPlayCombinaison(0));
     }
 }

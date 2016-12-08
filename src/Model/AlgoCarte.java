@@ -184,6 +184,25 @@ public class AlgoCarte {
         return 0;
     }
 
+    public static int level(List<Carte> list){
+        if(cestQuoi(list)!=5){
+            return 0;
+        }
+        if(estUneSuite(list)&&!estUneCouleur(list)){
+            return 1;
+        }
+        if(estUneCouleur(list)){
+            return 2;
+        }
+        if(estUnFull(list)){
+            return 3;
+        }
+        if(estUneSuiteCouleur(list)){
+            return 4;
+        }
+        return 0;
+    }
+
 
     /*
     return true if cartes1 > cartes2
