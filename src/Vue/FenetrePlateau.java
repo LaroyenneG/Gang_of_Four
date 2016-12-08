@@ -30,6 +30,7 @@ public class FenetrePlateau extends JPanel{
         for (int i = 0; i<game.getTabJoueurIndex(0).getMain().size();i++ )
         {
                 cartesMain[i] = new JButton();
+                cartesMain[i].setActionCommand("Carte");
                 add(cartesMain[i]);
 
         }
@@ -50,6 +51,10 @@ public class FenetrePlateau extends JPanel{
         jouer.addActionListener(controlFenetrePlateau);
         annuler.addActionListener(controlFenetrePlateau);
         passertour.addActionListener(controlFenetrePlateau);
+        for (int i = 0; i<game.getTabJoueurIndex(0).getMain().size();i++ )
+        {
+            cartesMain[i].addActionListener(controlFenetrePlateau);
+        }
     }
 
     protected void paintComponent(Graphics g) {

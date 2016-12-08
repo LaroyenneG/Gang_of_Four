@@ -1,8 +1,6 @@
 package Controleur;
 
-import Model.Carte;
 import Model.Game;
-import Model.Joueur;
 import Vue.Fenetre;
 import Vue.FenetrePlateau;
 
@@ -25,7 +23,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 FenetrePlateau.passertour.setText("Tour Passé!");
                 changerVue();
                 break;
-            case "Bouton":
+            case "Carte":
                 if (game.getTabJoueur()[0].peutJouer == true) {
                     FenetrePlateau.jouer.setVisible(true);
                     FenetrePlateau.annuler.setVisible(true);
