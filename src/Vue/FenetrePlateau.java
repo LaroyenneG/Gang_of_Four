@@ -19,12 +19,20 @@ public class FenetrePlateau extends JPanel{
     public static JButton passertour;
     public static JButton annuler;
     public Game game;
+    public JButton[] cartesMain;
 
     public FenetrePlateau(Game game) { // ajout d'un game en paramètre pour récupérer les mains des joueurs
         this.game = game;
 
         this.setLayout(null);
         setPreferredSize(new Dimension(X, Y));
+        cartesMain = new JButton[game.getTabJoueurIndex(0).getMain().size()];
+        for (int i = 0; i<game.getTabJoueurIndex(0).getMain().size();i++ )
+        {
+                cartesMain[i] = new JButton();
+                add(cartesMain[i]);
+
+        }
 
         jouer = new JButton("Jouer");
         jouer.setActionCommand("Jouer");
@@ -106,6 +114,11 @@ public class FenetrePlateau extends JPanel{
         {
             // pour chaque cartes en main
             Image imgi = getToolkit().getImage("cartes/"+game.getTabJoueurIndex(0).getMain().get(i).getFileName());// on récup le nom de la carte
+            cartesMain[i].setBounds((posX+((posX+5)*i)), (int)(Y*0.74), posX, (int) (posX*1.5));
+            cartesMain[i].setBackground(new Color(0, 0, 0, 0));
+            cartesMain[i].setFocusable(false);
+            cartesMain[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
+            cartesMain[i].setBorder(null);
             g.drawImage(imgi, (posX+((posX+5)*i)), (int)(Y*0.74), posX, (int) (posX*1.5), this); // on dessine
         }
 
