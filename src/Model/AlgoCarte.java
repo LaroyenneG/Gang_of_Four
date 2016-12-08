@@ -191,7 +191,7 @@ public class AlgoCarte {
         if(estUneSuite(list)&&!estUneCouleur(list)){
             return 1;
         }
-        if(estUneCouleur(list)){
+        if(estUneCouleur(list)&&!estUneSuiteCouleur(list)){
             return 2;
         }
         if(estUnFull(list)){
