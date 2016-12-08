@@ -26,8 +26,8 @@ public class TestDeck {
 
         Assert.assertEquals(64, carteList.size());
 
-        for (int i=0; i<carteList.size(); i++){
-            Assert.assertNotNull(carteList.get(i));
+        for (Carte aCarteList : carteList) {
+            Assert.assertNotNull(aCarteList);
         }
 
         int nbNombre = 3*10*2+1; //3*10 carte nombre + multi

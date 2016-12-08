@@ -163,34 +163,50 @@ public class Game {
             return false;
         }
 
-
         List<Carte> combinaisonEnCours =tabJoueur[i].getCombinaisonEnCours();
 
         if (table.size()==0){
-            //cobinaison de n carte
             if(AlgoCarte.cestQuoi(combinaisonEnCours)!=-1){
                 return true;
             }
         }else {
             if(AlgoCarte.cestQuoi(table)==-1){
-                System.err.println("Error master, combinaison invalid in the table");
+                System.err.println("Error master, combinator invalid in the table");
                 System.exit(-1);
             }
 
-            if(AlgoCarte.cestQuoi(table)==6){
-                if(AlgoCarte.cestQuoi(combinaisonEnCours)!=6){
-                    return false;
-                }else if(combinaisonEnCours.size()>table.size()) {
-                    return true;
+            if(table.size()!=combinaisonEnCours.size()){
+                if(AlgoCarte.cestQuoi(table)==6 && AlgoCarte.cestQuoi(combinaisonEnCours)==6){
+                    if(table.size()==combinaisonEnCours.size()){
+                        return AlgoCarte.estPlusFort(combinaisonEnCours, table);
+                    }else if(table.size()<combinaisonEnCours.size()){
+                        return true;
+                    }else {
+                        return false;
+                    }
+                }
+                return false;
+            }
+
+            if(AlgoCarte.cestQuoi(table)!=5&&AlgoCarte.cestQuoi(table)==AlgoCarte.cestQuoi(combinaisonEnCours)){
+                return AlgoCarte.estPlusFort(combinaisonEnCours,table);
+            }
+            //gang of for
+            if(AlgoCarte.cestQuoi(table)==6&&AlgoCarte.cestQuoi(combinaisonEnCours)!=6){
+                return false;
+            }
+
+            //5 cartes
+            if(AlgoCarte.cestQuoi(table)==5&&AlgoCarte.cestQuoi(combinaisonEnCours)==AlgoCarte.cestQuoi(table)){
+                //suite normale
+                if(AlgoCarte.estUneSuite(combinaisonEnCours)&&!AlgoCarte.estUneCouleur(combinaisonEnCours)&&AlgoCarte.estUneSuite(table)&&!AlgoCarte.estUneCouleur(table)){
+                    return AlgoCarte.estPlusFort(combinaisonEnCours,table);
                 }
             }
 
-            if(AlgoCarte.cestQuoi(table)!=AlgoCarte.cestQuoi(combinaisonEnCours)){
-                return false;
-            }
         }
 
-        return true;
+        return false;
     }
 
     public int getJoueurPlay() {

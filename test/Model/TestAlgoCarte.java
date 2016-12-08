@@ -209,5 +209,62 @@ public class TestAlgoCarte {
         list2.add(new Carte(1, Carte.Couleur.VERT));
         Assert.assertFalse(AlgoCarte.estPlusFort(list1,list2));
         Assert.assertTrue(AlgoCarte.estPlusFort(list2,list1));
+
+        //suite
+        list1.clear();
+        list2.clear();
+
+        list1.add(new Carte(1, Carte.Couleur.VERT));
+        list1.add(new Carte(2, Carte.Couleur.VERT));
+        list1.add(new Carte(3, Carte.Couleur.JAUNE));
+        list1.add(new Carte(4, Carte.Couleur.JAUNE));
+        list1.add(new Carte(5, Carte.Couleur.VERT));
+
+        list2.add(new Carte(1, Carte.Couleur.ROUGE));
+        list2.add(new Carte(2, Carte.Couleur.ROUGE));
+        list2.add(new Carte(3, Carte.Couleur.VERT));
+        list2.add(new Carte(4, Carte.Couleur.VERT));
+        list2.add(new Carte(5, Carte.Couleur.VERT));
+
+        Assert.assertTrue(AlgoCarte.estPlusFort(list1,list2));
+        Assert.assertFalse(AlgoCarte.estPlusFort(list2,list1));
+
+        //suite
+        list1.clear();
+        list2.clear();
+
+        list1.add(new Carte(1, Carte.Couleur.VERT));
+        list1.add(new Carte(2, Carte.Couleur.VERT));
+        list1.add(new Carte(3, Carte.Couleur.JAUNE));
+        list1.add(new Carte(4, Carte.Couleur.JAUNE));
+        list1.add(new Carte(5, Carte.Couleur.VERT));
+
+        list2.add(new Carte(3, Carte.Couleur.ROUGE));
+        list2.add(new Carte(2, Carte.Couleur.ROUGE));
+        list2.add(new Carte(3, Carte.Couleur.VERT));
+        list2.add(new Carte(4, Carte.Couleur.VERT));
+        list2.add(new Carte(5, Carte.Couleur.VERT));
+
+        Assert.assertFalse(AlgoCarte.estPlusFort(list1,list2));
+        Assert.assertTrue(AlgoCarte.estPlusFort(list2,list1));
+
+
+        list1.clear();
+        list2.clear();
+
+        list1.add(new Carte(9, Carte.Couleur.VERT));
+        list1.add(new Carte(8, Carte.Couleur.VERT));
+        list1.add(new Carte(7, Carte.Couleur.VERT));
+        list1.add(new Carte(6, Carte.Couleur.ROUGE));
+        list1.add(new Carte(5, Carte.Couleur.VERT));
+
+        list2.add(new Carte(9, Carte.Couleur.JAUNE));
+        list2.add(new Carte(8, Carte.Couleur.VERT));
+        list2.add(new Carte(7, Carte.Couleur.VERT));
+        list2.add(new Carte(6, Carte.Couleur.VERT));
+        list2.add(new Carte(5, Carte.Couleur.VERT));
+
+        Assert.assertFalse(AlgoCarte.estPlusFort(list1,list2));
+        Assert.assertTrue(AlgoCarte.estPlusFort(list2,list1));
     }
 }

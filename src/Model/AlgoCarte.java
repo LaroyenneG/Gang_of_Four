@@ -166,7 +166,7 @@ public class AlgoCarte {
             return 6;
         }
 
-        return -1;
+        return 0;
     }
 
     public static int colorValue(Carte.Couleur c){
@@ -198,6 +198,24 @@ public class AlgoCarte {
             System.exit(-5);
         }
 
+        int somme1=0;
+        int somme2=0;
+
+        for (Carte aCartes1 : cartes1) {
+            somme1 += aCartes1.valeur;
+        }
+        for (Carte aCartes2 : cartes2) {
+            somme2 += aCartes2.valeur;
+        }
+
+        if(somme1>somme2){
+            return true;
+        }
+
+        if(somme1<somme2){
+            return false;
+        }
+
         for (int i=cartes1.size()-1; i>=0; i--){
             if(cartes1.get(i).valeur<cartes2.get(i).valeur){
                 return false;
@@ -205,6 +223,9 @@ public class AlgoCarte {
                 if(cartes1.get(i).valeur==cartes2.get(i).valeur){
                     if(colorValue(cartes1.get(i).couleur)>colorValue(cartes2.get(i).couleur)){
                         return true;
+                    }
+                    if(colorValue(cartes1.get(i).couleur)<colorValue(cartes2.get(i).couleur)){
+                        return false;
                     }
                 }
             }
