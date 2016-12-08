@@ -176,6 +176,9 @@ public class Game {
             }
 
             if(table.size()!=combinaisonEnCours.size()){
+                if(AlgoCarte.cestQuoi(combinaisonEnCours)==6 && AlgoCarte.cestQuoi(table)!=6){
+                    return true;
+                }
                 if(AlgoCarte.cestQuoi(table)==6 && AlgoCarte.cestQuoi(combinaisonEnCours)==6){
                     if(table.size()==combinaisonEnCours.size()){
                         return AlgoCarte.estPlusFort(combinaisonEnCours, table);
@@ -188,12 +191,13 @@ public class Game {
                 return false;
             }
 
-            if(AlgoCarte.cestQuoi(table)!=5&&AlgoCarte.cestQuoi(table)==AlgoCarte.cestQuoi(combinaisonEnCours)){
-                return AlgoCarte.estPlusFort(combinaisonEnCours,table);
-            }
             //gang of for
             if(AlgoCarte.cestQuoi(table)==6&&AlgoCarte.cestQuoi(combinaisonEnCours)!=6){
                 return false;
+            }
+
+            if(AlgoCarte.cestQuoi(table)!=5&&AlgoCarte.cestQuoi(table)==AlgoCarte.cestQuoi(combinaisonEnCours)){
+                return AlgoCarte.estPlusFort(combinaisonEnCours,table);
             }
 
             //5 cartes
