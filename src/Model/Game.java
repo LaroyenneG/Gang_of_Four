@@ -154,8 +154,40 @@ public class Game {
     }
 
     public boolean joueurCanPlayCombinaison(int i){
+        if(i<0 || i>tabJoueur.length){
+            System.err.println("Error in joueurCanPlayCombinaison(), i is invalid");
+            System.exit(-1);
+        }
+
         if(!tabJoueur[i].peutJouer){
             return false;
+        }
+
+
+        List<Carte> combinaisonEnCours =tabJoueur[i].getCombinaisonEnCours();
+
+        if (table.size()==0){
+            //cobinaison de n carte
+            if(AlgoCarte.cestQuoi(combinaisonEnCours)!=-1){
+                return true;
+            }
+        }else {
+            if(AlgoCarte.cestQuoi(table)==-1){
+                System.err.println("Error master, combinaison invalid in the table");
+                System.exit(-1);
+            }
+
+            if(AlgoCarte.cestQuoi(table)==6){
+                if(AlgoCarte.cestQuoi(combinaisonEnCours)!=6){
+                    return false;
+                }else if(combinaisonEnCours.size()>table.size()) {
+                    return true;
+                }
+            }
+
+            if(AlgoCarte.cestQuoi(table)!=AlgoCarte.cestQuoi(combinaisonEnCours)){
+                return false;
+            }
         }
 
         return true;

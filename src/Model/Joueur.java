@@ -61,6 +61,10 @@ public class Joueur {
         return combinaisonEnCours;
     }
 
+    public void clearCombinaisonEnCours(){
+        combinaisonEnCours.clear();
+    }
+
     public void addALaMain(Carte carteAAdd) {
         main.add(carteAAdd);
     }

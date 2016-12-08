@@ -174,4 +174,40 @@ public class TestAlgoCarte {
         carteAjouer.add(new Carte(9, Carte.Couleur.VERT));
         Assert.assertFalse(AlgoCarte.estUnFull(carteAjouer));
     }
+
+    @Test
+    public void testColorValue(){
+
+
+        List<Carte> list1 = new ArrayList<>();
+        List<Carte> list2 = new ArrayList<>();
+
+        //gang of four
+        list1.add(new Carte(1, Carte.Couleur.VERT));
+        list1.add(new Carte(1, Carte.Couleur.VERT));
+        list1.add(new Carte(1, Carte.Couleur.JAUNE));
+        list1.add(new Carte(1, Carte.Couleur.JAUNE));
+
+        list2.add(new Carte(1, Carte.Couleur.VERT));
+        list2.add(new Carte(1, Carte.Couleur.VERT));
+        list2.add(new Carte(1, Carte.Couleur.JAUNE));
+        list2.add(new Carte(1, Carte.Couleur.JAUNE));
+        Assert.assertFalse(AlgoCarte.estPlusFort(list1,list2));
+        Assert.assertFalse(AlgoCarte.estPlusFort(list2,list1));
+
+        list1.clear();
+        list2.clear();
+
+        list1.add(new Carte(1, Carte.Couleur.VERT));
+        list1.add(new Carte(1, Carte.Couleur.VERT));
+        list1.add(new Carte(1, Carte.Couleur.JAUNE));
+        list1.add(new Carte(1, Carte.Couleur.JAUNE));
+
+        list2.add(new Carte(1, Carte.Couleur.ROUGE));
+        list2.add(new Carte(1, Carte.Couleur.ROUGE));
+        list2.add(new Carte(1, Carte.Couleur.VERT));
+        list2.add(new Carte(1, Carte.Couleur.VERT));
+        Assert.assertFalse(AlgoCarte.estPlusFort(list1,list2));
+        Assert.assertTrue(AlgoCarte.estPlusFort(list2,list1));
+    }
 }
