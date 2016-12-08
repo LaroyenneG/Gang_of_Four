@@ -504,7 +504,6 @@ public class TestGame {
 
         //suite couleur vs gang of n
 
-        /*
         game.clearTable();
         carteList.clear();
         j1.clearCombinaisonEnCours();
@@ -514,11 +513,11 @@ public class TestGame {
         carteList.add(new Carte(4, Carte.Couleur.ROUGE));
         carteList.add(new Carte(5, Carte.Couleur.ROUGE));
         carteList.add(new Carte(6, Carte.Couleur.ROUGE));
+        game.poseTable(carteList);
 
         j1.addCombinaisonEnCours(new Carte(9, Carte.Couleur.JAUNE));
         j1.addCombinaisonEnCours(new Carte(9, Carte.Couleur.JAUNE));
 
         Assert.assertFalse(game.joueurCanPlayCombinaison(0));
-        */
     }
 }

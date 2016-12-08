@@ -154,6 +154,7 @@ public class Game {
     }
 
     public boolean joueurCanPlayCombinaison(int i){
+
         if(i<0 || i>tabJoueur.length){
             System.err.println("Error in joueurCanPlayCombinaison(), i is invalid");
             System.exit(-1);
