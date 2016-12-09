@@ -110,35 +110,46 @@ public class Game {
     sens de rotation horaire j0->j1->j2->j3 loop
     sens de rotation antihoraire j0->j3->j2->j1 loop
      */
-    public void nextJoueur(){
+
+    //method for Tom
+    private int nextJoueurOracle(){
+        int id=joueurPlay;
         int sens;
         if (manche%2==0){
             sens=-1;
         }else {
             sens=1;
         }
-        setJoueurPlay((joueurPlay+sens)%4);
+        id=idJoueur((id+sens)%4);
         int count=0;
-        while (!tabJoueur[joueurPlay].peutJouer){
-            setJoueurPlay((joueurPlay+sens)%4);
+        while (!tabJoueur[id].peutJouer){
+            id=idJoueur((id+sens)%4);
             count++;
             if(count>tabJoueur.length){
                 System.err.println("Error in nextJoueur(), no player can play");
                 break;
             }
         }
+        return id;
+    }
+
+    public void nextJoueur(){
+        setJoueurPlay(nextJoueurOracle());
+    }
+
+    private int idJoueur(int j){
+        if(j < 0 ){
+            j=j+tabJoueur.length;
+        }
+        return j;
     }
 
     private void setJoueurPlay(int j){
         if(j<-tabJoueur.length){
             System.err.println("Error in setJoueurPlay(), invalid j");
+            System.exit(-1);
         }
-        if(j < 0 ){
-            j=j+tabJoueur.length;
-        }
-        if(joueurPlay==j){
-            System.err.println("Error in setJoueurPlay(), value hasn't change");
-        }
+
         joueurPlay=j;
     }
 
