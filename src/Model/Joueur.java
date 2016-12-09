@@ -7,7 +7,7 @@ import java.util.List;
  * Created by guillaume on 12/11/16.
  */
 public class Joueur {
-    private List<Carte> main;
+    public List<Carte> main;
     private List<Carte> combinaisonEnCours;
     private int score;
     public boolean peutJouer;

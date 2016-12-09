@@ -23,30 +23,37 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 FenetrePlateau.passertour.setText("Tour Passé!");
                 changerVue();
                 break;
+
             case "Carte":
-                if (game.getTabJoueur()[0].peutJouer == true) {
+                if (game.getTabJoueur()[0].peutJouer) {
                     FenetrePlateau.jouer.setVisible(true);
                     FenetrePlateau.annuler.setVisible(true);
-                    //game.getTabJoueur()[0].addCombinaisonEnCours(carte);
+                    game.getTabJoueur()[0].addCombinaisonEnCours(game.getTabJoueurIndex(0).getMain().get(1));
+                    game.getTabJoueur()[0].main.remove(1);
                     game.getTabJoueur()[0].getCombinaisonEnCours();
                     changerVue();
                 } else {
                     FenetrePlateau.passertour.setText("Votre Tour est Passé!");
                     changerVue();
                 }
-                switch (e.getActionCommand()) {
-                    case "Jouer":
-                        game.poseTable(game.getTabJoueur()[0].getCombinaisonEnCours());
-                        game.getTable();
-                        changerVue();
-                        break;
-                    case "Annuler":
-                        game.clearTable();
-                        FenetrePlateau.jouer.setVisible(false);
-                        FenetrePlateau.annuler.setVisible(false);
-                        changerVue();
-                        break;
+                break;
+
+            case "Jouer":
+                if (game.joueurCanPlayCombinaison(0)) {
+                    game.poseTable(game.getTabJoueur()[0].getCombinaisonEnCours());
+                    game.getTabJoueur()[0].clearCombinaisonEnCours();
+                    game.getTable();
+                    changerVue();
                 }
+                break;
+
+            case "Annuler":
+                game.getTabJoueur()[0].addALaMain(game.getTabJoueur()[0].getCombinaisonEnCours().get(0));
+                game.getTabJoueur()[0].ordoMain();
+                game.getTabJoueur()[0].clearCombinaisonEnCours();
+                FenetrePlateau.jouer.setVisible(false);
+                FenetrePlateau.annuler.setVisible(false);
+                changerVue();
                 break;
         }
     }
