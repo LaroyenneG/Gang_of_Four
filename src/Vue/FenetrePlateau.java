@@ -79,7 +79,7 @@ public class FenetrePlateau extends JPanel{
 
         //Bouton (11 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
 
-        passertour.setBounds((int) (11 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
+        passertour.setBounds((int) (11 / 30.0 * X), (int) (13.25 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         passertour.setBackground(new Color(0, 0, 0, 0));
         passertour.setFont(f);
         passertour.setForeground(Color.WHITE);
@@ -87,7 +87,7 @@ public class FenetrePlateau extends JPanel{
         passertour.setCursor(new Cursor(Cursor.HAND_CURSOR));
         passertour.setBorder(null);
 
-        jouer.setBounds((int) (20 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
+        jouer.setBounds((int) (24 / 30.0 * X), (int) (8.25 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
         jouer.setBackground(new Color(0, 0, 0, 0));
         jouer.setFont(f);
         jouer.setForeground(Color.WHITE);
@@ -95,7 +95,7 @@ public class FenetrePlateau extends JPanel{
         jouer.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jouer.setBorder(null);
 
-        annuler.setBounds((int) (2 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
+        annuler.setBounds((int) (24 / 30.0 * X), (int) (9.75 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
         annuler.setBackground(new Color(0, 0, 0, 0));
         annuler.setFont(f);
         annuler.setForeground(Color.WHITE);
