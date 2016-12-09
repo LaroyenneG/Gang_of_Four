@@ -18,6 +18,7 @@ public class FenetrePlateau extends JPanel{
     public static JButton jouer;
     public static JButton passertour;
     public static JButton annuler;
+    public static JButton envoyer;
     public Game game;
     public JButton[] cartesMain;
 
@@ -35,10 +36,13 @@ public class FenetrePlateau extends JPanel{
         annuler.setActionCommand("Annuler");
         passertour = new JButton("Passer le Tour");
         passertour.setActionCommand("Passer le Tour");
+        envoyer = new JButton("Envoyer");
+        envoyer.setActionCommand("Envoyer");
 
         add(jouer);
         add(annuler);
         add(passertour);
+        add(envoyer);
     }
     public void creerBouton (){
 
@@ -62,9 +66,14 @@ public class FenetrePlateau extends JPanel{
     }
 
     public void setControl(ControlFenetrePlateau controlFenetrePlateau) {
+
+        //Bouton permetant le jeu
         jouer.addActionListener(controlFenetrePlateau);
         annuler.addActionListener(controlFenetrePlateau);
         passertour.addActionListener(controlFenetrePlateau);
+        envoyer.addActionListener(controlFenetrePlateau);
+
+        //Bouton des Cartes
         for (int i = 0; i<game.getTabJoueurIndex(0).getMain().size();i++ )
         {
             cartesMain[i].addActionListener(controlFenetrePlateau);
@@ -79,7 +88,7 @@ public class FenetrePlateau extends JPanel{
 
         //Bouton (11 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
 
-        passertour.setBounds((int) (11 / 30.0 * X), (int) (13.3 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
+        passertour.setBounds((int) (1 / 30.0 * X), (int) (8.25 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
         passertour.setBackground(new Color(0, 0, 0, 0));
         passertour.setFont(f);
         passertour.setForeground(Color.WHITE);
@@ -102,6 +111,14 @@ public class FenetrePlateau extends JPanel{
         annuler.setFocusable(false);
         annuler.setCursor(new Cursor(Cursor.HAND_CURSOR));
         annuler.setBorder(null);
+
+        envoyer.setBounds((int) (1 / 30.0 * X), (int) (9.75 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
+        envoyer.setBackground(new Color(0, 0, 0, 0));
+        envoyer.setFont(f);
+        envoyer.setForeground(Color.WHITE);
+        envoyer.setFocusable(false);
+        envoyer.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        envoyer.setBorder(null);
 
         //Fond
 

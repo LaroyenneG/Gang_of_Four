@@ -13,9 +13,9 @@ public class ControlGroup {
     public ControlGroup(Fenetre fenetre, Game game) throws IOException { // prend la fenettre en param
 
         ControlFenetrePlateau controlFenetrePlateau = new ControlFenetrePlateau(fenetre, game);
-        //ControlCarte controlCarte = new ControlCarte(fenetre);
         ControlFenetreAccueil controlFenetreAccueil = new ControlFenetreAccueil(fenetre, game);
         ControlFenetreCredits controlFenetreCredits = new ControlFenetreCredits(fenetre, game);
+        ControlFenetreRegle controlFenetreRegle = new ControlFenetreRegle(fenetre, game);
         ControlBarreMenu controlBarreMenu = new ControlBarreMenu(fenetre, game);
     }
 }

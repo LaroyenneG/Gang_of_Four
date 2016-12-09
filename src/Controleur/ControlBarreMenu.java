@@ -33,6 +33,10 @@ public class ControlBarreMenu extends Control implements ActionListener {
             case "Quitter":
                 System.exit(0);
                 break;
+
+                fenetre.setContentPane(fenetre.panelFenetreRegle);
+                changerVue();
+                break;
         }
     }
 }
