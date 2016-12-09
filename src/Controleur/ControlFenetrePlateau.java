@@ -17,6 +17,22 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
         fenetre.setControlFenetrePlateau(this);
     }
     public void actionPerformed(ActionEvent e) {
+
+        if(e.getActionCommand().contains("Carte")){
+            if (game.getTabJoueur()[0].peutJouer) {
+                FenetrePlateau.jouer.setVisible(true);
+                FenetrePlateau.annuler.setVisible(true);
+                game.getTabJoueur()[0].addCombinaisonEnCours(game.getTabJoueurIndex(0).getMain().get(Integer.valueOf(String.valueOf(e.getActionCommand().charAt(5)))));
+                game.getTabJoueur()[0].main.remove(1);
+                game.getTabJoueur()[0].getCombinaisonEnCours();
+                fenetre.panelFenetrePlateau.creerBouton();
+                changerVue();
+            } else {
+                FenetrePlateau.passertour.setText("Votre Tour est Passé!");
+                changerVue();
+            }
+        }
+
         switch (e.getActionCommand()) {
             case "Passer le Tour":
                 game.passerSonTour(0);
@@ -24,25 +40,10 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 changerVue();
                 break;
 
-            case "Carte":
-                if (game.getTabJoueur()[0].peutJouer) {
-                    FenetrePlateau.jouer.setVisible(true);
-                    FenetrePlateau.annuler.setVisible(true);
-                    game.getTabJoueur()[0].addCombinaisonEnCours(game.getTabJoueurIndex(0).getMain().get(1));
-                    game.getTabJoueur()[0].main.remove(1);
-                    game.getTabJoueur()[0].getCombinaisonEnCours();
-                    changerVue();
-                } else {
-                    FenetrePlateau.passertour.setText("Votre Tour est Passé!");
-                    changerVue();
-                }
-                break;
-
             case "Jouer":
                 if (game.joueurCanPlayCombinaison(0)) {
                     game.poseTable(game.getTabJoueur()[0].getCombinaisonEnCours());
                     game.getTabJoueur()[0].clearCombinaisonEnCours();
-                    game.getTable();
                     changerVue();
                 }
                 break;

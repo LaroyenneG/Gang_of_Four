@@ -26,14 +26,8 @@ public class FenetrePlateau extends JPanel{
 
         this.setLayout(null);
         setPreferredSize(new Dimension(X, Y));
-        cartesMain = new JButton[game.getTabJoueurIndex(0).getMain().size()];
-        for (int i = 0; i<game.getTabJoueurIndex(0).getMain().size();i++ )
-        {
-                cartesMain[i] = new JButton();
-                cartesMain[i].setActionCommand("Carte");
-                add(cartesMain[i]);
 
-        }
+        creerBouton();
 
         jouer = new JButton("Jouer");
         jouer.setActionCommand("Jouer");
@@ -45,6 +39,18 @@ public class FenetrePlateau extends JPanel{
         add(jouer);
         add(annuler);
         add(passertour);
+    }
+    public void creerBouton (){
+
+        cartesMain = new JButton[game.getTabJoueurIndex(0).getMain().size()];
+        for (int i = 0; i<game.getTabJoueurIndex(0).getMain().size();i++ )
+        {
+            cartesMain[i] = new JButton();
+            cartesMain[i].setActionCommand("Carte"+i);
+            add(cartesMain[i]);
+
+        }
+
     }
 
     public void setControl(ControlFenetrePlateau controlFenetrePlateau) {
