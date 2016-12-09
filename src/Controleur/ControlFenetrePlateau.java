@@ -20,10 +20,11 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
         if(e.getActionCommand().contains("Carte")){
             if (game.getTabJoueur()[0].peutJouer) {
+                int i = Integer.valueOf(String.valueOf(e.getActionCommand().charAt(5)));
                 FenetrePlateau.jouer.setVisible(true);
                 FenetrePlateau.annuler.setVisible(true);
-                game.getTabJoueur()[0].addCombinaisonEnCours(game.getTabJoueurIndex(0).getMain().get(Integer.valueOf(String.valueOf(e.getActionCommand().charAt(5)))));
-                game.getTabJoueur()[0].main.remove(1);
+                game.getTabJoueur()[0].addCombinaisonEnCours(game.getTabJoueurIndex(0).getMain().get(i));
+                game.getTabJoueur()[0].main.remove(i);
                 game.getTabJoueur()[0].getCombinaisonEnCours();
                 fenetre.panelFenetrePlateau.creerBouton();
                 changerVue();
