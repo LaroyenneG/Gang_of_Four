@@ -111,14 +111,14 @@ public class FenetrePlateau extends JPanel{
         //Cartes des autres joueurs
 
         Image imgJ2 = getToolkit().getImage("cartes/carteDos.jpg");
-        g.drawImage(imgJ2,  (int)(X*0.1), 400, posX, (int) (posX*1.5), this);
-        g.drawImage(imgJ2, (int)(X*0.85),400, posX, (int) (posX*1.5), this);
+        g.drawImage(imgJ2,  (int)(X*0.1), 300, posX, (int) (posX*1.5), this);
+        g.drawImage(imgJ2, (int)(X*0.85),300, posX, (int) (posX*1.5), this);
         g.drawImage(imgJ2, (X/2-(posX/2)), 100, posX, (int) (posX*1.5), this);
 
         g.setColor(Color.WHITE);
         g.setFont(new Font("TimesRoman", Font.PLAIN, 20));;
-        g.drawString((Integer.toString(game.getTabJoueurIndex(1).getMain().size())),(int)(X*0.1)+posX,400);
-        g.drawString((Integer.toString(game.getTabJoueurIndex(2).getMain().size())),(int)(X*0.85)+posX,400);
+        g.drawString((Integer.toString(game.getTabJoueurIndex(1).getMain().size())),(int)(X*0.1)+posX,300);
+        g.drawString((Integer.toString(game.getTabJoueurIndex(2).getMain().size())),(int)(X*0.85)+posX,300);
         g.drawString((Integer.toString(game.getTabJoueurIndex(3).getMain().size())),(X/2-(posX/2))+posX, 100);
 
         //Piles Plateau
