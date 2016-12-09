@@ -20,16 +20,22 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
         if(e.getActionCommand().contains("Carte")){
             if (game.getTabJoueur()[0].peutJouer) {
+
                 String nombre="";
+
                 for (int i=5;i<e.getActionCommand().length();i++){
                     nombre+=e.getActionCommand().charAt(i);
                 }
+
                 int i = Integer.valueOf(nombre);
                 FenetrePlateau.jouer.setVisible(true);
                 FenetrePlateau.annuler.setVisible(true);
-                game.getTabJoueur()[0].addCombinaisonEnCours(game.getTabJoueurIndex(0).getMain().get(i));
-                game.getTabJoueur()[0].main.remove(i);
-                game.getTabJoueur()[0].getCombinaisonEnCours();
+
+                if (game.getTabJoueur()[0].addCombinaisonEnCours(game.getTabJoueurIndex(0).getMain().get(i))) {
+                    game.getTabJoueur()[0].main.remove(i);
+                    game.getTabJoueur()[0].getCombinaisonEnCours();
+                }
+
                 fenetre.panelFenetrePlateau.creerBouton();
                 changerVue();
             } else {
@@ -47,6 +53,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
             case "Jouer":
                 if (game.joueurCanPlayCombinaison(0)) {
+                    game.clearTable();
                     game.poseTable(game.getTabJoueur()[0].getCombinaisonEnCours());
                     game.getTabJoueur()[0].clearCombinaisonEnCours();
                     changerVue();

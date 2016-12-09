@@ -49,20 +49,25 @@ public class FenetreAccueil extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        Font f=new Font("Arial", Font.BOLD, 18);
+
         jouer.setBounds((int) (11 / 30.0 * X), (int) (11 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         jouer.setBackground(new Color(0, 0, 0, 0));
+        jouer.setFont(f);
         jouer.setFocusable(false);
         jouer.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jouer.setBorder(null);
 
         credits.setBounds((int) (11 / 30.0 * X), (int) (12.25 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         credits.setBackground(new Color(0, 0, 0, 0));
+        credits.setFont(f);
         credits.setFocusable(false);
         credits.setCursor(new Cursor(Cursor.HAND_CURSOR));
         credits.setBorder(null);
 
         quitter.setBounds((int) (11 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         quitter.setBackground(new Color(0, 0, 0, 0));
+        quitter.setFont(f);
         quitter.setFocusable(false);
         quitter.setCursor(new Cursor(Cursor.HAND_CURSOR));
         quitter.setBorder(null);

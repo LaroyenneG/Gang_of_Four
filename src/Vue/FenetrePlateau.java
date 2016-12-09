@@ -43,12 +43,18 @@ public class FenetrePlateau extends JPanel{
     public void creerBouton (){
 
         cartesMain = new JButton[game.getTabJoueurIndex(0).getMain().size()];
+
+        /*if (cartesMain.length > 0) {
+            for (int i = 0; i < cartesMain.length; i++) {
+                remove(cartesMain[i]);
+            }
+        }*/
+
         for (int i = 0; i<game.getTabJoueurIndex(0).getMain().size();i++ )
         {
             cartesMain[i] = new JButton();
             cartesMain[i].setActionCommand("Carte"+i);
             add(cartesMain[i]);
-
         }
 
         System.out.println(game.getTabJoueurIndex(0).getMain().size());
@@ -69,10 +75,13 @@ public class FenetrePlateau extends JPanel{
         super.paintComponent(g);
         int posX = ((((X-200))-5*16)/16);
 
+        Font f=new Font("Arial", Font.BOLD, 18);
+
         //Bouton (11 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
 
         passertour.setBounds((int) (11 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         passertour.setBackground(new Color(0, 0, 0, 0));
+        passertour.setFont(f);
         passertour.setForeground(Color.WHITE);
         passertour.setFocusable(false);
         passertour.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -80,6 +89,7 @@ public class FenetrePlateau extends JPanel{
 
         jouer.setBounds((int) (20 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         jouer.setBackground(new Color(0, 0, 0, 0));
+        jouer.setFont(f);
         jouer.setForeground(Color.WHITE);
         jouer.setFocusable(false);
         jouer.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -87,6 +97,7 @@ public class FenetrePlateau extends JPanel{
 
         annuler.setBounds((int) (2 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         annuler.setBackground(new Color(0, 0, 0, 0));
+        annuler.setFont(f);
         annuler.setForeground(Color.WHITE);
         annuler.setFocusable(false);
         annuler.setCursor(new Cursor(Cursor.HAND_CURSOR));

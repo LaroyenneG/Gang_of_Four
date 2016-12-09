@@ -50,7 +50,7 @@ public class Joueur {
     }
 
     public boolean addCombinaisonEnCours(Carte carte){
-        if(combinaisonEnCours.size()<=5){
+        if(combinaisonEnCours.size()<7){
             combinaisonEnCours.add(carte);
             return true;
         }
