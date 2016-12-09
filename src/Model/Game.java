@@ -107,7 +107,7 @@ public class Game {
     }
 
     /*
-    sens de rotation horaire j0->j1->j2->j3->j4 loop
+    sens de rotation horaire j0->j1->j2->j3 loop
     sens de rotation antihoraire j0->j3->j2->j1 loop
      */
     public void nextJoueur(){

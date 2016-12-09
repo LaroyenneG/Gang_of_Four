@@ -57,6 +57,17 @@ public class Joueur {
         return false;
     }
 
+    public boolean plusQuUneCarte(){
+        return main.size() == 1;
+    }
+
+    public Carte plusForteCarte(){
+        if (main.size()==0){
+            return null;
+        }
+        return main.get(main.size()-1);
+    }
+
     public List<Carte> getCombinaisonEnCours(){
         return combinaisonEnCours;
     }

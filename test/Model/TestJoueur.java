@@ -20,6 +20,30 @@ public class TestJoueur {
     }
 
     @Test
+    public void testPlusQuUneCarte(){
+        List<Carte> list = new ArrayList<>();
+        list.add(new Carte(1, Carte.Couleur.ROUGE));
+        list.add(new Carte(1, Carte.Couleur.VERT));
+        Joueur joueur = new Joueur(list);
+        Assert.assertFalse(joueur.plusQuUneCarte());
+        list.clear();
+        list.add(new Carte(1, Carte.Couleur.ROUGE));
+        Assert.assertTrue(joueur.plusQuUneCarte());
+    }
+
+    @Test
+    public void testPlusForteCarte(){
+        List<Carte> list = new ArrayList<>();
+        list.add(new Carte(1, Carte.Couleur.ROUGE));
+        list.add(new Carte(5, Carte.Couleur.VERT));
+        list.add(new Carte(9, Carte.Couleur.ROUGE));
+        list.add(new Carte(6, Carte.Couleur.VERT));
+        list.add(new Carte(9, Carte.Couleur.JAUNE));
+        Joueur joueur = new Joueur(AlgoCarte.trierCarte(list));
+        Assert.assertTrue(new Carte(9, Carte.Couleur.ROUGE).equals(joueur.plusForteCarte()));
+    }
+
+    @Test
     public void testOrdoMain(){
         List<Carte> list =new ArrayList<>();
         list.add(new Carte(8, Carte.Couleur.ROUGE));
