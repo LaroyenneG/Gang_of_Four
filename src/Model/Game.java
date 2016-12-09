@@ -167,7 +167,7 @@ public class Game {
         List<Carte> combinaisonEnCours =tabJoueur[i].getCombinaisonEnCours();
 
         if (table.size()==0){
-            if(AlgoCarte.cestQuoi(combinaisonEnCours)!=-1){
+            if(AlgoCarte.cestQuoi(combinaisonEnCours)!=-1&&AlgoCarte.cestQuoi(combinaisonEnCours)!=0){
                 return true;
             }
         }else {
