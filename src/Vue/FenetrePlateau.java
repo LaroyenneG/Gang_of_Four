@@ -65,7 +65,7 @@ public class FenetrePlateau extends JPanel{
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        int posX = ((((X-200))-5*game.getTabJoueurIndex(0).getMain().size())/game.getTabJoueurIndex(0).getMain().size());
+        int posX = ((((X-200))-5*16)/16);
 
         //Bouton (11 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
 
