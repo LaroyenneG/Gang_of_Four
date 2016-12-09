@@ -85,7 +85,7 @@ public class AlgoCarte {
         if (carteAJouer.size() != 3){
             return false;
         }
-        for (i = 1; i < 2 ; i++) {
+        for (i = 1; i < 3 ; i++) {
             if (carteAJouer.get(0).valeur != carteAJouer.get(i).valeur){
                 return false;
             }

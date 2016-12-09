@@ -50,6 +50,13 @@ public class TestAlgoCarte {
         carteAjouer.add(new Carte(3, Carte.Couleur.ROUGE));
         carteAjouer.add(new Carte(3, Carte.Couleur.JAUNE));
         Assert.assertTrue(AlgoCarte.combinaisonDe3cartes(carteAjouer));
+
+        carteAjouer.clear();
+
+        carteAjouer.add(new Carte(4, Carte.Couleur.VERT));
+        carteAjouer.add(new Carte(4, Carte.Couleur.ROUGE));
+        carteAjouer.add(new Carte(3, Carte.Couleur.JAUNE));
+        Assert.assertFalse(AlgoCarte.combinaisonDe3cartes(carteAjouer));
     }
 
     @Test
