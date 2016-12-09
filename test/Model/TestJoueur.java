@@ -115,7 +115,7 @@ public class TestJoueur {
     @Test
     public void addCombinaisonEnCours(){
         Joueur joueur = new Joueur();
-        for(int i=0; i<=5;i++){
+        for(int i=0; i<7;i++){
             Assert.assertTrue(joueur.addCombinaisonEnCours(new Carte(Carte.Couleur.MULTI)));
         }
         Assert.assertFalse(joueur.addCombinaisonEnCours(new Carte(Carte.Couleur.MULTI)));
