@@ -79,7 +79,7 @@ public class FenetrePlateau extends JPanel{
 
         //Bouton (11 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
 
-        passertour.setBounds((int) (11 / 30.0 * X), (int) (13.25 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
+        passertour.setBounds((int) (11 / 30.0 * X), (int) (13.3 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         passertour.setBackground(new Color(0, 0, 0, 0));
         passertour.setFont(f);
         passertour.setForeground(Color.WHITE);
