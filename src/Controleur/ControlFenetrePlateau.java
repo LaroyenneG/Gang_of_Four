@@ -20,7 +20,11 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
         if(e.getActionCommand().contains("Carte")){
             if (game.getTabJoueur()[0].peutJouer) {
-                int i = Integer.valueOf(String.valueOf(e.getActionCommand().charAt(5)));
+                String nombre="";
+                for (int i=5;i<e.getActionCommand().length();i++){
+                    nombre+=e.getActionCommand().charAt(i);
+                }
+                int i = Integer.valueOf(nombre);
                 FenetrePlateau.jouer.setVisible(true);
                 FenetrePlateau.annuler.setVisible(true);
                 game.getTabJoueur()[0].addCombinaisonEnCours(game.getTabJoueurIndex(0).getMain().get(i));

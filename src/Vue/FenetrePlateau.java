@@ -51,6 +51,8 @@ public class FenetrePlateau extends JPanel{
 
         }
 
+        System.out.println(game.getTabJoueurIndex(0).getMain().size());
+
     }
 
     public void setControl(ControlFenetrePlateau controlFenetrePlateau) {
