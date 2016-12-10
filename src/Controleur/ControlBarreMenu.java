@@ -34,9 +34,12 @@ public class ControlBarreMenu extends Control implements ActionListener {
                 System.exit(0);
                 break;
 
-                fenetre.setContentPane(fenetre.panelFenetreRegle);
-                changerVue();
-                break;
+                /*
+                erreur de compilation !
+                 */
+                //fenetre.setContentPane(fenetre.getPanelFenetreRegle());
+                //changerVue();
+                //break;
         }
     }
 }

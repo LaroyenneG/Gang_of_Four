@@ -20,7 +20,7 @@ public class Fenetre extends JFrame{
     public FenetrePlateau panelFenetrePlateau;
     public FenetreAccueil panelFenetreAccueil;
     public FenetreCredits panelFenetreCredits;
-    public FenetreRegle panelFenetreRegle;
+    private FenetreRegle panelFenetreRegle;
     public BarreMenu barreMenu;
 
 
@@ -45,7 +45,7 @@ public class Fenetre extends JFrame{
         panelFenetreAccueil = new FenetreAccueil();
         panelFenetrePlateau = new FenetrePlateau(game);
         panelFenetreCredits = new FenetreCredits();
-        panelFenetreRegle = new FenetreRegle();
+        setPanelFenetreRegle(new FenetreRegle());
         barreMenu = new BarreMenu();
     }
 
@@ -62,7 +62,14 @@ public class Fenetre extends JFrame{
         barreMenu.setControl(controlBarreMenu);
     }
     public void setControlFenetreRegle (ControlFenetreRegle controlFenetreRegle){
-        panelFenetreRegle.setControl(controlFenetreRegle);
+        getPanelFenetreRegle().setControl(controlFenetreRegle);
     }
 
+    public FenetreRegle getPanelFenetreRegle() {
+        return panelFenetreRegle;
+    }
+
+    public void setPanelFenetreRegle(FenetreRegle panelFenetreRegle) {
+        this.panelFenetreRegle = panelFenetreRegle;
+    }
 }

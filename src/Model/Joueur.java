@@ -8,8 +8,8 @@ import java.util.List;
  */
 public class Joueur {
     public List<Carte> main;
-    private List<Carte> combinaisonEnCours;
-    private int score;
+    protected List<Carte> combinaisonEnCours;
+    protected int score;
     public boolean peutJouer;
 
     public Joueur(){

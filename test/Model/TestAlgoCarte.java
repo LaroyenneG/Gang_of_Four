@@ -7,7 +7,9 @@ package Model;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TestAlgoCarte {
@@ -273,5 +275,59 @@ public class TestAlgoCarte {
 
         Assert.assertFalse(AlgoCarte.estPlusFort(list1,list2));
         Assert.assertTrue(AlgoCarte.estPlusFort(list2,list1));
+    }
+
+
+    @Test
+    public void testFact(){
+        Assert.assertEquals(AlgoCarte.fact(5),120);
+        Assert.assertEquals(AlgoCarte.fact(10), 3628800);
+    }
+
+    @Test
+    public void testcombi(){
+        Assert.assertEquals(AlgoCarte.combi(5,3),10);
+        Assert.assertEquals(AlgoCarte.combi(3,2),3);
+        Assert.assertEquals(AlgoCarte.combi(16,1),16);
+    }
+
+    @Test
+    public void testCombinaisonCarte(){
+        List<Carte> list = new ArrayList<>();
+        list.add(new Carte(1, Carte.Couleur.JAUNE));
+        list.add(new Carte(1, Carte.Couleur.ROUGE));
+        list.add(new Carte(1, Carte.Couleur.VERT));
+        int size =list.size();
+
+
+        int n=2;
+        List<Carte> combi = AlgoCarte.combinaisonCarte(list, n,list.size()-n);
+
+        Assert.assertEquals(combi.size()/n,AlgoCarte.combi(size,n));
+    }
+
+    @Test
+    public void testGetCombinaison(){
+
+        //test over flow
+        Game game = new Game();
+        List<Carte> list = game.getTabJoueur()[0].getMain();
+        List<Carte[][]> listcombi = AlgoCarte.getCombinaison(list);
+
+
+        list = new ArrayList<>();
+        list.add(new Carte(1, Carte.Couleur.JAUNE));
+        list.add(new Carte(2, Carte.Couleur.JAUNE));
+        list.add(new Carte(3, Carte.Couleur.ROUGE));
+
+        listcombi = AlgoCarte.getCombinaison(list);
+
+        int cout=1;
+        for(int i=0; i<listcombi.size();i++){
+            Assert.assertEquals(listcombi.get(i)[0].length,cout);
+            Assert.assertEquals(listcombi.get(i).length,AlgoCarte.combi(list.size(),cout));
+            cout++;
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -250,5 +251,128 @@ public class AlgoCarte {
             }
         }
         return false;
+    }
+
+
+
+    public static long fact(int n){
+        long x=1;
+        for (int i=2; i<n+1;i++){
+            x*=i;
+        }
+        return x;
+    }
+
+    public static long combi(int n, int k) {
+        return fact(n)/(fact(k)*fact(n-k));
+    }
+
+
+
+    public static List<Carte[][]> getCombinaison(List<Carte> carteList){
+        if(carteList.size()<1){
+            System.err.println("Error in getCombinaison(), size=0");
+            System.exit(-3);
+        }
+
+        List<Carte[][]> list = new ArrayList<>();
+
+        for (int l=1; l<=carteList.size(); l++){
+
+            List<Carte> copyList = new ArrayList<>();
+
+            for (int i=0; i<carteList.size();i++){
+                copyList.add(carteList.get(i));
+            }
+
+            List<Carte> combiN = combinaisonCarte(copyList, l, copyList.size()-l);
+            Carte[][] tabCombo = new Carte[(int) combi(carteList.size(),l)][l];
+
+            int i=0;
+            for (int y=0; y<combi(carteList.size(),l); y++){
+                for (int x=0; x<l;x++){
+                    tabCombo[y][x]=combiN.get(i);
+                    i++;
+                }
+            }
+
+
+            list.add(tabCombo);
+        }
+
+        return list;
+    }
+
+
+    public static List<Carte> combinaisonCarte(List<Carte> list, int N, int k){
+        int h=0;
+        int i=0;
+        int j=0;
+
+        Integer n[] = new Integer[N-1];
+        for (int z=0; z<N-1;z++){
+            n[z]=0;
+        }
+
+        List<Carte> g = new ArrayList<>();
+
+        List<Carte> s = new ArrayList<>();
+
+        if(list.size()<N){
+            return g;
+        }else if(N==1){
+            return list;
+        }else if (list.size()==N){
+            while (i<list.size()){
+                s.add(list.get(i));
+                i=i+1;
+            }
+            for (Carte value : s) {
+                g.add(value);
+            }
+        }else if(list.size()>N){
+            int l= (int) (fact(list.size()-1)/(fact(N-1)*fact((list.size()-1)-(N-1))));
+            while (i<l){
+                s.clear();
+                s.add(list.get(list.size()-1));
+
+                while (h<n.length){
+                    if(j>0 && j<n.length){
+                        n[j]=n[j-1]+1;
+                    }
+                    s.add(list.get(n[h]));
+                    h=h+1;
+                    j=j+1;
+                }
+
+                for (Carte value : s) {
+                    g.add(value);
+                }
+
+                h=0;
+                j=0;
+
+                while (j<n.length && n[j]!=j+k){
+                    j=j+1;
+                }
+
+                if(j>0){
+                    n[j-1]=n[j-1]+1;
+                }
+
+                i=i+1;
+
+            }
+
+            list.remove(list.size()-1);
+
+            List<Carte> newList = combinaisonCarte(list,N,k-1);
+            for (Carte aNewList : newList) {
+                g.add(aNewList);
+            }
+
+        }
+
+        return g;
     }
 }
