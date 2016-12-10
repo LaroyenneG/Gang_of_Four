@@ -323,9 +323,9 @@ public class TestAlgoCarte {
         listcombi = AlgoCarte.getCombinaison(list);
 
         int cout=1;
-        for(int i=0; i<listcombi.size();i++){
-            Assert.assertEquals(listcombi.get(i)[0].length,cout);
-            Assert.assertEquals(listcombi.get(i).length,AlgoCarte.combi(list.size(),cout));
+        for (Carte[][] aListcombi : listcombi) {
+            Assert.assertEquals(aListcombi[0].length, cout);
+            Assert.assertEquals(aListcombi.length, AlgoCarte.combi(list.size(), cout));
             cout++;
         }
 
