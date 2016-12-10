@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -165,7 +166,6 @@ public class Game {
     }
 
     public boolean joueurCanPlayCombinaison(int i){
-
         if(i<0 || i>tabJoueur.length){
             System.err.println("Error in joueurCanPlayCombinaison(), i is invalid");
             System.exit(-1);
@@ -175,57 +175,30 @@ public class Game {
             return false;
         }
 
-        List<Carte> combinaisonEnCours =tabJoueur[i].getCombinaisonEnCours();
+        return AlgoCarte.joueurCanPlayCombinaison(table, tabJoueur[i].getCombinaisonEnCours());
+    }
 
-        if (table.size()==0){
-            if(AlgoCarte.cestQuoi(combinaisonEnCours)!=-1&&AlgoCarte.cestQuoi(combinaisonEnCours)!=0){
-                return true;
-            }
-        }else {
-            if(AlgoCarte.cestQuoi(table)==-1){
-                System.err.println("Error master, combinator invalid in the table");
-                System.exit(-1);
-            }
+    public boolean playerHasAnPossibilityToPlay(int i){
 
-            if(table.size()!=combinaisonEnCours.size()){
-                if(AlgoCarte.cestQuoi(combinaisonEnCours)==6 && AlgoCarte.cestQuoi(table)!=6){
-                    return true;
-                }
-                if(AlgoCarte.cestQuoi(table)==6 && AlgoCarte.cestQuoi(combinaisonEnCours)==6){
-                    if(table.size()==combinaisonEnCours.size()){
-                        return AlgoCarte.estPlusFort(combinaisonEnCours, table);
-                    }else if(table.size()<combinaisonEnCours.size()){
-                        return true;
-                    }else {
-                        return false;
-                    }
-                }
-                return false;
-            }
-
-            //gang of for
-            if(AlgoCarte.cestQuoi(table)==6&&AlgoCarte.cestQuoi(combinaisonEnCours)!=6){
-                return false;
-            }
-
-            if(AlgoCarte.cestQuoi(table)!=5&&AlgoCarte.cestQuoi(table)==AlgoCarte.cestQuoi(combinaisonEnCours)){
-                return AlgoCarte.estPlusFort(combinaisonEnCours,table);
-            }
-
-            //5 cartes
-            if(AlgoCarte.cestQuoi(table)==5&&AlgoCarte.cestQuoi(combinaisonEnCours)==AlgoCarte.cestQuoi(table)){
-                int levelTable=AlgoCarte.level(table);
-                int levelcombi=AlgoCarte.level(combinaisonEnCours);
-                if( levelTable== levelcombi){
-                    return AlgoCarte.estPlusFort(combinaisonEnCours,table);
-                }
-                if( levelTable < levelcombi){
-                    return true;
-                }
-            }
-
+        if(i<0 || i>tabJoueur.length){
+            System.err.println("Error in playerHasAnPossibilityToPlay(), invalid i");
+            System.exit(-5);
         }
+        if(!tabJoueur[i].peutJouer){
+            return false;
+        }
+        List<Carte[][]> listCombi = AlgoCarte.getCombinaison(tabJoueur[i].getMain());
 
+        for (Carte[][] combi : listCombi) {
+            for (Carte[] aCombi : combi) {
+                List<Carte> aTester = new ArrayList<>();
+                Collections.addAll(aTester, aCombi);
+                if (AlgoCarte.joueurCanPlayCombinaison(table, aTester)) {
+                    return true;
+                }
+                aTester.clear();
+            }
+        }
         return false;
     }
 
