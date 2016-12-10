@@ -12,14 +12,17 @@ public class Game {
     private int manche;
     private int joueurPlay;
     
-    private Joueur[] tabJoueur = new Joueur[4];
+    private Joueur[] tabJoueur;
     private int dernierGagnant;
 
     private List<Carte> table;
 
     public Game (){
-        for (int i=0; i<4; i++){
-            tabJoueur[i] = new Joueur();
+        tabJoueur = new Joueur[4];
+
+        tabJoueur[0]=new Joueur();
+        for (int i=1; i<tabJoueur.length; i++){
+            tabJoueur[i] = new IA();
         }
         distribuerCarte();
         for (int i=0; i<4; i++){
@@ -32,6 +35,8 @@ public class Game {
     }
 
     public Game (Joueur j1, Joueur j2, Joueur j3, Joueur j4){
+        tabJoueur = new Joueur[4];
+
         tabJoueur[0] = j1;
         tabJoueur[1] = j2;
         tabJoueur[2] = j3;
@@ -175,7 +180,7 @@ public class Game {
             return false;
         }
 
-        return AlgoCarte.joueurCanPlayCombinaison(table, tabJoueur[i].getCombinaisonEnCours());
+        return AlgoCarte.canPlayCombinaison(table, tabJoueur[i].getCombinaisonEnCours());
     }
 
     public boolean playerHasAnPossibilityToPlay(int i){
@@ -210,14 +215,14 @@ public class Game {
                     for (Carte aCarteForSwitch : carteForSwitch) {
                         aCombi[multicouleur] = aCarteForSwitch;
                         Collections.addAll(aTester, aCombi);
-                        if (AlgoCarte.joueurCanPlayCombinaison(table, aTester)) {
+                        if (AlgoCarte.canPlayCombinaison(table, aTester)) {
                             return true;
                         }
                         aTester.clear();
                     }
                 }else {
                     Collections.addAll(aTester, aCombi);
-                    if (AlgoCarte.joueurCanPlayCombinaison(table, aTester)) {
+                    if (AlgoCarte.canPlayCombinaison(table, aTester)) {
                         return true;
                     }
                 }

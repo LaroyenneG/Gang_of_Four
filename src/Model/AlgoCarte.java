@@ -254,7 +254,7 @@ public class AlgoCarte {
     }
 
 
-    public static boolean joueurCanPlayCombinaison(List<Carte> table, List<Carte> combinaisonAtester ){
+    public static boolean canPlayCombinaison(List<Carte> table, List<Carte> combinaisonAtester ){
 
         if (table.size()==0){
             if(AlgoCarte.cestQuoi(combinaisonAtester)!=-1&&AlgoCarte.cestQuoi(combinaisonAtester)!=0){
@@ -367,16 +367,12 @@ public class AlgoCarte {
         int h=0;
         int i=0;
         int j=0;
-
         Integer n[] = new Integer[N-1];
         for (int z=0; z<N-1;z++){
             n[z]=0;
         }
-
         List<Carte> g = new ArrayList<>();
-
         List<Carte> s = new ArrayList<>();
-
         if(list.size()<N){
             return g;
         }else if(N==1){
@@ -394,7 +390,6 @@ public class AlgoCarte {
             while (i<l){
                 s.clear();
                 s.add(list.get(list.size()-1));
-
                 while (h<n.length){
                     if(j>0 && j<n.length){
                         n[j]=n[j-1]+1;
@@ -403,35 +398,26 @@ public class AlgoCarte {
                     h=h+1;
                     j=j+1;
                 }
-
                 for (Carte value : s) {
                     g.add(value);
                 }
-
                 h=0;
                 j=0;
-
                 while (j<n.length && n[j]!=j+k){
                     j=j+1;
                 }
-
                 if(j>0){
                     n[j-1]=n[j-1]+1;
                 }
-
                 i=i+1;
-
             }
-
             list.remove(list.size()-1);
-
             List<Carte> newList = combinaisonCarte(list,N,k-1);
             for (Carte aNewList : newList) {
                 g.add(aNewList);
             }
 
         }
-
         return g;
     }
 }
