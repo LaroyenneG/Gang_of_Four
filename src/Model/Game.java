@@ -205,7 +205,7 @@ public class Game {
                     Carte[] carteForSwitch = new Carte[3];
                     carteForSwitch[0]=new Carte(1, Carte.Couleur.VERT);
                     carteForSwitch[1]=new Carte(1, Carte.Couleur.JAUNE);
-                    carteForSwitch[1]=new Carte(1, Carte.Couleur.ROUGE);
+                    carteForSwitch[2]=new Carte(1, Carte.Couleur.ROUGE);
 
                     for (Carte aCarteForSwitch : carteForSwitch) {
                         aCombi[multicouleur] = aCarteForSwitch;

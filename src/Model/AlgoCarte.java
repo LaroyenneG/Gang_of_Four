@@ -148,7 +148,7 @@ public class AlgoCarte {
 
     public static int cestQuoi(List<Carte> list){
 
-        if(list.size()<1||list.size()>5){
+        if(list.size()<1||list.size()>7){
             return -1;
         }
         if(AlgoCarte.combinaisonDe1carte(list)){
@@ -254,6 +254,65 @@ public class AlgoCarte {
     }
 
 
+    public static boolean joueurCanPlayCombinaison(List<Carte> table, List<Carte> combinaisonAtester ){
+
+        if (table.size()==0){
+            if(AlgoCarte.cestQuoi(combinaisonAtester)!=-1&&AlgoCarte.cestQuoi(combinaisonAtester)!=0){
+                return true;
+            }
+        }else {
+            if(AlgoCarte.cestQuoi(table)==-1){
+                System.err.println("Error master, combinator invalid in the table");
+                System.exit(-1);
+            }
+
+            if(table.size()!=combinaisonAtester.size()){
+                if(AlgoCarte.cestQuoi(combinaisonAtester)==6 && AlgoCarte.cestQuoi(table)!=6){
+                    return true;
+                }
+                if(AlgoCarte.cestQuoi(table)==6 && AlgoCarte.cestQuoi(combinaisonAtester)==6){
+                    if(table.size()==combinaisonAtester.size()){
+                        return AlgoCarte.estPlusFort(combinaisonAtester, table);
+                    }else if(table.size()<combinaisonAtester.size()){
+                        return true;
+                    }else {
+                        return false;
+                    }
+                }
+                return false;
+            }
+
+            //gang of for
+            if(AlgoCarte.cestQuoi(table)==6&&AlgoCarte.cestQuoi(combinaisonAtester)!=6){
+                return false;
+            }
+
+            if(AlgoCarte.cestQuoi(table)!=5&&AlgoCarte.cestQuoi(table)==AlgoCarte.cestQuoi(combinaisonAtester)){
+                return AlgoCarte.estPlusFort(combinaisonAtester,table);
+            }
+
+            //5 cartes
+            if(AlgoCarte.cestQuoi(table)==5&&AlgoCarte.cestQuoi(combinaisonAtester)==AlgoCarte.cestQuoi(table)){
+                int levelTable=AlgoCarte.level(table);
+                int levelcombi=AlgoCarte.level(combinaisonAtester);
+                if( levelTable== levelcombi){
+                    return AlgoCarte.estPlusFort(combinaisonAtester,table);
+                }
+                if( levelTable < levelcombi){
+                    return true;
+                }
+            }
+
+        }
+
+        return false;
+    }
+
+
+    /*
+    maths
+     */
+
 
     public static long fact(int n){
         long x=1;
@@ -281,8 +340,8 @@ public class AlgoCarte {
 
             List<Carte> copyList = new ArrayList<>();
 
-            for (int i=0; i<carteList.size();i++){
-                copyList.add(carteList.get(i));
+            for (Carte aCarteList : carteList) {
+                copyList.add(aCarteList);
             }
 
             List<Carte> combiN = combinaisonCarte(copyList, l, copyList.size()-l);
@@ -374,63 +433,5 @@ public class AlgoCarte {
         }
 
         return g;
-    }
-
-
-
-
-
-    public static boolean joueurCanPlayCombinaison(List<Carte> table, List<Carte> combinaisonAtester ){
-
-        if (table.size()==0){
-            if(AlgoCarte.cestQuoi(combinaisonAtester)!=-1&&AlgoCarte.cestQuoi(combinaisonAtester)!=0){
-                return true;
-            }
-        }else {
-            if(AlgoCarte.cestQuoi(table)==-1){
-                System.err.println("Error master, combinator invalid in the table");
-                System.exit(-1);
-            }
-
-            if(table.size()!=combinaisonAtester.size()){
-                if(AlgoCarte.cestQuoi(combinaisonAtester)==6 && AlgoCarte.cestQuoi(table)!=6){
-                    return true;
-                }
-                if(AlgoCarte.cestQuoi(table)==6 && AlgoCarte.cestQuoi(combinaisonAtester)==6){
-                    if(table.size()==combinaisonAtester.size()){
-                        return AlgoCarte.estPlusFort(combinaisonAtester, table);
-                    }else if(table.size()<combinaisonAtester.size()){
-                        return true;
-                    }else {
-                        return false;
-                    }
-                }
-                return false;
-            }
-
-            //gang of for
-            if(AlgoCarte.cestQuoi(table)==6&&AlgoCarte.cestQuoi(combinaisonAtester)!=6){
-                return false;
-            }
-
-            if(AlgoCarte.cestQuoi(table)!=5&&AlgoCarte.cestQuoi(table)==AlgoCarte.cestQuoi(combinaisonAtester)){
-                return AlgoCarte.estPlusFort(combinaisonAtester,table);
-            }
-
-            //5 cartes
-            if(AlgoCarte.cestQuoi(table)==5&&AlgoCarte.cestQuoi(combinaisonAtester)==AlgoCarte.cestQuoi(table)){
-                int levelTable=AlgoCarte.level(table);
-                int levelcombi=AlgoCarte.level(combinaisonAtester);
-                if( levelTable== levelcombi){
-                    return AlgoCarte.estPlusFort(combinaisonAtester,table);
-                }
-                if( levelTable < levelcombi){
-                    return true;
-                }
-            }
-
-        }
-
-        return false;
     }
 }
