@@ -22,9 +22,11 @@ public class AlgoIA {
                 if (AlgoCarte.canPlayCombinaison(table, listTest)) {
                     isGood.add(listTest);
                 }
-                listTest.clear();
             }
         }
+
+
+
 
         List<Carte>[] tabGoodCombi = new List[isGood.size()];
 

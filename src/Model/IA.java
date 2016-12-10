@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,6 +14,8 @@ public class IA extends Joueur {
 
     public void findBestCombinaison(List<Carte> table){
         List<Carte>[] goodList=AlgoIA.getCombinaisonJouable(table,main);
+
+
         int theBest = 0;
 
 
@@ -30,6 +33,7 @@ public class IA extends Joueur {
                 theBest=i;
             }
         }
+
         combinaisonEnCours=goodList[theBest];
     }
 
