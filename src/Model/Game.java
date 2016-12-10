@@ -191,10 +191,35 @@ public class Game {
 
         for (Carte[][] combi : listCombi) {
             for (Carte[] aCombi : combi) {
+
+                int multicouleur=-1;
+                for (int z=0; z<aCombi.length; z++){
+                    if(aCombi[z].couleur== Carte.Couleur.MULTI){
+                        multicouleur=z;
+                        break;
+                    }
+                }
+
                 List<Carte> aTester = new ArrayList<>();
-                Collections.addAll(aTester, aCombi);
-                if (AlgoCarte.joueurCanPlayCombinaison(table, aTester)) {
-                    return true;
+                if(multicouleur!=-1){
+                    Carte[] carteForSwitch = new Carte[3];
+                    carteForSwitch[0]=new Carte(1, Carte.Couleur.VERT);
+                    carteForSwitch[1]=new Carte(1, Carte.Couleur.JAUNE);
+                    carteForSwitch[1]=new Carte(1, Carte.Couleur.ROUGE);
+
+                    for (Carte aCarteForSwitch : carteForSwitch) {
+                        aCombi[multicouleur] = aCarteForSwitch;
+                        Collections.addAll(aTester, aCombi);
+                        if (AlgoCarte.joueurCanPlayCombinaison(table, aTester)) {
+                            return true;
+                        }
+                        aTester.clear();
+                    }
+                }else {
+                    Collections.addAll(aTester, aCombi);
+                    if (AlgoCarte.joueurCanPlayCombinaison(table, aTester)) {
+                        return true;
+                    }
                 }
                 aTester.clear();
             }

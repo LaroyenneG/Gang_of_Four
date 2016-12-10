@@ -520,4 +520,31 @@ public class TestGame {
 
         Assert.assertFalse(game.joueurCanPlayCombinaison(0));
     }
+
+
+    @Test
+    public void playerHasAnPossibilityToPlay(){
+        Joueur j1 = new Joueur();
+        Joueur j2 = new Joueur();
+        Joueur j3 = new Joueur();
+        Joueur j4 = new Joueur();
+        Game game = new Game(j1,j2,j3,j4);
+
+        List<Carte> carteList = new ArrayList<>();
+
+        j2.peutJouer=false;
+        j2.addALaMain(new Carte(1, Carte.Couleur.JAUNE));
+        Assert.assertFalse(game.playerHasAnPossibilityToPlay(1));
+
+        game.clearTable();
+        carteList.clear();
+        j1.clearCombinaisonEnCours();
+        carteList.add(new Carte(1, Carte.Couleur.VERT));
+        game.poseTable(carteList);
+
+        Assert.assertEquals(game.getTabJoueur()[0].getMain().size(),16);
+        Assert.assertTrue(game.playerHasAnPossibilityToPlay(0));
+
+
+    }
 }
