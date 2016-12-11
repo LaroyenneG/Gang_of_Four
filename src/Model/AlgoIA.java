@@ -20,13 +20,12 @@ public class AlgoIA {
 
                 int multicouleur=-1;
                 for (int z=0; z<anACombinaison.length; z++){
-                    if(anACombinaison[z].couleur== Carte.Couleur.MULTI){
+                    if(anACombinaison[z].equals(new Carte(Carte.Couleur.MULTI))){
                         multicouleur=z;
                         break;
                     }
                 }
 
-                List<Carte> listTest = new ArrayList<>();
                 if(multicouleur!=-1){
                     Carte[] carteForSwitch = new Carte[3];
                     carteForSwitch[0]=new Carte(1, Carte.Couleur.VERT);
@@ -34,6 +33,7 @@ public class AlgoIA {
                     carteForSwitch[2]=new Carte(1, Carte.Couleur.ROUGE);
 
                     for (Carte aCarteForSwitch : carteForSwitch) {
+                        List<Carte> listTest = new ArrayList<>();
                         anACombinaison[multicouleur] = aCarteForSwitch;
                         Collections.addAll(listTest, anACombinaison);
                         if (AlgoCarte.canPlayCombinaison(table, listTest)) {
@@ -41,6 +41,7 @@ public class AlgoIA {
                         }
                     }
                 }else {
+                    List<Carte> listTest = new ArrayList<>();
                     Collections.addAll(listTest, anACombinaison);
                     if (AlgoCarte.canPlayCombinaison(table, listTest)) {
                         isGood.add(listTest);
