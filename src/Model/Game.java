@@ -106,7 +106,7 @@ public class Game {
         else{
             return dernierGagnant;
         }
-        System.err.println("Erreur premier joueur");
+        System.err.println("Error in firstPlayer()");
         return -1;
     }
 
@@ -166,7 +166,7 @@ public class Game {
     }
 
     public void poseTable(List<Carte> jeu){
-        //provisoir
+        table.clear();
         for (Carte aJeu : jeu) {
             table.add(aJeu);
         }
