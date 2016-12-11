@@ -20,5 +20,6 @@ public class TestIA {
         ia.findBestCombinaison(game.getTable());
 
         Assert.assertTrue(game.joueurCanPlayCombinaison(1));
+        Assert.assertEquals(game.getTabJoueur()[1].getMain().size(),16-game.getTabJoueur()[1].combinaisonEnCours.size());
     }
 }

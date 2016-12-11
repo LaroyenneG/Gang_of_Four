@@ -33,7 +33,8 @@ public class IA extends Joueur {
                 theBest=i;
             }
         }
-
+        
+        main.removeAll(goodList[theBest]);
         combinaisonEnCours=goodList[theBest];
     }
 
