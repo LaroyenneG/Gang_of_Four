@@ -69,6 +69,10 @@ public class Joueur {
         else return null;
     }
 
+    public void clearMain(){
+        main.clear();
+    }
+
     public boolean addCombinaisonEnCours(Carte carte){
         if(combinaisonEnCours.size()<7){
             combinaisonEnCours.add(carte);

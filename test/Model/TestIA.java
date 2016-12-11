@@ -20,6 +20,10 @@ public class TestIA {
             game.poseTable(table);
             ia.findBestCombinaison(game.getTable());
 
+            if(!game.joueurCanPlayCombinaison(1)){
+                System.err.println("Anomaly :");
+                System.out.println(game.getTabJoueur()[1].getCombinaisonEnCours());
+            }
             Assert.assertTrue(game.joueurCanPlayCombinaison(1));
             for (int i=0; i<game.getTabJoueur()[1].combinaisonEnCours.size();i++){
                 Assert.assertNotEquals(game.getTabJoueur()[1].combinaisonEnCours.get(i), new Carte(Carte.Couleur.MULTI));

@@ -51,6 +51,12 @@ public class Game {
     }
 
     public void distribuerCarte(){
+
+        for (Joueur aTabJoueur : tabJoueur) {
+            aTabJoueur.clearCombinaisonEnCours();
+            aTabJoueur.clearMain();
+        }
+
         Deck deck= new Deck();
         deck.melangerDeck(); // j'ai ajouter la distrib pour voir si ça marche
         Carte[] tab= deck.getTabCarte();
