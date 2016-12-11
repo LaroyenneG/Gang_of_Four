@@ -17,16 +17,37 @@ public class AlgoIA {
 
         for (Carte[][] aCombinaison : combinaison) {
             for (Carte[] anACombinaison : aCombinaison) {
+
+                int multicouleur=-1;
+                for (int z=0; z<anACombinaison.length; z++){
+                    if(anACombinaison[z].couleur== Carte.Couleur.MULTI){
+                        multicouleur=z;
+                        break;
+                    }
+                }
+
                 List<Carte> listTest = new ArrayList<>();
-                Collections.addAll(listTest, anACombinaison);
-                if (AlgoCarte.canPlayCombinaison(table, listTest)) {
-                    isGood.add(listTest);
+                if(multicouleur!=-1){
+                    Carte[] carteForSwitch = new Carte[3];
+                    carteForSwitch[0]=new Carte(1, Carte.Couleur.VERT);
+                    carteForSwitch[1]=new Carte(1, Carte.Couleur.JAUNE);
+                    carteForSwitch[2]=new Carte(1, Carte.Couleur.ROUGE);
+
+                    for (Carte aCarteForSwitch : carteForSwitch) {
+                        anACombinaison[multicouleur] = aCarteForSwitch;
+                        Collections.addAll(listTest, anACombinaison);
+                        if (AlgoCarte.canPlayCombinaison(table, listTest)) {
+                            isGood.add(listTest);
+                        }
+                    }
+                }else {
+                    Collections.addAll(listTest, anACombinaison);
+                    if (AlgoCarte.canPlayCombinaison(table, listTest)) {
+                        isGood.add(listTest);
+                    }
                 }
             }
         }
-
-
-
 
         List<Carte>[] tabGoodCombi = new List[isGood.size()];
 

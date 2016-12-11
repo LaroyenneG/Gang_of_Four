@@ -33,8 +33,25 @@ public class IA extends Joueur {
                 theBest=i;
             }
         }
-        
-        main.removeAll(goodList[theBest]);
+
+
+
+
+        for(int y=0; y<goodList[theBest].size();y++){
+            boolean in=false;
+            for (int x=0; x<main.size(); x++){
+                if(main.get(x).equals(goodList[theBest].get(y))){
+                    main.remove(x);
+                    in=true;
+                }
+            }
+            if(!in){
+                main.remove(new Carte(Carte.Couleur.MULTI));
+            }
+        }
+
+
+
         combinaisonEnCours=goodList[theBest];
     }
 
