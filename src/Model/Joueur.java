@@ -27,8 +27,28 @@ public class Joueur {
     }
 
     /*
-    trie les cartes pour que le joueur est une main plus lisible
+    prend la carte du rang i dans la main et la place dans combinaison en cours
      */
+    public boolean veutJouer(int i){
+        if(i<0 || i>=main.size()){
+            System.err.println("Error in veutJouer(), i invalid");
+            return false;
+        }
+        if(addCombinaisonEnCours(main.get(i))){
+            main.remove(i);
+            return true;
+        }
+        return false;
+    }
+
+    /*
+    annule la combinaison en cours
+     */
+    public void resetCombinaison(){
+        main.addAll(combinaisonEnCours);
+        combinaisonEnCours.clear();
+    }
+
     public void ordoMain(){
         main=AlgoCarte.trierCarte(main);
     }
@@ -38,8 +58,8 @@ public class Joueur {
     }
 
     public void printMain(){
-        for (int i=0; i<main.size();i++){
-            System.out.print(main.get(i));
+        for (Carte aMain : main) {
+            System.out.print(aMain);
         }
     }
 

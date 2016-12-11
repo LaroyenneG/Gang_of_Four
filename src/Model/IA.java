@@ -35,8 +35,6 @@ public class IA extends Joueur {
         }
 
 
-
-
         for(int y=0; y<goodList[theBest].size();y++){
             boolean in=false;
             for (int x=0; x<main.size(); x++){
@@ -50,9 +48,6 @@ public class IA extends Joueur {
             }
         }
 
-
-
         combinaisonEnCours=goodList[theBest];
     }
-
 }

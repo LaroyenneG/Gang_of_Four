@@ -12,7 +12,7 @@ import java.util.List;
 public class TestIA {
     @Test
     public void testFindBestCombinaison(){
-        for(int t=0; t<1000; t++){
+        for(int t=0; t<100; t++){
             Game game = new Game();
             IA ia = (IA) game.getTabJoueur()[1];
             List<Carte> table = new ArrayList<>();

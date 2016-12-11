@@ -3,6 +3,7 @@ package Model;
 import org.junit.Assert;
 import org.junit.Test;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,11 +114,30 @@ public class TestJoueur {
     }
 
     @Test
-    public void addCombinaisonEnCours(){
+    public void testAddCombinaisonEnCours(){
         Joueur joueur = new Joueur();
         for(int i=0; i<7;i++){
             Assert.assertTrue(joueur.addCombinaisonEnCours(new Carte(Carte.Couleur.MULTI)));
         }
         Assert.assertFalse(joueur.addCombinaisonEnCours(new Carte(Carte.Couleur.MULTI)));
+    }
+
+    @Test
+    public void testVeutJouerAndReset(){
+        Game game = new Game();
+        Assert.assertEquals(game.getTabJoueur()[0].getMain().size(),16);
+
+
+        Assert.assertTrue(game.getTabJoueur()[0].veutJouer(0));
+        Assert.assertTrue(game.getTabJoueur()[0].veutJouer(1));
+
+        Assert.assertEquals(game.getTabJoueur()[0].getMain().size(),14);
+
+        Assert.assertEquals(game.getTabJoueur()[0].getCombinaisonEnCours().size(),2);
+
+        //reset
+        game.getTabJoueur()[0].resetCombinaison();
+        Assert.assertEquals(game.getTabJoueur()[0].getMain().size(),16);
+        Assert.assertEquals(game.getTabJoueur()[0].getCombinaisonEnCours().size(),0);
     }
 }
