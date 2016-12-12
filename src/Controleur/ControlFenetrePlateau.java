@@ -28,18 +28,31 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 }
 
                 int i = Integer.valueOf(nombre);
-                FenetrePlateau.jouer.setVisible(true);
-                FenetrePlateau.annuler.setVisible(true);
+                fenetre.panelFenetrePlateau.jouer.setVisible(true);
+                fenetre.panelFenetrePlateau.annuler.setVisible(true);
+
+                /*if (){
+                    game.getTabJoueur()[0].
+                    game.getTabJoueur()[0].
+                    fenetre.panelFenetrePlateau.creerBouton1Multicolor();
+                    changerVue();
+                }*/
 
                 if (game.getTabJoueur()[0].addCombinaisonEnCours(game.getTabJoueurIndex(0).getMain().get(i))) {
                     game.getTabJoueur()[0].main.remove(i);
                     game.getTabJoueur()[0].getCombinaisonEnCours();
                 }
 
+                //Suppression et création des boutons représentant les cartes
+                /*if (fenetre.panelFenetrePlateau.cartesMain.length > 0) {
+                    fenetre.panelFenetrePlateau.supprimerBouton();
+                }*/
+
                 fenetre.panelFenetrePlateau.creerBouton();
+
                 changerVue();
             } else {
-                FenetrePlateau.passertour.setText("Votre Tour est Passé!");
+                fenetre.panelFenetrePlateau.passertour.setText("Votre Tour est Passé!");
                 changerVue();
             }
         }
@@ -47,7 +60,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
         switch (e.getActionCommand()) {
             case "Passer le Tour":
                 game.passerSonTour(0);
-                FenetrePlateau.passertour.setText("Tour Passé!");
+                fenetre.panelFenetrePlateau.passertour.setText("Tour Passé!");
                 changerVue();
                 break;
 
@@ -67,10 +80,20 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 fenetre.panelFenetrePlateau.creerBouton();
                 game.getTabJoueur()[0].clearCombinaisonEnCours();
                 game.getTabJoueur()[0].ordoMain();
+                fenetre.panelFenetrePlateau.jouer.setVisible(false);
+                fenetre.panelFenetrePlateau.annuler.setVisible(false);
+                changerVue();
+                break;
+
+            /*case "Envoyer":
+                if (game.getTabJoueur()[0]){
+
+                }
+                game.getTabJoueur()[0].ordoMain();
                 FenetrePlateau.jouer.setVisible(false);
                 FenetrePlateau.annuler.setVisible(false);
                 changerVue();
-                break;
+                break;*/
         }
     }
 }

@@ -15,12 +15,14 @@ import static Vue.Fenetre.Y;
  */
 public class FenetrePlateau extends JPanel{
 
-    public static JButton jouer;
-    public static JButton passertour;
-    public static JButton annuler;
-    public static JButton envoyer;
+    public JButton jouer;
+    public JButton passertour;
+    public JButton annuler;
+    public JButton envoyer;
     public Game game;
     public JButton[] cartesMain;
+    public JButton[] cartesChoixMulti;
+    public JLabel texteDontCarte;
 
     public FenetrePlateau(Game game) { // ajout d'un game en paramètre pour récupérer les mains des joueurs
         this.game = game;
@@ -39,30 +41,42 @@ public class FenetrePlateau extends JPanel{
         envoyer = new JButton("Envoyer");
         envoyer.setActionCommand("Envoyer");
 
+        texteDontCarte = new JLabel("Votre Meilleur Carte a été donné !");
+
         add(jouer);
         add(annuler);
         add(passertour);
         add(envoyer);
+        add(texteDontCarte);
     }
+
+    public void supprimerBouton(){
+
+        for (int i = 0; i < cartesMain.length; i++) {
+            remove(cartesMain[i]);
+        }
+    }
+
     public void creerBouton (){
 
         cartesMain = new JButton[game.getTabJoueurIndex(0).getMain().size()];
 
-        /*if (cartesMain.length > 0) {
-            for (int i = 0; i < cartesMain.length; i++) {
-                remove(cartesMain[i]);
-            }
-        }*/
-
-        for (int i = 0; i<game.getTabJoueurIndex(0).getMain().size();i++ )
+        for (int i = 0; i < game.getTabJoueurIndex(0).getMain().size();i++ )
         {
             cartesMain[i] = new JButton();
             cartesMain[i].setActionCommand("Carte"+i);
             add(cartesMain[i]);
         }
+    }
 
-        System.out.println(game.getTabJoueurIndex(0).getMain().size());
+    public void creerBouton1MultiColor(){
 
+        for (int i = 0; i < 3.;i++ )
+        {
+            cartesChoixMulti[i] = new JButton();
+            cartesChoixMulti[i].setActionCommand("Carte"+i);
+            add(cartesChoixMulti[i]);
+        }
     }
 
     public void setControl(ControlFenetrePlateau controlFenetrePlateau) {
@@ -155,6 +169,15 @@ public class FenetrePlateau extends JPanel{
             Image imgi = getToolkit().getImage("cartes/"+game.getTabJoueur()[0].getCombinaisonEnCours().get(i).getFileName());// on récup le nom de la carte
             g.drawImage(imgi, (650+((posX+5)*i)), (int)(Y*0.57), posX, (int) (posX*1.5), this); // on dessine
         }
+
+        //Carte pour le choixn de la couleur du 1 Multi
+
+        /*for (int i=0; i<game.getTabJoueur()[0].getCombinaisonEnCours().size();i++) // on récupére la taille de la main du j1 de game
+        {
+            // pour chaque cartes en main
+            Image imgi = getToolkit().getImage("cartes/"+game.getTabJoueur()[0].getCombinaisonEnCours().get(i).getFileName());// on récup le nom de la carte
+            g.drawImage(imgi, (650+((posX+5)*i)), (int)(Y*0.57), posX, (int) (posX*1.5), this); // on dessine
+        }*/
 
         //Main du Joueur
 

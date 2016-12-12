@@ -6,9 +6,6 @@ import Model.Game;
 import javax.swing.*;
 import java.awt.*;
 
-import static Vue.FenetrePlateau.annuler;
-import static Vue.FenetrePlateau.jouer;
-
 /**
  * Created by Florian Vaissiere on 21/11/2016.
  */
@@ -28,8 +25,17 @@ public class Fenetre extends JFrame{
 
         init(game);
         barreMenu.setVisible(false);
-        jouer.setVisible(false);
-        annuler.setVisible(false);
+
+        //Elément devant changé d'état en fonction de la partie
+
+        //Bouton
+        panelFenetrePlateau.jouer.setVisible(false);
+        panelFenetrePlateau.annuler.setVisible(false);
+        panelFenetrePlateau.envoyer.setVisible(false);
+
+        //JLabel
+        panelFenetrePlateau.texteDontCarte.setVisible(false);
+
         setJMenuBar(barreMenu);
         setUndecorated(true);
         setContentPane(panelFenetreAccueil);
