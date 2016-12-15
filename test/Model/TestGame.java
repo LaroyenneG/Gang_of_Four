@@ -609,4 +609,34 @@ public class TestGame {
 
         Assert.assertFalse(game.joueurCanPlayCombinaison(0));
     }
+
+    @Test
+    public void testCouleurDu1Multi(){
+        Game game = new Game();
+        Assert.assertTrue(new Carte(1, Carte.Couleur.VERT).equals(game.choixDeLaCouleurDuMulticolor(1)));
+        Assert.assertTrue(new Carte(1, Carte.Couleur.JAUNE).equals(game.choixDeLaCouleurDuMulticolor(2)));
+        Assert.assertTrue(new Carte(1, Carte.Couleur.ROUGE).equals(game.choixDeLaCouleurDuMulticolor(3)));
+        Assert.assertFalse(new Carte(1, Carte.Couleur.JAUNE).equals(game.choixDeLaCouleurDuMulticolor(1)));
+        Assert.assertFalse(new Carte(2, Carte.Couleur.JAUNE).equals(game.choixDeLaCouleurDuMulticolor(2)));
+        Assert.assertFalse(new Carte(1, Carte.Couleur.JAUNE).equals(game.choixDeLaCouleurDuMulticolor(5)));
+    }
+
+    @Test
+    public void testPerdant(){
+        Game game = new Game();
+        Joueur[] tabJoueur = game.getTabJoueur();
+        tabJoueur[0].addALaMain(new Carte(1, Carte.Couleur.MULTI));
+        game.setQuiPerd();
+        Assert.assertEquals(0,game.getPerdantDernierePartie());
+    }
+
+    @Test
+    public void testDonDeLaMeilleureCarte(){
+        
+    }
+
+    @Test
+    public void testDonDeLaCarteNulle(){
+
+    }
 }

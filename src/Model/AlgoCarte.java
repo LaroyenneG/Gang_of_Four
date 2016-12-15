@@ -420,4 +420,16 @@ public class AlgoCarte {
         }
         return g;
     }
+
+    public static void incrementScore(Joueur joueur){
+        int addAuScore , nbDeCarteFinDeManche;
+        nbDeCarteFinDeManche = joueur.getMain().size();
+        if (nbDeCarteFinDeManche <= 7) addAuScore = nbDeCarteFinDeManche;
+        else if (nbDeCarteFinDeManche <= 10) addAuScore = nbDeCarteFinDeManche*2;
+        else if (nbDeCarteFinDeManche <= 13) addAuScore = nbDeCarteFinDeManche*3;
+        else if (nbDeCarteFinDeManche <= 15) addAuScore = nbDeCarteFinDeManche*4;
+        else addAuScore = 80;
+        joueur.setScore(joueur.getScore()+addAuScore);
+
+    }
 }

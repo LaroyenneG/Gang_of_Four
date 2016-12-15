@@ -14,6 +14,7 @@ public class Game {
     
     private Joueur[] tabJoueur;
     private int dernierGagnant;
+    private int perdantDernierePartie;
 
     private List<Carte> table;
 
@@ -118,6 +119,20 @@ public class Game {
         return false;
     }
 
+    public void setQuiPerd(){
+        int perdantLocal = 0;
+        int tamponQuiPerd = tabJoueur[0].getMain().size();
+        for (int i = 1; i<4 ; i++){
+            if (tabJoueur[i].getMain().size() > tamponQuiPerd)
+                tamponQuiPerd = tabJoueur[i].getMain().size();
+                perdantLocal = i;
+        }
+        perdantDernierePartie = perdantLocal;
+    }
+
+    public int getPerdantDernierePartie() {
+        return perdantDernierePartie;
+    }
     /*
     sens de rotation horaire j0->j1->j2->j3 loop
     sens de rotation antihoraire j0->j3->j2->j1 loop
@@ -143,6 +158,17 @@ public class Game {
             }
         }
         return id;
+    }
+
+    public void donDeLaMeilleurCarte(){
+        tabJoueur[dernierGagnant].addALaMain(tabJoueur[perdantDernierePartie].plusForteCarte());
+        tabJoueur[perdantDernierePartie].getMain().remove(tabJoueur[perdantDernierePartie].getMain().size()-1);
+        AlgoCarte.trierCarte(tabJoueur[dernierGagnant].getMain());
+    }
+
+    public void donDeLaCarteNulle(int indexCarte){
+        tabJoueur[perdantDernierePartie].addALaMain(tabJoueur[perdantDernierePartie].getMain().get(indexCarte));
+        tabJoueur[dernierGagnant].getMain().remove(indexCarte);
     }
 
     public void nextJoueur(){
@@ -236,6 +262,13 @@ public class Game {
             }
         }
         return false;
+    }
+
+    public Carte choixDeLaCouleurDuMulticolor(int couleurCarte){
+        if (couleurCarte == 1) return new Carte(1, Carte.Couleur.VERT);
+        else if (couleurCarte == 2) return new Carte(1, Carte.Couleur.JAUNE);
+        else if (couleurCarte == 3) return new Carte(1, Carte.Couleur.ROUGE);
+        return null;
     }
 
     public int getJoueurPlay() {

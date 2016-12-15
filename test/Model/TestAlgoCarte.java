@@ -330,4 +330,19 @@ public class TestAlgoCarte {
         }
 
     }
+
+    @Test
+    public void testIncrementScore(){
+        Joueur j1 = new Joueur();
+        Joueur j2 = new Joueur();
+        Joueur j3 = new Joueur();
+        Joueur j4 = new Joueur();
+        Game game = new Game(j1,j2,j3,j4);
+
+        j1.setScore(15);
+        AlgoCarte.incrementScore(j1);
+        AlgoCarte.incrementScore(j2);
+        Assert.assertEquals(j1.getScore(),95);
+        Assert.assertEquals(j2.getScore(),80);
+    }
 }
