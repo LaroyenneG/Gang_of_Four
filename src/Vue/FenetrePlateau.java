@@ -192,8 +192,8 @@ public class FenetrePlateau extends JPanel{
         //Carte pour le choixn de la couleur du 1 Multi
 
             // on propose que 3 cartes
-        //if (Fenetre.panelFenetrePlateau.cartesChoixMulti[0].setVisible()== true)
-            for (int i = 0; i < 3 ; i ++){
+        if (Fenetre.autorisationDessiner) {
+            for (int i = 0; i < 3; i++) {
                 if (i == 0) {
                     Image img1 = getToolkit().getImage("cartes/" + "1vert.jpg");// on donne le nom de la carte
                     cartesChoixMulti[i].setBounds((650 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5));
@@ -203,24 +203,24 @@ public class FenetrePlateau extends JPanel{
                     cartesChoixMulti[i].setBorder(null);
                     g.drawImage(img1, (650 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5), this); // on dessine
                 } else if (i == 1) {
-                    Image img2 = getToolkit().getImage("cartes/"+"1jaune.jpg");// on donne le nom de la carte
-                    cartesChoixMulti[i].setBounds((650+((posX+5) * i)), (int)(Y*0.57), posX, (int) (posX*1.5));
+                    Image img2 = getToolkit().getImage("cartes/" + "1jaune.jpg");// on donne le nom de la carte
+                    cartesChoixMulti[i].setBounds((650 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5));
                     cartesChoixMulti[i].setBackground(new Color(0, 0, 0, 0));
                     cartesChoixMulti[i].setFocusable(false);
                     cartesChoixMulti[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
                     cartesChoixMulti[i].setBorder(null);
-                    g.drawImage(img2, (650+((posX+5) * i)), (int)(Y*0.57), posX, (int) (posX*1.5), this); // on dessine
-                }else {
-                    Image img3 = getToolkit().getImage("cartes/"+"1rouge.jpg");// on donne le nom de la carte
-                    cartesChoixMulti[i].setBounds((650+((posX+5)*2)), (int)(Y*0.57), posX, (int) (posX*1.5));
+                    g.drawImage(img2, (650 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5), this); // on dessine
+                } else {
+                    Image img3 = getToolkit().getImage("cartes/" + "1rouge.jpg");// on donne le nom de la carte
+                    cartesChoixMulti[i].setBounds((650 + ((posX + 5) * 2)), (int) (Y * 0.57), posX, (int) (posX * 1.5));
                     cartesChoixMulti[i].setBackground(new Color(0, 0, 0, 0));
                     cartesChoixMulti[i].setFocusable(false);
                     cartesChoixMulti[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
                     cartesChoixMulti[i].setBorder(null);
-                    g.drawImage(img3, (650+((posX+5) * i)), (int)(Y*0.57), posX, (int) (posX*1.5), this); // on dessine
+                    g.drawImage(img3, (650 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5), this); // on dessine
                 }
             }
-
+        }
         //Main du Joueur
 
         for (int i=0; i<game.getTabJoueurIndex(0).getMain().size();i++) // on récupére la taille de la main du j1 de game

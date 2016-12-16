@@ -19,6 +19,7 @@ public class Fenetre extends JFrame{
     public FenetreCredits panelFenetreCredits;
     public FenetreRegle panelFenetreRegle;
     public BarreMenu barreMenu;
+    public static boolean autorisationDessiner = true;
 
 
     public Fenetre(Game game){
@@ -34,6 +35,7 @@ public class Fenetre extends JFrame{
         panelFenetrePlateau.envoyer.setVisible(false);
         for (int i=0; i < 3; i++) {
             panelFenetrePlateau.cartesChoixMulti[i].setVisible(false);
+            autorisationDessiner = false;
         }
 
         //JLabel
