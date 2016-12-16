@@ -632,11 +632,39 @@ public class TestGame {
 
     @Test
     public void testDonDeLaMeilleureCarte(){
-        
+        Joueur j1 = new Joueur();
+        Joueur j2 = new Joueur();
+        Joueur j3 = new Joueur();
+        Joueur j4 = new Joueur();
+        Game game = new Game(j1,j2,j3,j4);
+        game.getTabJoueur()[1].clearMain();
+        game.siGagne(1);
+        j1.addALaMain(new Carte (1, Carte.Couleur.VERT));
+        j1.addALaMain(new Carte (10, Carte.Couleur.VERT));
+        j1.addALaMain(new Carte (Carte.Figure.DRAGON, Carte.Couleur.ROUGE));
+        j1.addALaMain(new Carte (5, Carte.Couleur.VERT));
+        game.setQuiPerd();
+        AlgoCarte.trierCarte(j1.getMain());
+        game.donDeLaMeilleurCarte();
+        Assert.assertTrue(j2.getMain().get(0).equals(new Carte(Carte.Figure.DRAGON, Carte.Couleur.ROUGE)));
+        Assert.assertTrue(j1.getMain().size()==19);
     }
 
     @Test
     public void testDonDeLaCarteNulle(){
-
+        Joueur j1 = new Joueur();
+        Joueur j2 = new Joueur();
+        Joueur j3 = new Joueur();
+        Joueur j4 = new Joueur();
+        Game game = new Game(j1,j2,j3,j4);
+        game.getTabJoueur()[1].clearMain();
+        game.siGagne(1);
+        j1.addALaMain(new Carte (1, Carte.Couleur.VERT));
+        game.setQuiPerd();
+        game.getTabJoueur()[0].clearMain();
+        j2.addALaMain(new Carte(3, Carte.Couleur.ROUGE));
+        game.donDeLaCarteNulle(j2.getMain().get(0));
+        Assert.assertTrue(j1.getMain().get(0).equals(new Carte(3,Carte.Couleur.ROUGE)));
+        Assert.assertTrue(j2.getMain().size()==0);
     }
 }
