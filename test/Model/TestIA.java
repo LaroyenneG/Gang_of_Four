@@ -13,8 +13,6 @@ public class TestIA {
     @Test
     public void testFindBestCombinaison(){
 
-
-
         for(int t=0; t<100; t++){
             Game game = new Game();
             IA ia = (IA) game.getTabJoueur()[1];
@@ -40,5 +38,16 @@ public class TestIA {
                 Assert.assertEquals(game.getTabJoueur()[1].getMain().size(),16-game.getTabJoueur()[1].combinaisonEnCours.size());
             }
         }
+    }
+
+    @Test
+    public void testGetCarteForPlayer(){
+        Game game = new Game();
+        IA ia = (IA) game.getTabJoueur()[1];
+
+        Assert.assertEquals(16, ia.getMain().size());
+        Carte carte = ia.getCarteForPlayer();
+        Assert.assertNotNull(carte);
+        Assert.assertEquals(15,ia.getMain().size());
     }
 }
