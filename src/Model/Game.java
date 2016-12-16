@@ -123,9 +123,10 @@ public class Game {
         int perdantLocal = 0;
         int tamponQuiPerd = tabJoueur[0].getMain().size();
         for (int i = 1; i<4 ; i++){
-            if (tabJoueur[i].getMain().size() > tamponQuiPerd)
+            if (tabJoueur[i].getMain().size() > tamponQuiPerd) {
                 tamponQuiPerd = tabJoueur[i].getMain().size();
                 perdantLocal = i;
+            }
         }
         perdantDernierePartie = perdantLocal;
     }
@@ -166,9 +167,9 @@ public class Game {
         AlgoCarte.trierCarte(tabJoueur[dernierGagnant].getMain());
     }
 
-    public void donDeLaCarteNulle(int indexCarte){
-        tabJoueur[perdantDernierePartie].addALaMain(tabJoueur[perdantDernierePartie].getMain().get(indexCarte));
-        tabJoueur[dernierGagnant].getMain().remove(indexCarte);
+    public void donDeLaCarteNulle(Carte carteADonner){
+        tabJoueur[perdantDernierePartie].addALaMain(carteADonner);
+        tabJoueur[dernierGagnant].getMain().remove(carteADonner);
     }
 
     public void nextJoueur(){
