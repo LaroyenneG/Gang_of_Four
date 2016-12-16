@@ -8,6 +8,8 @@ import Vue.FenetrePlateau;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Created by Florian Vaissiere on 21/11/2016.
  */
@@ -42,10 +44,6 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                         fenetre.panelFenetrePlateau.creerBouton1Multi();
                     }
                     changerVue();
-
-                    if (e.getActionCommand().contains("CarteMulti")){
-                        game.getTabJoueur()[0].addCombinaisonEnCours(game.choixDeLaCouleurDuMulticolor(fenetre.panelFenetrePlateau.unMultiColor()));
-                    }
                 }
 
                 if (game.getTabJoueur()[0].addCombinaisonEnCours(game.getTabJoueurIndex(0).getMain().get(i))) {
@@ -67,6 +65,22 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
             }
         }
 
+        if (e.getActionCommand().contains("Multi")){
+            String nombre="";
+
+            for (int i=5;i<e.getActionCommand().length();i++){
+                nombre+=e.getActionCommand().charAt(i);
+            }
+
+            int i = Integer.valueOf(nombre);
+
+            System.out.println(game.getTabJoueur()[0].addCombinaisonEnCours(game.choixDeLaCouleurDuMulticolor(i)));
+            System.out.println(game.choixDeLaCouleurDuMulticolor(i));
+
+            System.out.println(i);
+
+        }
+
         switch (e.getActionCommand()) {
             case "Passer le Tour":
                 game.passerSonTour(0);
@@ -80,10 +94,14 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                     game.poseTable(game.getTabJoueur()[0].getCombinaisonEnCours());
                     game.getTabJoueur()[0].clearCombinaisonEnCours();
                     changerVue();
+                    try {
+                        sleep(500);
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
+                    game.faireJouerIA();
+                    changerVue();
                 }
-
-                game.faireJouerIA();
-                changerVue();
                 break;
 
             case "Annuler":

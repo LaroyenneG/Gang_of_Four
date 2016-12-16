@@ -280,9 +280,9 @@ public class Game {
     }
 
     public Carte choixDeLaCouleurDuMulticolor(int couleurCarte){
-        if (couleurCarte == 1) return new Carte(1, Carte.Couleur.VERT);
-        else if (couleurCarte == 2) return new Carte(1, Carte.Couleur.JAUNE);
-        else if (couleurCarte == 3) return new Carte(1, Carte.Couleur.ROUGE);
+        if (couleurCarte == 0) return new Carte(1, Carte.Couleur.VERT);
+        else if (couleurCarte == 1) return new Carte(1, Carte.Couleur.JAUNE);
+        else if (couleurCarte == 2) return new Carte(1, Carte.Couleur.ROUGE);
         return null;
     }
 
