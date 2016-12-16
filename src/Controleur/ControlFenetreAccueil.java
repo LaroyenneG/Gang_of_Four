@@ -21,6 +21,7 @@ public class ControlFenetreAccueil extends Control implements ActionListener {
 
                 fenetre.setContentPane(fenetre.panelFenetrePlateau);
                 fenetre.barreMenu.setVisible(true);
+                //fenetre.barreMenu.score(); // ajout du composant scorej1
                 changerVue();
                 break;
 

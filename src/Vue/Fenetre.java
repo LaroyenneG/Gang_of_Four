@@ -52,7 +52,7 @@ public class Fenetre extends JFrame{
         panelFenetrePlateau = new FenetrePlateau(game);
         panelFenetreCredits = new FenetreCredits();
         panelFenetreRegle = new FenetreRegle();
-        barreMenu = new BarreMenu();
+        barreMenu = new BarreMenu(game);
     }
 
     public void setControlFenetrePlateau(ControlFenetrePlateau controlFenetrePlateau){

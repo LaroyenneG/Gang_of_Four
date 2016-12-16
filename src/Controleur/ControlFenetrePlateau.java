@@ -1,5 +1,6 @@
 package Controleur;
 
+import Model.Carte;
 import Model.Game;
 import Vue.Fenetre;
 import Vue.FenetrePlateau;
@@ -11,6 +12,7 @@ import java.awt.event.ActionListener;
  * Created by Florian Vaissiere on 21/11/2016.
  */
 public class ControlFenetrePlateau extends Control implements ActionListener {
+    Carte carte;
 
     public ControlFenetrePlateau(Fenetre fenetre, Game game){
         super(fenetre, game);
@@ -30,13 +32,21 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 int i = Integer.valueOf(nombre);
                 fenetre.panelFenetrePlateau.jouer.setVisible(true);
                 fenetre.panelFenetrePlateau.annuler.setVisible(true);
+                fenetre.panelFenetrePlateau.envoyer.setVisible(true);
 
-                /*if (){
-                    game.getTabJoueur()[0].
-                    game.getTabJoueur()[0].
-                    fenetre.panelFenetrePlateau.creerBouton1Multicolor();
+                //Selection de la couleur du 1 Multicolor
+                if (game.getTabJoueurIndex(0).getMain().get(i) == game.getTabJoueurIndex(0).getMain().get(0)){
+
+                    for (int j = 0; j < 3; j++) {
+                        fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(true);
+                        fenetre.panelFenetrePlateau.creerBouton1Multi();
+                    }
                     changerVue();
-                }*/
+
+                    if (e.getActionCommand().contains("CarteMulti")){
+                        game.getTabJoueur()[0].addCombinaisonEnCours(game.choixDeLaCouleurDuMulticolor(fenetre.panelFenetrePlateau.unMultiColor()));
+                    }
+                }
 
                 if (game.getTabJoueur()[0].addCombinaisonEnCours(game.getTabJoueurIndex(0).getMain().get(i))) {
                     game.getTabJoueur()[0].main.remove(i);
@@ -85,15 +95,24 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 changerVue();
                 break;
 
-            /*case "Envoyer":
-                if (game.getTabJoueur()[0]){
+            case "Envoyer":
+                if (game.siGagne(game.getTabJoueur()[0], 0)){
 
+                    if(game.getTabJoueur()[0].getCombinaisonEnCours().size()==1){
+                        int i =0;
+                        game.donDeLaCarteNulle(game.getTabJoueur()[0].getCombinaisonEnCours().get(i));
+                        game.getTabJoueur()[0].clearCombinaisonEnCours();
+                        game.donDeLaMeilleurCarte();
+                    }else{
+                        fenetre.panelFenetrePlateau.envoyer.setText("Trop de Carte!");
+                    }
                 }
                 game.getTabJoueur()[0].ordoMain();
-                FenetrePlateau.jouer.setVisible(false);
-                FenetrePlateau.annuler.setVisible(false);
+                fenetre.panelFenetrePlateau.jouer.setVisible(false);
+                fenetre.panelFenetrePlateau.annuler.setVisible(false);
+                fenetre.panelFenetrePlateau.envoyer.setVisible(false);
                 changerVue();
-                break;*/
+                break;
         }
     }
 }
