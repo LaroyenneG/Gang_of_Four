@@ -270,12 +270,13 @@ public class Game {
         if(joueurPlay!=0){
             ((IA) tabJoueur[joueurPlay]).findBestCombinaison(table);
             if(!joueurCanPlayCombinaison(joueurPlay)){
-                System.err.println("Error anomaly master");
-                System.exit(-5);
+                tabJoueur[joueurPlay].peutJouer=false;
+            }else {
+                clearTable();
+                poseTable(tabJoueur[joueurPlay].getCombinaisonEnCours());
+                tabJoueur[joueurPlay].clearCombinaisonEnCours();
+                nextJoueur();
             }
-            poseTable(tabJoueur[joueurPlay].getCombinaisonEnCours());
-            tabJoueur[joueurPlay].clearCombinaisonEnCours();
-            nextJoueur();
         }else {
             System.out.println("ia not play");
         }

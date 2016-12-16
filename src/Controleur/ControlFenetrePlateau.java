@@ -96,9 +96,12 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                     changerVue();
                     game.nextJoueur();
 
-
-                    game.faireJouerIA();
-                    changerVue();
+                    System.out.println(game.getJoueurPlay());
+                    while (game.getJoueurPlay()!=0){
+                        System.out.println(game.getJoueurPlay());
+                        game.faireJouerIA();
+                        changerVue();
+                    }
                 }
                 break;
 
