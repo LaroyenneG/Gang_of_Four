@@ -50,4 +50,24 @@ public class IA extends Joueur {
 
         combinaisonEnCours=goodList[theBest];
     }
+
+    public Carte getCarteForPlayer(){
+        if(combinaisonEnCours.size()!=0){
+            System.err.println("Anomaly in getCarteForPlayer ->  correction in process : clear combinaison");
+            combinaisonEnCours.clear();
+        }
+        ordoMain();
+        if(main.size()==0){
+            System.err.println("Error in getCarteForPlayer(), main size is 0");
+            System.exit(-8);
+        }
+
+        if(main.get(0).couleur != Carte.Couleur.MULTI){
+            return main.remove(0);
+        }else if(main.size()>=2){
+            return main.remove(1);
+        }else {
+            return main.remove(0);
+        }
+    }
 }
