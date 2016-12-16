@@ -81,6 +81,9 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                     game.getTabJoueur()[0].clearCombinaisonEnCours();
                     changerVue();
                 }
+
+                game.faireJouerIA();
+                changerVue();
                 break;
 
             case "Annuler":
@@ -96,7 +99,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 break;
 
             case "Envoyer":
-                if (game.siGagne(game.getTabJoueur()[0], 0)){
+                if (game.siGagne(0)){
 
                     if(game.getTabJoueur()[0].getCombinaisonEnCours().size()==1){
                         int i =0;

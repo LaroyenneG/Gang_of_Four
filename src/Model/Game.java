@@ -86,8 +86,9 @@ public class Game {
     }
 
     public void nextManche(){
-        for(int i=0; i<tabJoueur.length;i++){
-            tabJoueur[i]=new Joueur();
+        tabJoueur[0]=new Joueur();
+        for(int i=1; i<tabJoueur.length;i++){
+            tabJoueur[i]=new IA();
         }
         distribuerCarte();
         manche++;
@@ -111,8 +112,8 @@ public class Game {
         return -1;
     }
 
-    public boolean siGagne(Joueur j,int indexJoueur){
-        if (j.getMain().size()==0){
+    public boolean siGagne(int indexJoueur){
+        if (tabJoueur[indexJoueur].getMain().size()==0){
                dernierGagnant = indexJoueur;
                return true;
         }
@@ -263,6 +264,19 @@ public class Game {
             }
         }
         return false;
+    }
+
+    public void faireJouerIA(){
+        if(joueurPlay!=1){
+            ((IA) tabJoueur[joueurPlay]).findBestCombinaison(table);
+            if(!joueurCanPlayCombinaison(joueurPlay)){
+                System.err.println("Error anomaly master");
+                System.exit(-5);
+            }
+            poseTable(tabJoueur[joueurPlay].getCombinaisonEnCours());
+            tabJoueur[joueurPlay].clearCombinaisonEnCours();
+            nextJoueur();
+        }
     }
 
     public Carte choixDeLaCouleurDuMulticolor(int couleurCarte){

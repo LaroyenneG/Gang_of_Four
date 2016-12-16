@@ -121,12 +121,12 @@ public class TestGame {
         Joueur j4 = new Joueur();
         List<Carte> l1 = j1.getMain();
         Game game = new Game(j1,j2,j3,j4);
-        Assert.assertFalse(game.siGagne(j1, 0 ));
-        Assert.assertFalse(game.siGagne(j2, 1 ));
-        Assert.assertFalse(game.siGagne(j3, 2 ));
-        Assert.assertFalse(game.siGagne(j4, 3 ));
+        Assert.assertFalse(game.siGagne(0));
+        Assert.assertFalse(game.siGagne(1));
+        Assert.assertFalse(game.siGagne(2));
+        Assert.assertFalse(game.siGagne(3));
         l1.clear();
-        Assert.assertTrue(game.siGagne(j1,0));
+        Assert.assertTrue(game.siGagne(0));
     }
 
     @Test
@@ -625,7 +625,7 @@ public class TestGame {
     public void testPerdant(){
         Game game = new Game();
         Joueur[] tabJoueur = game.getTabJoueur();
-        tabJoueur[0].addALaMain(new Carte(1, Carte.Couleur.MULTI));
+        tabJoueur[0].addALaMain(new Carte(Carte.Couleur.MULTI));
         game.setQuiPerd();
         Assert.assertEquals(0,game.getPerdantDernierePartie());
     }
