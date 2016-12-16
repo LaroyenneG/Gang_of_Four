@@ -267,7 +267,7 @@ public class Game {
     }
 
     public void faireJouerIA(){
-        if(joueurPlay!=1){
+        if(joueurPlay!=0){
             ((IA) tabJoueur[joueurPlay]).findBestCombinaison(table);
             if(!joueurCanPlayCombinaison(joueurPlay)){
                 System.err.println("Error anomaly master");
@@ -276,6 +276,8 @@ public class Game {
             poseTable(tabJoueur[joueurPlay].getCombinaisonEnCours());
             tabJoueur[joueurPlay].clearCombinaisonEnCours();
             nextJoueur();
+        }else {
+            System.out.println("ia not play");
         }
     }
 

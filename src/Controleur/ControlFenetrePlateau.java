@@ -94,11 +94,9 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                     game.poseTable(game.getTabJoueur()[0].getCombinaisonEnCours());
                     game.getTabJoueur()[0].clearCombinaisonEnCours();
                     changerVue();
-                    try {
-                        sleep(500);
-                    } catch (InterruptedException e1) {
-                        e1.printStackTrace();
-                    }
+                    game.nextJoueur();
+
+
                     game.faireJouerIA();
                     changerVue();
                 }
