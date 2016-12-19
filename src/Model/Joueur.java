@@ -7,7 +7,7 @@ import java.util.List;
  * Created by guillaume on 12/11/16.
  */
 public class Joueur {
-    public List<Carte> main;
+    protected List<Carte> main;
     protected List<Carte> combinaisonEnCours;
     protected int score;
     public boolean peutJouer;
@@ -114,5 +114,10 @@ public class Joueur {
 
     public int getScore() {
         return score;
+    }
+
+    public String toString(){
+        String chaine="Joueur\n main="+main.size()+"\n combinaisonEnCours"+combinaisonEnCours.size()+"\n peutJouer="+peutJouer+"\n score="+score+"\n";
+        return chaine;
     }
 }

@@ -47,7 +47,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 }
 
                 if (game.getTabJoueur()[0].addCombinaisonEnCours(game.getTabJoueurIndex(0).getMain().get(i))) {
-                    game.getTabJoueur()[0].main.remove(i);
+                    game.getTabJoueur()[0].getMain().remove(i);
                     game.getTabJoueur()[0].getCombinaisonEnCours();
                 }
 

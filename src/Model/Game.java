@@ -301,5 +301,13 @@ public class Game {
     public List<Carte> getTable(){
         return table;
     }
+
+    public String toString(){
+        String chaine="Game\n manche="+manche+"\n joueurPlay="+joueurPlay+"\n dernierGagnant="+dernierGagnant+"\n perdantDernierePartie="+perdantDernierePartie+"\n table="+table.size()+"\n joueurs ;";
+        for (Joueur joueur : tabJoueur){
+            chaine+=joueur;
+        }
+        return chaine;
+    }
 }
 
