@@ -3,18 +3,23 @@ package Controleur;
 import Model.Game;
 import Vue.Fenetre;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Created by Florian Vaissiere on 21/11/2016.
  */
-public class Control {
+public abstract class Control {
 
-    Fenetre fenetre;
-    Game game;
+    protected Fenetre fenetre;
+    protected Game game;
 
-    protected Control(Fenetre fenetre, Game game) {
+    protected Automate automate;
 
+
+    public Control(Fenetre fenetre, Game game) {
         this.fenetre = fenetre;
         this.game = game;
+        automate=new Automate(this);
     }
 
     protected void changerVue() {
@@ -23,4 +28,5 @@ public class Control {
         fenetre.setLocationRelativeTo(null);
         fenetre.requestFocus();
     }
+
 }

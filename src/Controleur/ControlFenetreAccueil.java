@@ -23,6 +23,8 @@ public class ControlFenetreAccueil extends Control implements ActionListener {
                 fenetre.barreMenu.setVisible(true);
                 //fenetre.barreMenu.score(); // ajout du composant scorej1
                 changerVue();
+
+                automate.auto();
                 break;
 
             case "Credits":
