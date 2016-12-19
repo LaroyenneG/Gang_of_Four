@@ -18,6 +18,19 @@ public class TestIA {
             IA ia = (IA) game.getTabJoueur()[1];
             List<Carte> table = new ArrayList<>();
             table.add(new Carte(1, Carte.Couleur.VERT));
+            game.poseTable(table);
+
+            Assert.assertTrue(game.playerHasAnPossibilityToPlay(1));
+            ia.findBestCombinaison(game.getTable());
+            Assert.assertTrue(game.joueurCanPlayCombinaison(1));
+        }
+
+
+        for(int t=0; t<100; t++){
+            Game game = new Game();
+            IA ia = (IA) game.getTabJoueur()[1];
+            List<Carte> table = new ArrayList<>();
+            table.add(new Carte(1, Carte.Couleur.VERT));
             table.add(new Carte(1, Carte.Couleur.VERT));
             game.poseTable(table);
 

@@ -17,6 +17,7 @@ public class Game {
     private int perdantDernierePartie;
 
     private List<Carte> table;
+    private int i;
 
     public Game (){
         tabJoueur = new Joueur[4];

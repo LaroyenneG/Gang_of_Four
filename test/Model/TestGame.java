@@ -607,7 +607,25 @@ public class TestGame {
         j1.addCombinaisonEnCours(new Carte(9, Carte.Couleur.ROUGE));
         j1.addCombinaisonEnCours(new Carte(9, Carte.Couleur.ROUGE));
 
-        Assert.assertFalse(game.joueurCanPlayCombinaison(0));
+        Assert.assertFalse(game.playerHasAnPossibilityToPlay(0));
+
+
+        /*
+        multi
+         */
+
+        game.clearTable();
+        carteList.clear();
+        j1.clearCombinaisonEnCours();
+
+        carteList.add(new Carte(1, Carte.Couleur.VERT));
+        game.poseTable(carteList);
+        j1.addCombinaisonEnCours(new Carte(Carte.Couleur.MULTI));
+
+
+        Assert.assertEquals(game.getTabJoueur()[0].getMain().size(),16);
+        Assert.assertTrue(game.playerHasAnPossibilityToPlay(0));
+
     }
 
     @Test
