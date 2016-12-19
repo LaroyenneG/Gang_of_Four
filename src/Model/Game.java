@@ -267,18 +267,19 @@ public class Game {
     }
 
     public void faireJouerIA(){
+
         if(joueurPlay!=0){
+
             ((IA) tabJoueur[joueurPlay]).findBestCombinaison(table);
-            if(!joueurCanPlayCombinaison(joueurPlay)){
-                tabJoueur[joueurPlay].peutJouer=false;
-            }else {
+
+            List<Carte> combi = tabJoueur[joueurPlay].getCombinaisonEnCours();
+            if(combi.size()>0){
                 clearTable();
-                poseTable(tabJoueur[joueurPlay].getCombinaisonEnCours());
+                poseTable(combi);
                 tabJoueur[joueurPlay].clearCombinaisonEnCours();
-                nextJoueur();
             }
         }else {
-            System.out.println("ia not play");
+            System.err.println("IA can't play play !");
         }
     }
 

@@ -92,6 +92,10 @@ public class Joueur {
         return main.get(main.size()-1);
     }
 
+    public void passeSonTour(){
+        peutJouer=false;
+    }
+
     public List<Carte> getCombinaisonEnCours(){
         return combinaisonEnCours;
     }

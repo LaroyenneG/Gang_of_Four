@@ -13,14 +13,15 @@ public class IA extends Joueur {
     }
 
     public void findBestCombinaison(List<Carte> table){
-        List<Carte>[] goodList=AlgoIA.getCombinaisonJouable(table,main);
+        peutJouer=true;
 
+        List<Carte>[] goodList=AlgoIA.getCombinaisonJouable(table,main);
 
         int theBest = 0;
 
-
         if(goodList.length==0){
-            peutJouer=false;
+            System.out.println("non"+Arrays.toString(goodList));
+            passeSonTour();
             return;
         }
 
@@ -48,6 +49,9 @@ public class IA extends Joueur {
             }
         }
 
+        if(!(goodList[theBest].size()>0)){
+            System.err.println("Anomaly in IA");
+        }
         combinaisonEnCours=goodList[theBest];
     }
 
@@ -70,4 +74,5 @@ public class IA extends Joueur {
             return main.remove(0);
         }
     }
+
 }
