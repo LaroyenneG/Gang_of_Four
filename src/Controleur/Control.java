@@ -27,6 +27,11 @@ public abstract class Control {
         fenetre.pack();
         fenetre.setLocationRelativeTo(null);
         fenetre.requestFocus();
+        if(game.getTabJoueurIndex(0).peutJouer){
+            fenetre.panelFenetrePlateau.passertour.setText("Passer le tour");
+        }else {
+            fenetre.panelFenetrePlateau.passertour.setText("Tour Passé!");
+        }
     }
 
 }

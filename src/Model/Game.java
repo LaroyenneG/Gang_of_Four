@@ -143,6 +143,7 @@ public class Game {
 
     //method for Tom
     private int nextJoueurOracle(){
+        int memory=joueurPlay;
         int id=joueurPlay;
         int sens;
         if (manche%2==0){
@@ -156,8 +157,7 @@ public class Game {
             id=idJoueur((id+sens)%4);
             count++;
             if(count>tabJoueur.length){
-                System.err.println("Error in nextJoueur(), no player can play");
-                break;
+                return memory;
             }
         }
         return id;
@@ -175,6 +175,11 @@ public class Game {
     }
 
     public void nextJoueur(){
+        int j=nextJoueurOracle();
+        if(j==joueurPlay){
+            hardTable();
+            System.out.println("hardTable()");
+        }
         setJoueurPlay(nextJoueurOracle());
     }
 
@@ -203,6 +208,27 @@ public class Game {
 
     public void clearTable(){
         table.clear();
+    }
+
+    /*
+    regarde si tout les joueurs on passe, si oui la table est vide
+     */
+    public void hardTable(){
+        boolean passe=true;
+
+        for (Joueur aTabJoueur : tabJoueur) {
+            if (aTabJoueur.peutJouer) {
+                passe = false;
+            }
+        }
+
+        if(passe){
+            table.clear();
+        }
+
+        for (Joueur aTabJoueur : tabJoueur) {
+            aTabJoueur.peutJouer=true;
+        }
     }
 
     public boolean joueurCanPlayCombinaison(int i){

@@ -20,7 +20,6 @@ public class IA extends Joueur {
         int theBest = 0;
 
         if(goodList.length==0){
-            System.out.println("non"+Arrays.toString(goodList));
             passeSonTour();
             return;
         }

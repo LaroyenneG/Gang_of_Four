@@ -84,8 +84,8 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
         switch (e.getActionCommand()) {
             case "Passer le Tour":
                 game.passerSonTour(0);
-                fenetre.panelFenetrePlateau.passertour.setText("Tour Passé!");
                 changerVue();
+                game.nextJoueur();
                 break;
 
             case "Jouer":

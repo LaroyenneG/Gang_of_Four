@@ -33,13 +33,16 @@ public class Automate {
             @Override
             public void run() {
                 while (true){
+                      //attente de la fin du joueur
                     while (game.getJoueurPlay()==0){
                         try {
-                            sleep(1000);
+                            sleep(500);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                     }
+
+                    //action des robots
                     actionIA();
                 }
             }
@@ -52,23 +55,22 @@ public class Automate {
         wait=true;
 
         while (game.getJoueurPlay()!=0){
-            if(wait){
-                try {
-                    sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
             game.faireJouerIA();
             game.nextJoueur();
             control.changerVue();
+            if(wait){
+                try {
+                    sleep(4000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
-
-
-    public void noWait(){
-        wait=false;
-    }
-
 
 }
