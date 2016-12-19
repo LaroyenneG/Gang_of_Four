@@ -195,7 +195,7 @@ public class Game {
     }
 
     public void poseTable(List<Carte> jeu){
-        table.clear();
+        clearTable();
         for (Carte aJeu : jeu) {
             table.add(aJeu);
         }
@@ -304,7 +304,7 @@ public class Game {
     }
 
     public String toString(){
-        String chaine="Game\n manche="+manche+"\n joueurPlay="+joueurPlay+"\n dernierGagnant="+dernierGagnant+"\n perdantDernierePartie="+perdantDernierePartie+"\n table="+table.size()+"\n joueurs ;";
+        String chaine="Game\n manche="+manche+"\n joueurPlay="+joueurPlay+"\n dernierGagnant="+dernierGagnant+"\n perdantDernierePartie="+perdantDernierePartie+"\n table="+table.size()+"\n next joueur oracle="+nextJoueurOracle()+"\n joueurs :\n";
         for (Joueur joueur : tabJoueur){
             chaine+=joueur;
         }

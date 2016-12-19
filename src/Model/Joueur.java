@@ -47,6 +47,7 @@ public class Joueur {
     public void resetCombinaison(){
         main.addAll(combinaisonEnCours);
         combinaisonEnCours.clear();
+        ordoMain();
     }
 
     public void ordoMain(){
@@ -117,7 +118,7 @@ public class Joueur {
     }
 
     public String toString(){
-        String chaine="Joueur\n main="+main.size()+"\n combinaisonEnCours"+combinaisonEnCours.size()+"\n peutJouer="+peutJouer+"\n score="+score+"\n";
+        String chaine="Joueur\n main="+main.size()+"\n combinaisonEnCours="+combinaisonEnCours.size()+"\n peutJouer="+peutJouer+"\n score="+score+"\n";
         return chaine;
     }
 }

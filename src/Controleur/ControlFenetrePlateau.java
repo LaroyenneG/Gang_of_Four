@@ -14,7 +14,7 @@ import static java.lang.Thread.sleep;
  * Created by Florian Vaissiere on 21/11/2016.
  */
 public class ControlFenetrePlateau extends Control implements ActionListener {
-    Carte carte;
+
 
     public ControlFenetrePlateau(Fenetre fenetre, Game game){
         super(fenetre, game);
@@ -74,10 +74,10 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
             int i = Integer.valueOf(nombre);
 
+            /*
             System.out.println(game.getTabJoueur()[0].addCombinaisonEnCours(game.choixDeLaCouleurDuMulticolor(i)));
             System.out.println(game.choixDeLaCouleurDuMulticolor(i));
-
-            System.out.println(i);
+            */
 
         }
 
@@ -89,33 +89,26 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 break;
 
             case "Jouer":
-                if (game.joueurCanPlayCombinaison(0)) {
+                if (game.joueurCanPlayCombinaison(0)&&game.getJoueurPlay()==0) {
                     game.clearTable();
                     game.poseTable(game.getTabJoueur()[0].getCombinaisonEnCours());
+
                     game.getTabJoueur()[0].clearCombinaisonEnCours();
                     changerVue();
 
-
                     game.nextJoueur();
-
                     while (game.getJoueurPlay()!=0){
-                        System.out.println(game.getJoueurPlay());
                         game.faireJouerIA();
                         game.nextJoueur();
                         changerVue();
                     }
-                }else {
-                    System.out.println("combinaison invalide");
                 }
+
                 break;
 
             case "Annuler":
-                for(int i=0; i<game.getTabJoueur()[0].getCombinaisonEnCours().size();i++){
-                    game.getTabJoueur()[0].addALaMain(game.getTabJoueur()[0].getCombinaisonEnCours().get(i));
-                }
+                game.getTabJoueurIndex(0).resetCombinaison();
                 fenetre.panelFenetrePlateau.creerBouton();
-                game.getTabJoueur()[0].clearCombinaisonEnCours();
-                game.getTabJoueur()[0].ordoMain();
                 fenetre.panelFenetrePlateau.jouer.setVisible(false);
                 fenetre.panelFenetrePlateau.annuler.setVisible(false);
                 changerVue();
