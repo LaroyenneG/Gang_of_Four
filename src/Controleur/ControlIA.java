@@ -20,7 +20,9 @@ public class ControlIA extends Control implements ActionListener {
 
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-
+    public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("next")){
+            automate.stopWaitIA();
+        }
     }
 }

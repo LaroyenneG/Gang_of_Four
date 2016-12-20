@@ -23,12 +23,12 @@ public class Automate {
         wait=true;
     }
 
-
     public void auto(){
 
         if(automate!=null){
             automate.interrupt();
         }
+
         automate = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -63,14 +63,22 @@ public class Automate {
             game.faireJouerIA();
             game.nextJoueur();
             control.changerVue();
-            if(wait){
+
+            for (int t=0; t<60&&wait; t++){
                 try {
-                    sleep(4000);
+                    sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         }
+    }
+
+    /*
+    annule le timer
+     */
+    public void stopWaitIA(){
+        wait=false;
     }
 
 }
