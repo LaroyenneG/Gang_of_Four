@@ -1,15 +1,23 @@
 package Model;
 
+import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by guillaume on 09/12/16.
  */
 public class IA extends Joueur {
 
+    private String name;
+
     public IA(){
         super();
+        createName();
     }
 
     public void findBestCombinaison(List<Carte> table){
@@ -74,4 +82,38 @@ public class IA extends Joueur {
         }
     }
 
+    public void createName() {
+        try {
+            int time = (int) (System.currentTimeMillis() % 1000);
+
+            File file = new File("name/listName.txt");
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+
+            String line = "";
+
+            for (int l = 0; l < time; l++) {
+                if ((line = bufferedReader.readLine()) == null) {
+                    System.err.println("Error in createName() : Over size");
+                    break;
+                } else {
+                    name = line;
+                }
+            }
+
+            sleep(1);
+            bufferedReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            name = "noName";
+        }
+    }
+
+    public String toString(){
+        String chaine = super.toString()+"name="+name;
+        return chaine;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

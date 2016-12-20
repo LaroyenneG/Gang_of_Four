@@ -63,4 +63,29 @@ public class TestIA {
         Assert.assertNotNull(carte);
         Assert.assertEquals(15,ia.getMain().size());
     }
+
+    @Test
+    public void testCreateName(){
+        Game game = new Game();
+        Joueur tabJoueur[] = game.getTabJoueur();
+
+        IA tabIA[] = new IA[3];
+
+        int count=0;
+        for (int i=1; i<tabJoueur.length; i++){
+            tabIA[count]=(IA) tabJoueur[i];
+            count++;
+        }
+
+
+        for (int i=0; i<tabIA.length;i++){
+            Assert.assertNotEquals(tabIA[i].getName(),"");
+            Assert.assertNotEquals(tabIA[i].getName(),"noName");
+        }
+
+        for (int i=1; i<tabIA.length;i++){
+            Assert.assertNotEquals(tabIA[i].getName(),tabIA[i-1].getName());
+        }
+
+    }
 }
