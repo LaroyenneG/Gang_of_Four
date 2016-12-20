@@ -43,8 +43,12 @@ public class FenetreRegle extends JPanel {
 
         super.paintComponent(g);
 
-        retour.setBounds((int) (11 / 30.0 * X), (int) (12.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
+        Font f=new Font("Arial", Font.BOLD, 18);
+
+        retour.setBounds((int) (13 / 30.0 * X), (int) (14 / 15.0 * Y), (int) (0.5 / 4.0 * X), (int) (0.5 / 12.0 * Y));
         retour.setBackground(new Color(0, 0, 0, 0));
+        retour.setForeground(Color.WHITE);
+        retour.setFont(f);
         retour.setFocusable(false);
         retour.setCursor(new Cursor(Cursor.HAND_CURSOR));
         retour.setBorder(null);
