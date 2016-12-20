@@ -49,7 +49,7 @@ public class FenetreRegle extends JPanel {
         retour.setCursor(new Cursor(Cursor.HAND_CURSOR));
         retour.setBorder(null);
 
-        Image img = getToolkit().getImage("image/fondprinci.jpg");
+        Image img = getToolkit().getImage("image/Regles_Gang_Of_Four.jpg");
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
     }
 }
