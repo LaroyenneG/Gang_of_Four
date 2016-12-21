@@ -159,17 +159,35 @@ public class FenetrePlateau extends JPanel{
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
 
         //Cartes des autres joueurs
+        Image[] imgJ2 = new Image[3];
+        for (int i =0; i<3;i++)
+        if (game.getTabJoueur()[i+1].peutJouer == false)
+        {
+            imgJ2[i] = getToolkit().getImage("cartes/carteDosPasse.jpg");
+        }
+        else
+        {
+            imgJ2[i] = getToolkit().getImage("cartes/carteDos.jpg");
+        }
 
-        Image imgJ2 = getToolkit().getImage("cartes/carteDos.jpg");
-        g.drawImage(imgJ2,  (int)(X*0.1), 300, posX, (int) (posX*1.5), this);
-        g.drawImage(imgJ2, (int)(X*0.85),300, posX, (int) (posX*1.5), this);
-        g.drawImage(imgJ2, (X/2-(posX/2)), 100, posX, (int) (posX*1.5), this);
+        g.drawImage(imgJ2[0],  (int)(X*0.1), 300, posX, (int) (posX*1.5), this);
+        g.drawImage(imgJ2[1], (int)(X*0.85),300, posX, (int) (posX*1.5), this);
+        g.drawImage(imgJ2[2], (X/2-(posX/2)), 100, posX, (int) (posX*1.5), this);
 
         g.setColor(Color.WHITE);
         g.setFont(new Font("TimesRoman", Font.PLAIN, 20));;
         g.drawString((Integer.toString(game.getTabJoueurIndex(1).getMain().size())),(int)(X*0.1)+posX,300);
         g.drawString((Integer.toString(game.getTabJoueurIndex(2).getMain().size())),(int)(X*0.85)+posX,300);
         g.drawString((Integer.toString(game.getTabJoueurIndex(3).getMain().size())),(X/2-(posX/2))+posX, 100);
+
+        if (game.getJoueurPlay() == 0)
+        {
+            g.drawString("Tour du Joueur",(int)(X/2)-50,250);
+        }
+        else
+        {
+            g.drawString("Tour de l'IA"+Integer.toString(game.getJoueurPlay()),(int)(X/2)-50,250);
+        }
 
         //Piles Plateau
 
