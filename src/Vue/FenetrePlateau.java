@@ -1,7 +1,9 @@
 package Vue;
 
 import Controleur.ControlFenetrePlateau;
+import Controleur.ControlGroup;
 import Model.Game;
+import Model.IA;
 
 import javax.swing.*;
 import java.awt.*;
@@ -186,7 +188,8 @@ public class FenetrePlateau extends JPanel{
         }
         else
         {
-            g.drawString("Tour de l'IA"+Integer.toString(game.getJoueurPlay()),(int)(X/2)-50,250);
+            IA ia = (IA) game.getTabJoueur()[game.getJoueurPlay()];
+            g.drawString("Tour de l'IA "+ia.getName(),(int)(X/2)-50,250);
         }
 
         //Piles Plateau
