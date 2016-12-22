@@ -43,9 +43,9 @@ public class FenetreRegle extends JPanel {
 
         super.paintComponent(g);
 
-        Font f=new Font("Arial", Font.BOLD, 18);
+        Font f=new Font("Arial", Font.BOLD, 20);
 
-        retour.setBounds((int) (13 / 30.0 * X), (int) (14 / 15.0 * Y), (int) (0.5 / 4.0 * X), (int) (0.5 / 12.0 * Y));
+        retour.setBounds((int) (5 / 30.0 * X), (int) (13 / 15.0 * Y), (int) (0.5 / 4.0 * X), (int) (0.5 / 12.0 * Y));
         retour.setBackground(new Color(0, 0, 0, 0));
         retour.setForeground(Color.WHITE);
         retour.setFont(f);
