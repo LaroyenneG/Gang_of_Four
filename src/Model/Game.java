@@ -141,7 +141,6 @@ public class Game {
     sens de rotation antihoraire j0->j3->j2->j1 loop
      */
 
-    //method for Tom
     private int nextJoueurOracle(){
         int memory=joueurPlay;
         int id=joueurPlay;

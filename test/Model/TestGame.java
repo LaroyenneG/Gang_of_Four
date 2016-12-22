@@ -631,17 +631,14 @@ public class TestGame {
     @Test
     public void testCouleurDu1Multi(){
         Game game = new Game();
-        /*
-        le test est invalid
 
-        Assert.assertTrue(new Carte(1, Carte.Couleur.VERT).equals(game.choixDeLaCouleurDuMulticolor(1)));
-        Assert.assertTrue(new Carte(1, Carte.Couleur.JAUNE).equals(game.choixDeLaCouleurDuMulticolor(2)));
-        Assert.assertTrue(new Carte(1, Carte.Couleur.ROUGE).equals(game.choixDeLaCouleurDuMulticolor(3)));
-        Assert.assertFalse(new Carte(1, Carte.Couleur.JAUNE).equals(game.choixDeLaCouleurDuMulticolor(1)));
-        Assert.assertFalse(new Carte(2, Carte.Couleur.JAUNE).equals(game.choixDeLaCouleurDuMulticolor(2)));
+        Assert.assertTrue(new Carte(1, Carte.Couleur.VERT).equals(game.choixDeLaCouleurDuMulticolor(0)));
+        Assert.assertTrue(new Carte(1, Carte.Couleur.JAUNE).equals(game.choixDeLaCouleurDuMulticolor(1)));
+        Assert.assertTrue(new Carte(1, Carte.Couleur.ROUGE).equals(game.choixDeLaCouleurDuMulticolor(2)));
+        Assert.assertFalse(new Carte(1, Carte.Couleur.JAUNE).equals(game.choixDeLaCouleurDuMulticolor(0)));
+        Assert.assertFalse(new Carte(2, Carte.Couleur.JAUNE).equals(game.choixDeLaCouleurDuMulticolor(1)));
         Assert.assertFalse(new Carte(1, Carte.Couleur.JAUNE).equals(game.choixDeLaCouleurDuMulticolor(5)));
 
-        */
     }
 
     @Test
