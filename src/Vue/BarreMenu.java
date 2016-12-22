@@ -2,6 +2,7 @@ package Vue;
 
 import Controleur.ControlBarreMenu;
 import Model.Game;
+import Model.IA;
 
 import javax.swing.*;
 
@@ -12,14 +13,16 @@ public class BarreMenu extends JMenuBar {
 
     private Game game;
 
-    public JMenu menu, scorej1, scorej2, scorej3, scorej4;
-    public JMenuItem nouvellePartie, menuPrincipal, quitter, regle ;
+    public JMenu menu, score;
+    public JMenuItem nouvellePartie, menuPrincipal, quitter, regle, scorej1, scorej2, scorej3, scorej4 ;
 
     public BarreMenu(Game game) {
 
         //JMenu
         menu = new JMenu("Menu");
         menu.setActionCommand("Menu");
+        score = new JMenu("Score");
+        score.setActionCommand("Score");
 
         //JMenuItem
         nouvellePartie = new JMenuItem("Nouvelle Partie");
@@ -33,28 +36,30 @@ public class BarreMenu extends JMenuBar {
 
         //JMenu
         add(menu);
+        add(score);
 
         //JMenuItem
         menu.add(nouvellePartie);
         menu.add(regle);
         menu.add(menuPrincipal);
         menu.add(quitter);
+
+        //Affichage des Scores
+        IA ia1 = (IA) game.getTabJoueur()[1];
+        IA ia2 = (IA) game.getTabJoueur()[2];
+        IA ia3 = (IA) game.getTabJoueur()[3];
+        scorej1 = new JMenuItem("Vous :" +"" + game.getTabJoueur()[0].getScore());
+        scorej2 = new JMenuItem(ia1.getName()+": "+"" + game.getTabJoueur()[1].getScore());
+        scorej3 = new JMenuItem(ia2.getName()+": "+"" + game.getTabJoueur()[2].getScore());
+        scorej4 = new JMenuItem(ia3.getName()+": "+"" + game.getTabJoueur()[3].getScore());
+
+        //ScoreItem
+        score.add(scorej1);
+        score.add(scorej2);
+        score.add(scorej3);
+        score.add(scorej4);
+
     }
-
-    /*public void score() {
-        scorej1 = new JMenu("" + game.getTabJoueur()[0].getScore());
-
-        scorej2 = new JMenu("" + game.getTabJoueur()[1].getScore());
-
-        scorej3 = new JMenu("" + game.getTabJoueur()[2].getScore());
-
-        scorej4 = new JMenu("" + game.getTabJoueur()[3].getScore());
-        add(scorej1);
-        add(scorej2);
-        add(scorej3);
-        add(scorej4);
-
-    }*/
 
     public void setControl(ControlBarreMenu controlBarreMenu){
 
@@ -66,16 +71,6 @@ public class BarreMenu extends JMenuBar {
         menuPrincipal.addActionListener(controlBarreMenu);
         quitter.addActionListener(controlBarreMenu);
         regle.addActionListener(controlBarreMenu);
-
-        /*scorej1.setText("" + game.getTabJoueur()[0].getScore());
-        scorej2.setText("" + game.getTabJoueur()[1].getScore());
-        scorej3.setText("" + game.getTabJoueur()[2].getScore());
-        scorej4.setText("" + game.getTabJoueur()[3].getScore());
-
-        scorej1.repaint();
-        scorej2.repaint();
-        scorej3.repaint();
-        scorej4.repaint();*/
 
     }
 
