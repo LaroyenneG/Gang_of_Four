@@ -41,6 +41,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
                     for (int j = 0; j < 3; j++) {
                         fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(true);
+                        fenetre.autorisationDessiner = true;
                         fenetre.panelFenetrePlateau.creerBouton1Multi();
                     }
                     changerVue();

@@ -1,6 +1,7 @@
 package Controleur;
 
 import Model.Game;
+import Model.Joueur;
 import Vue.Fenetre;
 
 import java.awt.event.ActionEvent;
@@ -19,9 +20,17 @@ public class ControlBarreMenu extends Control implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Nouvelle Partie":
+                fenetre.getContentPane().removeAll();
+                game.clearTable();
+                game.distribuerCarte();
+                game.getTabJoueur()[0].ordoMain();
+                game.getTabJoueur()[1].ordoMain();
+                game.getTabJoueur()[2].ordoMain();
+                game.getTabJoueur()[3].ordoMain();
                 fenetre.setContentPane(fenetre.panelFenetrePlateau);
                 fenetre.barreMenu.setVisible(true);
                 changerVue();
+                automate.auto();
                 break;
 
             case "Menu Principal":

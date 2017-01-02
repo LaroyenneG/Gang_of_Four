@@ -18,12 +18,9 @@ public class ControlFenetreAccueil extends Control implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Jouer":
-
                 fenetre.setContentPane(fenetre.panelFenetrePlateau);
                 fenetre.barreMenu.setVisible(true);
-                //fenetre.barreMenu.score(); // ajout du composant scorej1
                 changerVue();
-
                 automate.auto();
                 break;
 
