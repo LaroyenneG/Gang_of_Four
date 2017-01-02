@@ -1,7 +1,6 @@
 package Vue;
 
 import Controleur.ControlFenetrePlateau;
-import Controleur.ControlGroup;
 import Model.Game;
 import Model.IA;
 
@@ -173,8 +172,8 @@ public class FenetrePlateau extends JPanel{
         }
 
         g.drawImage(imgJ2[0],  (int)(X*0.1), 300, posX, (int) (posX*1.5), this);
-        g.drawImage(imgJ2[1], (int)(X*0.85),300, posX, (int) (posX*1.5), this);
-        g.drawImage(imgJ2[2], (X/2-(posX/2)), 100, posX, (int) (posX*1.5), this);
+        g.drawImage(imgJ2[2], (int)(X*0.85),300, posX, (int) (posX*1.5), this);
+        g.drawImage(imgJ2[1], (X/2-(posX/2)), 100, posX, (int) (posX*1.5), this);
 
         g.setColor(Color.WHITE);
         g.setFont(new Font("TimesRoman", Font.PLAIN, 20));;
