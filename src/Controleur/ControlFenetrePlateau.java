@@ -44,7 +44,6 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                         fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(true);
                         fenetre.autorisationDessiner = true;
                         select1Multi = true;
-                        game.getTabJoueur()[0].getCombinaisonEnCours().remove(0);
                     }
                     changerVue();
                 }
@@ -81,6 +80,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
             game.choixDeLaCouleurDuMulticolor(i);
 
             carteChoixMulti = game.choixDeLaCouleurDuMulticolor(i);
+            game.getTabJoueur()[0].getCombinaisonEnCours().remove(0);
 
             for (int j = 0; j < 3; j++) {
                 fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(false);
