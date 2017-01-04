@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class Carte {
 
-    public enum Couleur {
+    public static enum Couleur {
         ROUGE,
         JAUNE,
         MULTI,
