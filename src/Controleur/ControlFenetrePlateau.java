@@ -120,9 +120,9 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                     fenetre.panelFenetrePlateau.annuler.setVisible(false);
                     changerVue();
                 }else{
-                    game.getTabJoueur()[0].getCombinaisonEnCours().remove(carteChoixMulti);
                     game.getTabJoueurIndex(0).resetCombinaison();
                     changerVue();
+                    game.getTabJoueur()[0].getMain().remove(carteChoixMulti);
                     game.getTabJoueur()[0].getMain().add(unMulti);
                     game.getTabJoueur()[0].ordoMain();
                     fenetre.panelFenetrePlateau.creerBouton();
