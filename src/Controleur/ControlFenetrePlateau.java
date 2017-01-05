@@ -6,6 +6,8 @@ import Vue.Fenetre;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static Model.Carte.Couleur.MULTI;
+
 /**
  * Created by Florian Vaissiere on 21/11/2016.
  */
@@ -33,7 +35,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 fenetre.panelFenetrePlateau.envoyer.setVisible(true);
 
                 //Selection de la couleur du 1 Multicolor
-                if (game.getTabJoueurIndex(0).getMain().get(i) == game.getTabJoueurIndex(0).getMain().get(0)){
+                if (game.getTabJoueurIndex(0).getMain().get(i).couleur.equals(MULTI)){
 
                     for (int j = 0; j < 3; j++) {
                         fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(true);
@@ -70,7 +72,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
             int i = Integer.valueOf(nombre);
 
-            System.out.println("coucou");
+
             System.out.println(game.getTabJoueur()[0].addCombinaisonEnCours(game.choixDeLaCouleurDuMulticolor(i)));
             System.out.println(game.choixDeLaCouleurDuMulticolor(i));
 
