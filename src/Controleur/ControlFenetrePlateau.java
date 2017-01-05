@@ -1,5 +1,6 @@
 package Controleur;
 
+import Model.Carte;
 import Model.Game;
 import Vue.Fenetre;
 
@@ -12,11 +13,13 @@ import static Model.Carte.Couleur.MULTI;
  * Created by Florian Vaissiere on 21/11/2016.
  */
 public class ControlFenetrePlateau extends Control implements ActionListener {
+    Carte c;
 
 
     public ControlFenetrePlateau(Fenetre fenetre, Game game){
         super(fenetre, game);
         fenetre.setControlFenetrePlateau(this);
+        c =null;
     }
     public void actionPerformed(ActionEvent e) {
 
@@ -72,9 +75,24 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
             int i = Integer.valueOf(nombre);
 
+            c = game.choixDeLaCouleurDuMulticolor(i);
+            System.out.print(c);
+            for (int j = 0; j < 3; j++) {
+                fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(false);
 
-            System.out.println(game.getTabJoueur()[0].addCombinaisonEnCours(game.choixDeLaCouleurDuMulticolor(i)));
-            System.out.println(game.choixDeLaCouleurDuMulticolor(i));
+            }
+            fenetre.autorisationDessiner = false;
+
+            for (int k = 0; k<game.getTabJoueur()[0].getCombinaisonEnCours().size();k++)
+            {
+                if (game.getTabJoueur()[0].getCombinaisonEnCours().get(k).couleur.equals(MULTI))
+                    game.getTabJoueur()[0].getCombinaisonEnCours().remove(k);
+            }
+            changerVue();
+            game.getTabJoueur()[0].addCombinaisonEnCours(c);
+            game.getTabJoueur()[0].combiMulti = true;
+
+
 
 
         }
@@ -100,7 +118,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 break;
 
             case "Annuler":
-                game.getTabJoueurIndex(0).resetCombinaison();
+                game.getTabJoueurIndex(0).resetCombinaison(c);
                 fenetre.panelFenetrePlateau.creerBouton();
                 fenetre.panelFenetrePlateau.jouer.setVisible(false);
                 fenetre.panelFenetrePlateau.annuler.setVisible(false);

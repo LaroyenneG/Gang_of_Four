@@ -11,12 +11,14 @@ public class Joueur {
     protected List<Carte> combinaisonEnCours;
     protected int score;
     public boolean peutJouer;
+    public  boolean combiMulti;
 
     public Joueur(){
         main=new ArrayList<Carte>();
         score=0;
         peutJouer=true;
         combinaisonEnCours = new ArrayList<>();
+        combiMulti = false;
     }
 
     public Joueur(List<Carte> main){
@@ -45,9 +47,39 @@ public class Joueur {
     annule la combinaison en cours
      */
     public void resetCombinaison(){
-        main.addAll(combinaisonEnCours);
-        combinaisonEnCours.clear();
-        ordoMain();
+
+            main.addAll(combinaisonEnCours);
+            combinaisonEnCours.clear();
+            ordoMain();
+    }
+
+    public void resetCombinaison(Carte c){
+
+        if(combiMulti)
+        {
+            boolean trouver = false;
+            for (int i =0;i<combinaisonEnCours.size();i++)
+            {
+                if (combinaisonEnCours.get(i).equals(c) && trouver== false)
+                {
+                    System.out.print("coucou");
+                    combinaisonEnCours.remove(i);
+                    combinaisonEnCours.add(new Carte(Carte.Couleur.MULTI));
+                    trouver = true;
+
+                }
+                main.addAll(combinaisonEnCours);
+                combinaisonEnCours.clear();
+                ordoMain();
+            }
+        }
+        else
+        {
+            main.addAll(combinaisonEnCours);
+            combinaisonEnCours.clear();
+            ordoMain();
+        }
+
     }
 
     public void ordoMain(){
