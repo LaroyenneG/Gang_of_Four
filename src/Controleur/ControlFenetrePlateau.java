@@ -1,6 +1,5 @@
 package Controleur;
 
-import Model.Carte;
 import Model.Game;
 import Vue.Fenetre;
 
@@ -21,7 +20,6 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
         boolean select1Multi = false;
         String carteChoixMulti = "";
-        Carte unMulti = game.getTabJoueurIndex(0).getMain().get(0);;
 
         if(e.getActionCommand().contains("Carte")){
             if (game.getTabJoueur()[0].peutJouer) {
@@ -110,23 +108,13 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 if (select1Multi == false) {
                     game.getTabJoueurIndex(0).resetCombinaison();
                     fenetre.panelFenetrePlateau.creerBouton();
-                    for (int j = 0; j < 3; j++) {
-                        fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(false);
-                        fenetre.autorisationDessiner = false;
-                    }
                     fenetre.panelFenetrePlateau.jouer.setVisible(false);
                     fenetre.panelFenetrePlateau.annuler.setVisible(false);
                     changerVue();
                 }else{
                     game.getTabJoueurIndex(0).resetCombinaison();
                     game.getTabJoueur()[0].getMain().remove(carteChoixMulti);
-                    game.getTabJoueur()[0].getMain().add(unMulti);
-                    game.getTabJoueur()[0].ordoMain();
                     fenetre.panelFenetrePlateau.creerBouton();
-                    for (int j = 0; j < 3; j++) {
-                        fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(false);
-                        fenetre.autorisationDessiner = false;
-                    }
                     fenetre.panelFenetrePlateau.jouer.setVisible(false);
                     fenetre.panelFenetrePlateau.annuler.setVisible(false);
                     changerVue();
@@ -134,26 +122,22 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 break;
 
             case "Envoyer":
-                if (game.siGagne(0)) {
-                    fenetre.panelFenetrePlateau.envoyer.setVisible(true);
-                    fenetre.panelFenetrePlateau.jouer.setVisible(false);
+                if (game.siGagne(0)){
 
-                    if (game.getTabJoueur()[0].getCombinaisonEnCours().size() == 1) {
-                        int i = 0;
+                    if(game.getTabJoueur()[0].getCombinaisonEnCours().size()==1){
+                        int i =0;
                         game.donDeLaCarteNulle(game.getTabJoueur()[0].getCombinaisonEnCours().get(i));
                         game.getTabJoueur()[0].clearCombinaisonEnCours();
                         game.donDeLaMeilleurCarte();
-                    } else {
+                    }else{
                         fenetre.panelFenetrePlateau.envoyer.setText("Trop de Carte!");
                     }
-
-                    game.getTabJoueur()[0].ordoMain();
-                    fenetre.panelFenetrePlateau.annuler.setVisible(false);
-                    fenetre.panelFenetrePlateau.envoyer.setVisible(false);
-                    changerVue();
-                }else{
-                    fenetre.panelFenetrePlateau.envoyer.setVisible(false);
                 }
+                game.getTabJoueur()[0].ordoMain();
+                fenetre.panelFenetrePlateau.jouer.setVisible(false);
+                fenetre.panelFenetrePlateau.annuler.setVisible(false);
+                fenetre.panelFenetrePlateau.envoyer.setVisible(false);
+                changerVue();
                 break;
         }
     }
