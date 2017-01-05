@@ -143,6 +143,11 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 fenetre.panelFenetrePlateau.envoyer.setVisible(false);
                 changerVue();
                 break;
+
+            case "PasserTime":
+                automate.stopWaitIA();
+
+                break;
         }
     }
 }

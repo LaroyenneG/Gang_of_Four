@@ -79,6 +79,7 @@ public class Automate {
      */
     public void stopWaitIA(){
         wait=false;
+
     }
 
 }

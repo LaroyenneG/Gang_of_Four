@@ -20,6 +20,7 @@ public class FenetrePlateau extends JPanel{
     public JButton passertour;
     public JButton annuler;
     public JButton envoyer;
+    public JButton passerTourIa;
     public Game game;
     public JButton[] cartesMain;
     public JButton[] cartesChoixMulti;
@@ -42,6 +43,8 @@ public class FenetrePlateau extends JPanel{
         passertour.setActionCommand("Passer le Tour");
         envoyer = new JButton("Envoyer");
         envoyer.setActionCommand("Envoyer");
+        passerTourIa =new JButton("Passer Timer");
+        passerTourIa.setActionCommand("PasserTime");
 
         texteDontCarte = new JLabel("Votre Meilleur Carte a été donné !");
 
@@ -50,6 +53,7 @@ public class FenetrePlateau extends JPanel{
         add(passertour);
         add(envoyer);
         add(texteDontCarte);
+        add(passerTourIa);
     }
 
     public void supprimerBouton(){
@@ -100,6 +104,7 @@ public class FenetrePlateau extends JPanel{
         annuler.addActionListener(controlFenetrePlateau);
         passertour.addActionListener(controlFenetrePlateau);
         envoyer.addActionListener(controlFenetrePlateau);
+        passerTourIa.addActionListener(controlFenetrePlateau);
 
         //Bouton des Cartes
         for (int i = 0; i<game.getTabJoueurIndex(0).getMain().size();i++ )
@@ -255,6 +260,17 @@ public class FenetrePlateau extends JPanel{
             cartesMain[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
             cartesMain[i].setBorder(null);
             g.drawImage(imgi, (posX+((posX+5)*i)), (int)(Y*0.74), posX, (int) (posX*1.5), this); // on dessine
+        }
+
+        if (game.getJoueurPlay() != 0)
+        {
+            passerTourIa.setBounds((int) (1 / 30.0 * X), (int) (1 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
+            passerTourIa.setBackground(new Color(0, 0, 0, 0));
+            passerTourIa.setFont(f);
+            passerTourIa.setForeground(Color.WHITE);
+            passerTourIa.setFocusable(false);
+            passerTourIa.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            passerTourIa.setBorder(null);
         }
 
     }
