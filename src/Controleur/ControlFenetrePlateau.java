@@ -44,7 +44,6 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                         fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(true);
                         fenetre.autorisationDessiner = true;
                         select1Multi = true;
-                        game.getTabJoueur()[0].getCombinaisonEnCours().remove(unMulti);
                     }
                     changerVue();
                 }
