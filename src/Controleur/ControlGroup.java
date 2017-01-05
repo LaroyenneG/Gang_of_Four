@@ -17,6 +17,6 @@ public class ControlGroup {
         ControlFenetreCredits controlFenetreCredits = new ControlFenetreCredits(fenetre, game);
         ControlFenetreRegle controlFenetreRegle = new ControlFenetreRegle(fenetre, game);
         ControlBarreMenu controlBarreMenu = new ControlBarreMenu(fenetre, game);
-        ControlIA controlIA = new ControlIA(fenetre, game);
+
     }
 }
