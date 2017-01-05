@@ -18,9 +18,6 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
     }
     public void actionPerformed(ActionEvent e) {
 
-        boolean select1Multi = false;
-        String carteChoixMulti = "";
-
         if(e.getActionCommand().contains("Carte")){
             if (game.getTabJoueur()[0].peutJouer) {
 
@@ -41,7 +38,6 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                     for (int j = 0; j < 3; j++) {
                         fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(true);
                         fenetre.autorisationDessiner = true;
-                        select1Multi = true;
                     }
                     changerVue();
                 }
@@ -74,17 +70,14 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
             int i = Integer.valueOf(nombre);
 
-            game.getTabJoueur()[0].addCombinaisonEnCours(game.choixDeLaCouleurDuMulticolor(i));
-            game.choixDeLaCouleurDuMulticolor(i);
-            carteChoixMulti = "" + game.choixDeLaCouleurDuMulticolor(i);
+            System.out.println("coucou");
+            System.out.println(game.getTabJoueur()[0].addCombinaisonEnCours(game.choixDeLaCouleurDuMulticolor(i)));
+            System.out.println(game.choixDeLaCouleurDuMulticolor(i));
 
-            for (int j = 0; j < 3; j++) {
-                fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(false);
-                fenetre.autorisationDessiner = false;
-            }
 
         }
-        
+
+
         switch (e.getActionCommand()) {
             case "Passer le Tour":
                 game.passerSonTour(0);
@@ -105,20 +98,11 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 break;
 
             case "Annuler":
-                if (select1Multi == false) {
-                    game.getTabJoueurIndex(0).resetCombinaison();
-                    fenetre.panelFenetrePlateau.creerBouton();
-                    fenetre.panelFenetrePlateau.jouer.setVisible(false);
-                    fenetre.panelFenetrePlateau.annuler.setVisible(false);
-                    changerVue();
-                }else{
-                    game.getTabJoueurIndex(0).resetCombinaison();
-                    game.getTabJoueur()[0].getMain().remove(carteChoixMulti);
-                    fenetre.panelFenetrePlateau.creerBouton();
-                    fenetre.panelFenetrePlateau.jouer.setVisible(false);
-                    fenetre.panelFenetrePlateau.annuler.setVisible(false);
-                    changerVue();
-                }
+                game.getTabJoueurIndex(0).resetCombinaison();
+                fenetre.panelFenetrePlateau.creerBouton();
+                fenetre.panelFenetrePlateau.jouer.setVisible(false);
+                fenetre.panelFenetrePlateau.annuler.setVisible(false);
+                changerVue();
                 break;
 
             case "Envoyer":
