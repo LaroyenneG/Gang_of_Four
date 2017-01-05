@@ -3,12 +3,9 @@ package Controleur;
 import Model.Carte;
 import Model.Game;
 import Vue.Fenetre;
-import Vue.FenetrePlateau;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import static java.lang.Thread.sleep;
 
 /**
  * Created by Florian Vaissiere on 21/11/2016.
@@ -46,11 +43,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                     for (int j = 0; j < 3; j++) {
                         fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(true);
                         fenetre.autorisationDessiner = true;
-<<<<<<< HEAD
                         select1Multi = true;
-=======
-                        fenetre.panelFenetrePlateau.creerBouton1Multi();
->>>>>>> parent of 6f5b2de... corrrection 1 multi
                     }
                     changerVue();
                 }
@@ -83,20 +76,12 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
             int i = Integer.valueOf(nombre);
 
-<<<<<<< HEAD
             game.getTabJoueur()[0].addCombinaisonEnCours(game.choixDeLaCouleurDuMulticolor(i));
             game.choixDeLaCouleurDuMulticolor(i);
-=======
-            /*
-            System.out.println(game.getTabJoueur()[0].addCombinaisonEnCours(game.choixDeLaCouleurDuMulticolor(i)));
-            System.out.println(game.choixDeLaCouleurDuMulticolor(i));
-            */
->>>>>>> parent of 6f5b2de... corrrection 1 multi
 
             carteChoixMulti = game.choixDeLaCouleurDuMulticolor(i);
             game.getTabJoueur()[0].getCombinaisonEnCours().remove(0);
 
-<<<<<<< HEAD
             for (int j = 0; j < 3; j++) {
                 fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(false);
                 fenetre.autorisationDessiner = false;
@@ -104,8 +89,6 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
         }
         
-=======
->>>>>>> parent of 6f5b2de... corrrection 1 multi
         switch (e.getActionCommand()) {
             case "Passer le Tour":
                 game.passerSonTour(0);
