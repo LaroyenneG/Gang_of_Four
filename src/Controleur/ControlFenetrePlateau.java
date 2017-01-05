@@ -20,7 +20,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         boolean select1Multi = false;
-        Carte carteChoixMulti = null;
+        String carteChoixMulti = "";
         Carte unMulti = game.getTabJoueurIndex(0).getMain().get(0);;
 
         if(e.getActionCommand().contains("Carte")){
@@ -78,8 +78,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
             game.getTabJoueur()[0].addCombinaisonEnCours(game.choixDeLaCouleurDuMulticolor(i));
             game.choixDeLaCouleurDuMulticolor(i);
-
-            carteChoixMulti = game.choixDeLaCouleurDuMulticolor(i);
+            carteChoixMulti = "" + game.choixDeLaCouleurDuMulticolor(i);
 
             for (int j = 0; j < 3; j++) {
                 fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(false);
@@ -120,7 +119,6 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                     changerVue();
                 }else{
                     game.getTabJoueurIndex(0).resetCombinaison();
-                    changerVue();
                     game.getTabJoueur()[0].getMain().remove(carteChoixMulti);
                     game.getTabJoueur()[0].getMain().add(unMulti);
                     game.getTabJoueur()[0].ordoMain();
