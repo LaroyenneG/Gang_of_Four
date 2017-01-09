@@ -179,7 +179,9 @@ public class Game {
             hardTable();
             System.out.println("hardTable()");
         }
-        setJoueurPlay(nextJoueurOracle());
+        else{
+            setJoueurPlay(nextJoueurOracle());
+        }
     }
 
     private int idJoueur(int j){
@@ -213,17 +215,7 @@ public class Game {
     regarde si tout les joueurs on passe, si oui la table est vide
      */
     public void hardTable(){
-        boolean passe=true;
-
-        for (Joueur aTabJoueur : tabJoueur) {
-            if (aTabJoueur.peutJouer) {
-                passe = false;
-            }
-        }
-
-        if(passe){
-            table.clear();
-        }
+        table.clear();
 
         for (Joueur aTabJoueur : tabJoueur) {
             aTabJoueur.peutJouer=true;
