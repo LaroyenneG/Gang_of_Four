@@ -77,7 +77,6 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
             int i = Integer.valueOf(nombre);
 
             c = game.choixDeLaCouleurDuMulticolor(i);
-            System.out.print(c);
 
             for (int j = 0; j < 3; j++) {
                 fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(false);

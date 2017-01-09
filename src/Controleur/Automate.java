@@ -38,7 +38,7 @@ public class Automate {
                       //attente de la fin du joueur
                     while (game.getJoueurPlay()==0){
                         try {
-                            sleep(500);
+                            sleep(200);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -58,7 +58,7 @@ public class Automate {
 
         while (game.getJoueurPlay()!=0){
             try {
-                sleep(500);
+                sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

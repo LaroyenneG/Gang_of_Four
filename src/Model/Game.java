@@ -177,7 +177,6 @@ public class Game {
         int j=nextJoueurOracle();
         if(j==joueurPlay){
             hardTable();
-            System.out.println("hardTable()");
         }
         else{
             setJoueurPlay(nextJoueurOracle());
