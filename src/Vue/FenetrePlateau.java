@@ -185,10 +185,13 @@ public class FenetrePlateau extends JPanel{
         IA ia3 = (IA) game.getTabJoueur()[3];
         g.setColor(Color.WHITE);
         g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-        g.drawString((Integer.toString(game.getTabJoueurIndex(1).getMain().size())),(int)(X*0.1)+posX,300);
-        g.drawString(ia1.getName()  ,(int)(X*0.1)+posX-100,295);
+
         g.drawString((Integer.toString(game.getTabJoueurIndex(3).getMain().size())),(int)(X*0.85)+posX,300);
-        g.drawString(ia2.getName()  ,(int)(X*0.85)+posX-100,295);
+        g.drawString(ia1.getName()  ,(int)(X*0.85)+posX-100,295);
+
+        g.drawString((Integer.toString(game.getTabJoueurIndex(1).getMain().size())),(int)(X*0.1)+posX,300);
+        g.drawString(ia2.getName()  ,(int)(X*0.1)+posX-100,295);
+
         g.drawString((Integer.toString(game.getTabJoueurIndex(2).getMain().size())),(X/2-(posX/2))+posX, 100);
         g.drawString(ia3.getName()  ,(X/2-(posX/2))+posX-100, 95);
 
