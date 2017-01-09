@@ -58,7 +58,7 @@ public class Automate {
 
         while (game.getJoueurPlay()!=0){
             try {
-                sleep(1000);
+                sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
