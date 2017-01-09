@@ -55,7 +55,7 @@ public class Automate {
 
     private void actionIA(){
         wait[0]=true;
-
+        boolean testSiUnGagnant= false;
         while (game.getJoueurPlay()!=0){
             try {
                 sleep(200);
@@ -63,8 +63,18 @@ public class Automate {
                 e.printStackTrace();
             }
             game.faireJouerIA();
-            game.nextJoueur();
-            control.changerVue();
+
+            for (int i=1;i<4;i++){
+                if (game.siGagne(i)){ testSiUnGagnant = true; }
+            }
+            if (testSiUnGagnant){
+                game.nextManche();
+            }
+            else {
+                game.nextJoueur();
+                control.changerVue();
+            }
+
 
             for (int t=0; t<60 && wait[0]; t++){
                 try {

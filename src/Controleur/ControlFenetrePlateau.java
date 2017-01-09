@@ -2,6 +2,7 @@ package Controleur;
 
 import Model.Carte;
 import Model.Game;
+import Model.Joueur;
 import Vue.Fenetre;
 
 import java.awt.event.ActionEvent;
@@ -109,8 +110,13 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                     game.poseTable(game.getTabJoueur()[0].getCombinaisonEnCours());
 
                     game.getTabJoueur()[0].clearCombinaisonEnCours();
-                    changerVue();
-                    game.nextJoueur();
+                    if (game.siGagne(0)){
+                        game.nextManche();
+                    }
+                    else {
+                        changerVue();
+                        game.nextJoueur();
+                    }
                 }
 
                 break;

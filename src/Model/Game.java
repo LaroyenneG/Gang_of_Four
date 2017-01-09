@@ -87,13 +87,15 @@ public class Game {
     }
 
     public void nextManche(){
-        tabJoueur[0]=new Joueur();
-        for(int i=1; i<tabJoueur.length;i++){
-            tabJoueur[i]=new IA();
+        setQuiPerd();
+
+        for(int i=0; i<tabJoueur.length;i++){
+            AlgoCarte.incrementScore(tabJoueur[i]);
+            tabJoueur[i].clearMain();
+            tabJoueur[i].peutJouer=true;
         }
         distribuerCarte();
         manche++;
-        joueurPlay=firstPlayer();
         table.clear();
     }
 
@@ -115,8 +117,8 @@ public class Game {
 
     public boolean siGagne(int indexJoueur){
         if (tabJoueur[indexJoueur].getMain().size()==0){
-               dernierGagnant = indexJoueur;
-               return true;
+            dernierGagnant = indexJoueur;
+            return true;
         }
         return false;
     }
