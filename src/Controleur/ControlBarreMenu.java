@@ -20,7 +20,6 @@ public class ControlBarreMenu extends Control implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Nouvelle Partie":
-                fenetre.getContentPane().removeAll();
                 game.clearTable();
                 game.distribuerCarte();
                 game.getTabJoueur()[0].ordoMain();
