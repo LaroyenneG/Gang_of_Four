@@ -156,7 +156,13 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 break;
 
             case "PasserTime":
-                automate.auto();
+                if(automate.getAutomate()==null){
+                    game.getTabJoueurIndex(0).resetCombinaison(c);
+                    fenetre.panelFenetrePlateau.creerBouton();
+                    fenetre.panelFenetrePlateau.jouer.setVisible(false);
+                    fenetre.panelFenetrePlateau.annuler.setVisible(false);
+                    automate.auto();
+                }
                 break;
         }
     }
