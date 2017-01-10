@@ -87,14 +87,21 @@ public class Game {
     }
 
     public void nextManche(){
-        tabJoueur[0]=new Joueur();
-        for(int i=1; i<tabJoueur.length;i++){
-            tabJoueur[i]=new IA();
+        System.out.println("Test WIN");
+        setQuiPerd();
+        for(int i=0; i<tabJoueur.length;i++){
+            AlgoCarte.incrementScore(tabJoueur[i]);
+            tabJoueur[i].clearMain();
+            tabJoueur[i].peutJouer=true;
         }
         distribuerCarte();
         manche++;
-        joueurPlay=firstPlayer();
+        //donDeLaMeilleurCarte();
+        //donDeLaCarteNulle(tabJoueur[perdantDernierePartie].getMain().get(0));
         table.clear();
+        for(int i=0; i<tabJoueur.length;i++){
+            tabJoueur[i].ordoMain();
+        }
     }
 
     public int firstPlayer(){
@@ -114,9 +121,9 @@ public class Game {
     }
 
     public boolean siGagne(int indexJoueur){
-        if (tabJoueur[indexJoueur].getMain().size()==0){
-               dernierGagnant = indexJoueur;
-               return true;
+        if (tabJoueur[indexJoueur].getMain().size()==0 && tabJoueur[indexJoueur].getcombinaisonEnCours().size()==0){
+            dernierGagnant = indexJoueur;
+            return true;
         }
         return false;
     }
@@ -164,7 +171,7 @@ public class Game {
 
     public void donDeLaMeilleurCarte(){
         tabJoueur[dernierGagnant].addALaMain(tabJoueur[perdantDernierePartie].plusForteCarte());
-        tabJoueur[perdantDernierePartie].getMain().remove(tabJoueur[perdantDernierePartie].getMain().size()-1);
+        tabJoueur[perdantDernierePartie].getMain().remove(tabJoueur[perdantDernierePartie].plusForteCarte());
         AlgoCarte.trierCarte(tabJoueur[dernierGagnant].getMain());
     }
 
@@ -177,9 +184,10 @@ public class Game {
         int j=nextJoueurOracle();
         if(j==joueurPlay){
             hardTable();
-            System.out.println("hardTable()");
         }
-        setJoueurPlay(nextJoueurOracle());
+        else{
+            setJoueurPlay(nextJoueurOracle());
+        }
     }
 
     private int idJoueur(int j){
@@ -213,17 +221,7 @@ public class Game {
     regarde si tout les joueurs on passe, si oui la table est vide
      */
     public void hardTable(){
-        boolean passe=true;
-
-        for (Joueur aTabJoueur : tabJoueur) {
-            if (aTabJoueur.peutJouer) {
-                passe = false;
-            }
-        }
-
-        if(passe){
-            table.clear();
-        }
+        table.clear();
 
         for (Joueur aTabJoueur : tabJoueur) {
             aTabJoueur.peutJouer=true;

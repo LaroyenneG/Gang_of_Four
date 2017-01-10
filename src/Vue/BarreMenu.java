@@ -48,10 +48,10 @@ public class BarreMenu extends JMenuBar {
         IA ia1 = (IA) game.getTabJoueur()[1];
         IA ia2 = (IA) game.getTabJoueur()[2];
         IA ia3 = (IA) game.getTabJoueur()[3];
-        scorej1 = new JMenuItem("Vous :" +"" + game.getTabJoueur()[0].getScore());
-        scorej2 = new JMenuItem(ia1.getName()+": "+"" + game.getTabJoueur()[1].getScore());
-        scorej3 = new JMenuItem(ia2.getName()+": "+"" + game.getTabJoueur()[2].getScore());
-        scorej4 = new JMenuItem(ia3.getName()+": "+"" + game.getTabJoueur()[3].getScore());
+        scorej1 = new JMenuItem("Vous : " + game.getTabJoueur()[0].getScore());
+        scorej2 = new JMenuItem(ia1.getName()+": " + game.getTabJoueur()[1].getScore());
+        scorej3 = new JMenuItem(ia2.getName()+": " + game.getTabJoueur()[2].getScore());
+        scorej4 = new JMenuItem(ia3.getName()+": " + game.getTabJoueur()[3].getScore());
 
         //ScoreItem
         score.add(scorej1);

@@ -1,6 +1,7 @@
 package Controleur;
 
 import Model.Game;
+import Model.IA;
 import Model.Joueur;
 import Vue.Fenetre;
 
@@ -20,7 +21,6 @@ public class ControlBarreMenu extends Control implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Nouvelle Partie":
-                fenetre.getContentPane().removeAll();
                 game.clearTable();
                 game.distribuerCarte();
                 game.getTabJoueur()[0].ordoMain();
@@ -46,6 +46,21 @@ public class ControlBarreMenu extends Control implements ActionListener {
             case "Combinaison":
                 fenetre.setContentPane(fenetre.panelFenetreRegle);
                 changerVue();
+                break;
+
+            case "Score":
+
+                IA ia1 = (IA) game.getTabJoueur()[1];
+                IA ia2 = (IA) game.getTabJoueur()[2];
+                IA ia3 = (IA) game.getTabJoueur()[3];
+
+                fenetre.barreMenu.scorej1.setText("Vous : "  + game.getTabJoueur()[0].getScore());
+                fenetre.barreMenu.scorej2.setText(ia1.getName()+": " + game.getTabJoueur()[1].getScore());
+                fenetre.barreMenu.scorej3.setText(ia2.getName()+": " + game.getTabJoueur()[2].getScore());
+                fenetre.barreMenu.scorej4.setText(ia3.getName()+": " + game.getTabJoueur()[3].getScore());
+
+                changerVue();
+
                 break;
         }
     }

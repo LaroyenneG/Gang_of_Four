@@ -35,10 +35,32 @@ public class Automate {
             @Override
             public void run() {
                 while (true){
+
+                    boolean testSiUnGagnant= false;
+
+                    for (int i=0;i<4;i++){
+                        if (game.siGagne(i)){
+                            testSiUnGagnant = true;
+                            break;
+                        }
+                    }
+                    if (testSiUnGagnant){
+                        control.changerVue();
+                        game.nextManche();
+                        try {
+                            sleep(4000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        control.changerVue();
+                        stopAutomate();
+                    }
+
+
                       //attente de la fin du joueur
                     while (game.getJoueurPlay()==0){
                         try {
-                            sleep(500);
+                            sleep(400);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -57,22 +79,33 @@ public class Automate {
         wait[0]=true;
 
         while (game.getJoueurPlay()!=0){
+
+
+            for (int i=1;i<4;i++){
+                if (game.siGagne(i)){
+                    return;
+                }
+            }
+
             try {
-                sleep(1000);
+                sleep(300);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            game.faireJouerIA();
-            game.nextJoueur();
-            control.changerVue();
 
-            for (int t=0; t<60 && wait[0]; t++){
+
+            for (int t=0; t<10 && wait[0]; t++){
                 try {
                     sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
+
+            game.faireJouerIA();
+            game.nextJoueur();
+
+            control.changerVue();
         }
     }
 
@@ -83,4 +116,15 @@ public class Automate {
         wait[0]=false;
     }
 
+    public void stopAutomate(){
+        if (automate!=null){
+            automate.interrupt();
+            automate.stop();
+            System.out.println(automate.getState());
+        }
+    }
+
+    public Thread getAutomate(){
+        return automate;
+    }
 }
