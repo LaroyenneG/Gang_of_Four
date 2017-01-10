@@ -96,9 +96,12 @@ public class Game {
         }
         distribuerCarte();
         manche++;
-        donDeLaMeilleurCarte();
-        donDeLaCarteNulle(tabJoueur[perdantDernierePartie].getMain().get(0));
+        //donDeLaMeilleurCarte();
+        //donDeLaCarteNulle(tabJoueur[perdantDernierePartie].getMain().get(0));
         table.clear();
+        for(int i=0; i<tabJoueur.length;i++){
+            tabJoueur[i].ordoMain();
+        }
     }
 
     public int firstPlayer(){
@@ -168,7 +171,7 @@ public class Game {
 
     public void donDeLaMeilleurCarte(){
         tabJoueur[dernierGagnant].addALaMain(tabJoueur[perdantDernierePartie].plusForteCarte());
-        tabJoueur[perdantDernierePartie].getMain().remove(tabJoueur[perdantDernierePartie].getMain().size()-1);
+        tabJoueur[perdantDernierePartie].getMain().remove(tabJoueur[perdantDernierePartie].plusForteCarte());
         AlgoCarte.trierCarte(tabJoueur[dernierGagnant].getMain());
     }
 

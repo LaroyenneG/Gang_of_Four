@@ -100,18 +100,23 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
         switch (e.getActionCommand()) {
             case "Passer le Tour":
-                game.passerSonTour(0);
-                changerVue();
-                game.nextJoueur();
+                if(game.getJoueurPlay()==0) {
+                    game.passerSonTour(0);
+                    changerVue();
+                    game.nextJoueur();
+                }
                 break;
 
             case "Jouer":
+
                 if (game.joueurCanPlayCombinaison(0)&&game.getJoueurPlay()==0) {
                     game.clearTable();
                     game.poseTable(game.getTabJoueur()[0].getCombinaisonEnCours());
 
                     game.getTabJoueur()[0].clearCombinaisonEnCours();
+                    /*
                     if (game.siGagne(0)){
+                        automate.stopAutomate();
                         game.nextManche();
                         changerVue();
                         game.nextManche();
@@ -126,6 +131,9 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                         changerVue();
                         game.nextJoueur();
                     }
+                    */
+                    changerVue();
+                    game.nextJoueur();
                 }
 
                 break;
@@ -139,17 +147,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 break;
 
             case "Envoyer":
-                if (game.siGagne(0)){
 
-                    if(game.getTabJoueur()[0].getCombinaisonEnCours().size()==1){
-                        int i =0;
-                        game.donDeLaCarteNulle(game.getTabJoueur()[0].getCombinaisonEnCours().get(i));
-                        game.getTabJoueur()[0].clearCombinaisonEnCours();
-                        game.donDeLaMeilleurCarte();
-                    }else{
-                        fenetre.panelFenetrePlateau.envoyer.setText("Trop de Carte!");
-                    }
-                }
                 game.getTabJoueur()[0].ordoMain();
                 fenetre.panelFenetrePlateau.jouer.setVisible(false);
                 fenetre.panelFenetrePlateau.annuler.setVisible(false);
@@ -158,8 +156,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 break;
 
             case "PasserTime":
-                automate.stopWaitIA();
-
+                automate.auto();
                 break;
         }
     }

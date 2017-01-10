@@ -38,7 +38,7 @@ public class Automate {
                       //attente de la fin du joueur
                     while (game.getJoueurPlay()==0){
                         try {
-                            sleep(200);
+                            sleep(400);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -59,7 +59,7 @@ public class Automate {
 
         while (game.getJoueurPlay()!=0){
             try {
-                sleep(200);
+                sleep(300);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -77,7 +77,7 @@ public class Automate {
                     e.printStackTrace();
                 }
                 control.changerVue();
-                automate.interrupt();
+                stopAutomate();
             }
             else {
                 game.nextJoueur();
@@ -85,9 +85,9 @@ public class Automate {
             System.out.println("test avant repaint");
             control.changerVue();
             System.out.println("test apres repaint");
-            for (int t=0; t<30 && wait[0]; t++){
+            for (int t=0; t<10 && wait[0]; t++){
                 try {
-                    sleep(200);
+                    sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -100,5 +100,15 @@ public class Automate {
      */
     public void stopWaitIA(){
         wait[0]=false;
+    }
+
+    public void stopAutomate(){
+        System.out.println("test1");
+        if (automate!=null){
+            System.out.println("test2");
+            automate.interrupt();
+            automate.stop();
+            System.out.println(automate.getState());
+        }
     }
 }

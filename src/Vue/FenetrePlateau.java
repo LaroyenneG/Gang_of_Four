@@ -43,7 +43,7 @@ public class FenetrePlateau extends JPanel{
         passertour.setActionCommand("Passer le Tour");
         envoyer = new JButton("Envoyer");
         envoyer.setActionCommand("Envoyer");
-        passerTourIa =new JButton("Passer Timer");
+        passerTourIa =new JButton("Run");
         passerTourIa.setActionCommand("PasserTime");
 
         texteDontCarte = new JLabel("Votre Meilleur Carte a été donné !");
