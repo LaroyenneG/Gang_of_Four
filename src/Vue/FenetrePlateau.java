@@ -25,6 +25,7 @@ public class FenetrePlateau extends JPanel{
     public JButton[] cartesMain;
     public JButton[] cartesChoixMulti;
     public JLabel texteDontCarte;
+    public JLabel score, scorej1, scorej2, scorej3, scorej4;
 
     public FenetrePlateau(Game game) { // ajout d'un game en paramètre pour récupérer les mains des joueurs
         this.game = game;
@@ -54,6 +55,24 @@ public class FenetrePlateau extends JPanel{
         add(envoyer);
         add(texteDontCarte);
         add(passerTourIa);
+
+
+        /*score = new JLabel("Score :");
+        IA ia1 = (IA) game.getTabJoueur()[1];
+        IA ia2 = (IA) game.getTabJoueur()[2];
+        IA ia3 = (IA) game.getTabJoueur()[3];
+        scorej1 = new JLabel("Vous : " + game.getTabJoueur()[0].getScore());
+        scorej2 = new JLabel(ia1.getName()+": " + game.getTabJoueur()[1].getScore());
+        scorej3 = new JLabel(ia2.getName()+": " + game.getTabJoueur()[2].getScore());
+        scorej4 = new JLabel(ia3.getName()+": " + game.getTabJoueur()[3].getScore());
+
+        //ScoreItem
+        add(score);
+        add(scorej1);
+        add(scorej2);
+        add(scorej3);
+        add(scorej4);*/
+
     }
 
     public void supprimerBouton(){
@@ -159,6 +178,28 @@ public class FenetrePlateau extends JPanel{
         envoyer.setCursor(new Cursor(Cursor.HAND_CURSOR));
         envoyer.setBorder(null);
 
+        //score
+/*
+        score.setBounds((int) (20 / 30.0 * X), (int) (0.5 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
+        score.setFont(f);
+        score.setForeground(Color.WHITE);
+
+        scorej1.setBounds((int) (20 / 30.0 * X), (int) (1 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
+        scorej1.setFont(f);
+        scorej1.setForeground(Color.WHITE);
+
+        scorej2.setBounds((int) (20 / 30.0 * X), (int) (1.5 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
+        scorej2.setFont(f);
+        scorej2.setForeground(Color.WHITE);
+
+        scorej3.setBounds((int) (20 / 30.0 * X), (int) (2 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
+        scorej3.setFont(f);
+        scorej3.setForeground(Color.WHITE);
+
+        scorej4.setBounds((int) (20 / 30.0 * X), (int) (2.5 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
+        scorej4.setFont(f);
+        scorej4.setForeground(Color.WHITE);
+*/
         //Fond
 
         Image img = getToolkit().getImage("image/fondplateau.jpg");
