@@ -52,10 +52,10 @@ public class FenetrePlateau extends JPanel{
         add(annuler);
         add(passertour);
         add(texteDontCarte);
-<<<<<<< HEAD
+
         add(runIa);
-=======
-        add(passerTourIa);
+
+
 
 
         /*score = new JLabel("Score :");
@@ -74,7 +74,7 @@ public class FenetrePlateau extends JPanel{
         add(scorej3);
         add(scorej4);*/
 
->>>>>>> a79a4f8c29f4b0b01f69cd3ad7d1d642e456bb54
+
     }
 
     public void supprimerBouton(){
