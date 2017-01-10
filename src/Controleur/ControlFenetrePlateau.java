@@ -37,7 +37,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 int i = Integer.valueOf(nombre);
                 fenetre.panelFenetrePlateau.jouer.setVisible(true);
                 fenetre.panelFenetrePlateau.annuler.setVisible(true);
-                fenetre.panelFenetrePlateau.envoyer.setVisible(true);
+
 
                 //Selection de la couleur du 1 Multicolor
                 if (game.getTabJoueurIndex(0).getMain().get(i).couleur.equals(MULTI)){
@@ -114,24 +114,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                     game.poseTable(game.getTabJoueur()[0].getCombinaisonEnCours());
 
                     game.getTabJoueur()[0].clearCombinaisonEnCours();
-                    /*
-                    if (game.siGagne(0)){
-                        automate.stopAutomate();
-                        game.nextManche();
-                        changerVue();
-                        game.nextManche();
-                        try {
-                            sleep(4000);
-                        } catch (InterruptedException er) {
-                            er.printStackTrace();
-                        }
-                        changerVue();
-                    }
-                    else {
-                        changerVue();
-                        game.nextJoueur();
-                    }
-                    */
+
                     changerVue();
                     game.nextJoueur();
                 }
@@ -155,13 +138,17 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 changerVue();
                 break;
 
-            case "PasserTime":
+            case "Run":
                 if(automate.getAutomate()==null){
                     game.getTabJoueurIndex(0).resetCombinaison(c);
                     fenetre.panelFenetrePlateau.creerBouton();
                     fenetre.panelFenetrePlateau.jouer.setVisible(false);
                     fenetre.panelFenetrePlateau.annuler.setVisible(false);
+                    changerVue();
                     automate.auto();
+                    System.out.println("run");
+                }else {
+                    System.out.println("already run !");
                 }
                 break;
         }

@@ -48,7 +48,7 @@ public class Automate {
                         control.changerVue();
                         game.nextManche();
                         try {
-                            sleep(4000);
+                            sleep(1000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -79,22 +79,20 @@ public class Automate {
         wait[0]=true;
 
         while (game.getJoueurPlay()!=0){
-
-
-            for (int i=1;i<4;i++){
+            for (int i=0;i<4;i++){
                 if (game.siGagne(i)){
                     return;
                 }
             }
 
             try {
-                sleep(300);
+                sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
 
-            for (int t=0; t<10 && wait[0]; t++){
+            for (int t=0; t<40 && wait[0]; t++){
                 try {
                     sleep(100);
                 } catch (InterruptedException e) {
@@ -103,6 +101,15 @@ public class Automate {
             }
 
             game.faireJouerIA();
+
+
+            //modif 3.0
+            for (int i=0;i<4;i++){
+                if (game.siGagne(i)){
+                    return;
+                }
+            }
+
             game.nextJoueur();
 
             control.changerVue();
@@ -120,7 +127,7 @@ public class Automate {
         if (automate!=null){
             automate.interrupt();
             automate.stop();
-            System.out.println(automate.getState());
+
         }
     }
 

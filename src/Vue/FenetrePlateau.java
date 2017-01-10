@@ -20,7 +20,7 @@ public class FenetrePlateau extends JPanel{
     public JButton passertour;
     public JButton annuler;
     public JButton envoyer;
-    public JButton passerTourIa;
+    public JButton runIa;
     public Game game;
     public JButton[] cartesMain;
     public JButton[] cartesChoixMulti;
@@ -42,18 +42,19 @@ public class FenetrePlateau extends JPanel{
         annuler.setActionCommand("Annuler");
         passertour = new JButton("Passer le Tour");
         passertour.setActionCommand("Passer le Tour");
-        envoyer = new JButton("Envoyer");
-        envoyer.setActionCommand("Envoyer");
-        passerTourIa =new JButton("Run");
-        passerTourIa.setActionCommand("PasserTime");
+
+        runIa =new JButton("Run IA");
+        runIa.setActionCommand("Run");
 
         texteDontCarte = new JLabel("Votre Meilleur Carte a été donné !");
 
         add(jouer);
         add(annuler);
         add(passertour);
-        add(envoyer);
         add(texteDontCarte);
+<<<<<<< HEAD
+        add(runIa);
+=======
         add(passerTourIa);
 
 
@@ -73,6 +74,7 @@ public class FenetrePlateau extends JPanel{
         add(scorej3);
         add(scorej4);*/
 
+>>>>>>> a79a4f8c29f4b0b01f69cd3ad7d1d642e456bb54
     }
 
     public void supprimerBouton(){
@@ -122,8 +124,7 @@ public class FenetrePlateau extends JPanel{
         jouer.addActionListener(controlFenetrePlateau);
         annuler.addActionListener(controlFenetrePlateau);
         passertour.addActionListener(controlFenetrePlateau);
-        envoyer.addActionListener(controlFenetrePlateau);
-        passerTourIa.addActionListener(controlFenetrePlateau);
+        runIa.addActionListener(controlFenetrePlateau);
 
         //Bouton des Cartes
         for (int i = 0; i<game.getTabJoueurIndex(0).getMain().size();i++ )
@@ -170,13 +171,6 @@ public class FenetrePlateau extends JPanel{
         annuler.setCursor(new Cursor(Cursor.HAND_CURSOR));
         annuler.setBorder(null);
 
-        envoyer.setBounds((int) (1 / 30.0 * X), (int) (9.75 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
-        envoyer.setBackground(new Color(0, 0, 0, 0));
-        envoyer.setFont(f);
-        envoyer.setForeground(Color.WHITE);
-        envoyer.setFocusable(false);
-        envoyer.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        envoyer.setBorder(null);
 
         //score
 /*
@@ -319,16 +313,13 @@ public class FenetrePlateau extends JPanel{
             g.drawImage(imgi, (posX+((posX+5)*i)), (int)(Y*0.74), posX, (int) (posX*1.5), this); // on dessine
         }
 
-        if (game.getJoueurPlay() != 0)
-        {
-            passerTourIa.setBounds((int) (1 / 30.0 * X), (int) (1 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
-            passerTourIa.setBackground(new Color(0, 0, 0, 0));
-            passerTourIa.setFont(f);
-            passerTourIa.setForeground(Color.WHITE);
-            passerTourIa.setFocusable(false);
-            passerTourIa.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            passerTourIa.setBorder(null);
-        }
+        runIa.setBounds((int) (1 / 30.0 * X), (int) (1 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
+        runIa.setBackground(new Color(0, 0, 0, 0));
+        runIa.setFont(f);
+        runIa.setForeground(Color.WHITE);
+        runIa.setFocusable(false);
+        runIa.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        runIa.setBorder(null);
 
     }
 }

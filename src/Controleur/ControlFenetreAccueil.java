@@ -21,7 +21,6 @@ public class ControlFenetreAccueil extends Control implements ActionListener {
                 fenetre.setContentPane(fenetre.panelFenetrePlateau);
                 fenetre.barreMenu.setVisible(true);
                 changerVue();
-                automate.auto();
                 break;
 
             case "Credits":

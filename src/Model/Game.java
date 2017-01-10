@@ -93,6 +93,7 @@ public class Game {
             AlgoCarte.incrementScore(tabJoueur[i]);
             tabJoueur[i].clearMain();
             tabJoueur[i].peutJouer=true;
+            System.out.println(tabJoueur[i].getScore());
         }
         distribuerCarte();
         manche++;

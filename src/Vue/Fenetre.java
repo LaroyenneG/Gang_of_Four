@@ -32,7 +32,7 @@ public class Fenetre extends JFrame{
         //Bouton
         panelFenetrePlateau.jouer.setVisible(false);
         panelFenetrePlateau.annuler.setVisible(false);
-        panelFenetrePlateau.envoyer.setVisible(false);
+
         for (int i=0; i < 3; i++) {
             panelFenetrePlateau.cartesChoixMulti[i].setVisible(false);
             autorisationDessiner = false;
