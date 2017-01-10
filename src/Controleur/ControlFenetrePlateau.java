@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Model.Carte.Couleur.MULTI;
+import static java.lang.Thread.sleep;
 
 /**
  * Created by Florian Vaissiere on 21/11/2016.
@@ -112,6 +113,14 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                     game.getTabJoueur()[0].clearCombinaisonEnCours();
                     if (game.siGagne(0)){
                         game.nextManche();
+                        changerVue();
+                        game.nextManche();
+                        try {
+                            sleep(4000);
+                        } catch (InterruptedException er) {
+                            er.printStackTrace();
+                        }
+                        changerVue();
                     }
                     else {
                         changerVue();

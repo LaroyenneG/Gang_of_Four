@@ -87,8 +87,8 @@ public class Game {
     }
 
     public void nextManche(){
+        System.out.println("Test WIN");
         setQuiPerd();
-
         for(int i=0; i<tabJoueur.length;i++){
             AlgoCarte.incrementScore(tabJoueur[i]);
             tabJoueur[i].clearMain();
@@ -96,6 +96,8 @@ public class Game {
         }
         distribuerCarte();
         manche++;
+        donDeLaMeilleurCarte();
+        donDeLaCarteNulle(tabJoueur[perdantDernierePartie].getMain().get(0));
         table.clear();
     }
 
@@ -116,7 +118,7 @@ public class Game {
     }
 
     public boolean siGagne(int indexJoueur){
-        if (tabJoueur[indexJoueur].getMain().size()==0){
+        if (tabJoueur[indexJoueur].getMain().size()==0 && tabJoueur[indexJoueur].getcombinaisonEnCours().size()==0){
             dernierGagnant = indexJoueur;
             return true;
         }

@@ -153,4 +153,9 @@ public class Joueur {
         String chaine="Joueur\n main="+main.size()+"\n combinaisonEnCours="+combinaisonEnCours.size()+"\n peutJouer="+peutJouer+"\n score="+score+"\n";
         return chaine;
     }
+
+
+    public List<Carte> getcombinaisonEnCours(){
+        return combinaisonEnCours;
+    }
 }

@@ -56,6 +56,7 @@ public class Automate {
     private void actionIA(){
         wait[0]=true;
         boolean testSiUnGagnant= false;
+
         while (game.getJoueurPlay()!=0){
             try {
                 sleep(200);
@@ -68,17 +69,25 @@ public class Automate {
                 if (game.siGagne(i)){ testSiUnGagnant = true; }
             }
             if (testSiUnGagnant){
+                control.changerVue();
                 game.nextManche();
+                try {
+                    sleep(4000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                control.changerVue();
+                automate.interrupt();
             }
             else {
                 game.nextJoueur();
-                control.changerVue();
             }
-
-
-            for (int t=0; t<60 && wait[0]; t++){
+            System.out.println("test avant repaint");
+            control.changerVue();
+            System.out.println("test apres repaint");
+            for (int t=0; t<30 && wait[0]; t++){
                 try {
-                    sleep(100);
+                    sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
