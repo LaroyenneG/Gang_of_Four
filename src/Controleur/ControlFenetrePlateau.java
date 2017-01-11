@@ -55,10 +55,6 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                     game.getTabJoueur()[0].getCombinaisonEnCours();
                 }
 
-                //Suppression et création des boutons représentant les cartes
-                /*if (fenetre.panelFenetrePlateau.cartesMain.length > 0) {
-                    fenetre.panelFenetrePlateau.supprimerBouton();
-                }*/
 
                 fenetre.panelFenetrePlateau.creerBouton();
 

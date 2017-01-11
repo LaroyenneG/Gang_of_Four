@@ -21,6 +21,7 @@ public abstract class Control {
         automate=new Automate(this);
     }
 
+
     protected void changerVue() {
         fenetre.repaint();
         fenetre.pack();

@@ -19,6 +19,8 @@ public class Automate {
     private Thread automate;
     private boolean run;
 
+    private static final int timeSleep=0;
+
     public Automate(Control control){
         this.control=control;
         game=control.game;
@@ -54,12 +56,8 @@ public class Automate {
                             JOptionPane dialog = new JOptionPane();
                             JOptionPane.showMessageDialog(dialog, "Nouvelle manche\n"+messageWin, "Manche terminé", 1);
 
-                            try {
-                                sleep(1000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
 
+                            control.fenetre.panelFenetrePlateau.creerBouton();
                             control.changerVue();
 
                             break;
@@ -97,13 +95,13 @@ public class Automate {
             }
 
             try {
-                sleep(100);
+                sleep(0);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
 
-            for (int t=0; t<30; t++){
+            for (int t=0; t<timeSleep; t++){
                 try {
                     sleep(100);
                 } catch (InterruptedException e) {

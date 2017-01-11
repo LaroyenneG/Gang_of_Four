@@ -234,7 +234,7 @@ public class FenetrePlateau extends JPanel{
                 Image imgi = getToolkit().getImage("cartes/"+game.getTable().get(i).getFileName());// on récup le nom de la carte
                 g.drawImage(imgi, (650+((posX+5)*i)), (int)(Y*0.37), posX, (int) (posX*1.5), this); // on dessine
 
-            }catch (IndexOutOfBoundsException ignored){
+            }catch (IndexOutOfBoundsException | NullPointerException ignored){
 
             }
         }
