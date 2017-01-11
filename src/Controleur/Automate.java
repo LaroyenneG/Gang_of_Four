@@ -129,7 +129,6 @@ public class Automate {
         run=false;
         if (automate!=null){
             automate.interrupt();
-            automate.stop();
             System.out.println("State "+automate.getState());
         }
     }
