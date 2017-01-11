@@ -85,8 +85,9 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
             for (int k = 0; k<game.getTabJoueur()[0].getCombinaisonEnCours().size();k++)
             {
-                if (game.getTabJoueur()[0].getCombinaisonEnCours().get(k).couleur.equals(MULTI))
+                if (game.getTabJoueur()[0].getCombinaisonEnCours().get(k).couleur.equals(MULTI)){
                     game.getTabJoueur()[0].getCombinaisonEnCours().remove(k);
+                }
             }
 
             changerVue();
@@ -123,7 +124,9 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 game.getTabJoueurIndex(0).resetCombinaison(c);
                 fenetre.panelFenetrePlateau.jouer.setVisible(false);
                 fenetre.panelFenetrePlateau.annuler.setVisible(false);
+                Fenetre.autorisationDessiner = false;
                 changerVue();
+
 
                 break;
 
