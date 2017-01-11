@@ -60,9 +60,8 @@ public class Joueur {
             boolean trouver = false;
             for (int i =0;i<combinaisonEnCours.size();i++)
             {
-                if (combinaisonEnCours.get(i).equals(c) && trouver== false)
+                if (combinaisonEnCours.get(i).equals(c) && !trouver)
                 {
-                    System.out.print("coucou");
                     combinaisonEnCours.remove(i);
                     combinaisonEnCours.add(new Carte(Carte.Couleur.MULTI));
                     trouver = true;

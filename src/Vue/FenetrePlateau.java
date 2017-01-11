@@ -284,16 +284,19 @@ public class FenetrePlateau extends JPanel{
 
         for (int i=0; i<game.getTabJoueurIndex(0).getMain().size();i++) // on récupére la taille de la main du j1 de game
         {
-            // pour chaque cartes en main
-            Image imgi = getToolkit().getImage("cartes/"+game.getTabJoueurIndex(0).getMain().get(i).getFileName());// on récup le nom de la carte
-            cartesMain[i].setBounds((posX+((posX+5)*i)), (int)(Y*0.74), posX, (int) (posX*1.5));
-            cartesMain[i].setBackground(new Color(0, 0, 0, 0));
-            cartesMain[i].setFocusable(false);
-            cartesMain[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
-            cartesMain[i].setBorder(null);
-            g.drawImage(imgi, (posX+((posX+5)*i)), (int)(Y*0.74), posX, (int) (posX*1.5), this); // on dessine
-        }
+            try {
+                // pour chaque cartes en main
+                Image imgi = getToolkit().getImage("cartes/" + game.getTabJoueurIndex(0).getMain().get(i).getFileName());// on récup le nom de la carte
+                cartesMain[i].setBounds((posX + ((posX + 5) * i)), (int) (Y * 0.74), posX, (int) (posX * 1.5));
+                cartesMain[i].setBackground(new Color(0, 0, 0, 0));
+                cartesMain[i].setFocusable(false);
+                cartesMain[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
+                cartesMain[i].setBorder(null);
+                g.drawImage(imgi, (posX + ((posX + 5) * i)), (int) (Y * 0.74), posX, (int) (posX * 1.5), this); // on dessine
+            }catch (ArrayIndexOutOfBoundsException ignored){
 
+            }
+        }
 
     }
 }

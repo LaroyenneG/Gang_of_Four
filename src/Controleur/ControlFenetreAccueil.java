@@ -18,7 +18,9 @@ public class ControlFenetreAccueil extends Control implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Jouer":
-                automate.auto();
+                if(!automate.isRun()){
+                    automate.auto();
+                }
                 fenetre.setContentPane(fenetre.panelFenetrePlateau);
                 fenetre.barreMenu.setVisible(true);
                 changerVue();

@@ -87,13 +87,11 @@ public class Game {
     }
 
     public void nextManche(){
-        System.out.println("Test WIN");
         setQuiPerd();
         for(int i=0; i<tabJoueur.length;i++){
             AlgoCarte.incrementScore(tabJoueur[i]);
             tabJoueur[i].clearMain();
             tabJoueur[i].peutJouer=true;
-            System.out.println(tabJoueur[i].getScore());
         }
         distribuerCarte();
         manche++;

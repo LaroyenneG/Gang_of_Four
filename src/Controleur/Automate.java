@@ -23,6 +23,7 @@ public class Automate {
         this.control=control;
         game=control.game;
         run=false;
+        automate=null;
     }
 
     public void auto(){
@@ -37,8 +38,6 @@ public class Automate {
             @Override
             public void run() {
                 while (run){
-
-
 
                     for (int i=0;i<4;i++){
                         if (game.siGagne(i)){
@@ -135,6 +134,15 @@ public class Automate {
             automate.stop();
             System.out.println("State "+automate.getState());
         }
+    }
+
+
+    public boolean isRun(){
+        if(automate==null){
+            return false;
+        }
+
+        return run;
     }
 
 }

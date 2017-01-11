@@ -40,8 +40,6 @@ public class TestIA {
 
                 if(!game.joueurCanPlayCombinaison(1)){
                     System.err.println("Anomaly :");
-
-                    System.out.println(game.getTabJoueur()[1].getCombinaisonEnCours());
                 }
                 Assert.assertTrue(game.joueurCanPlayCombinaison(1));
                 for (int i=0; i<game.getTabJoueur()[1].combinaisonEnCours.size();i++){
