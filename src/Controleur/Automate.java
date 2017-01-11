@@ -1,7 +1,10 @@
 package Controleur;
 
 import Model.Game;
+import Model.IA;
 
+
+import javax.swing.*;
 
 import static java.lang.Thread.sleep;
 
@@ -14,18 +17,17 @@ public class Automate {
     private Game game;
 
     private Thread automate;
-
-    private final boolean[] wait;
+    private boolean run;
 
     public Automate(Control control){
         this.control=control;
         game=control.game;
-
-        wait= new boolean[1];
-        wait[0]=false;
+        run=false;
     }
 
     public void auto(){
+
+        run=true;
 
         if(automate!=null){
             automate.interrupt();
@@ -34,27 +36,38 @@ public class Automate {
         automate = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true){
+                while (run){
 
-                    boolean testSiUnGagnant= false;
+
 
                     for (int i=0;i<4;i++){
                         if (game.siGagne(i)){
-                            testSiUnGagnant = true;
+
+                            game.nextManche();
+
+                            String messageWin="";
+
+                            if(i==0){
+                                messageWin="vous avez gagné";
+                            }else {
+                                messageWin=((IA)game.getTabJoueurIndex(i)).getName()+" à gagné";
+                            }
+                            JOptionPane dialog = new JOptionPane();
+                            JOptionPane.showMessageDialog(dialog, "Nouvelle manche\n"+messageWin, "Manche terminé", 1);
+
+                            try {
+                                sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            control.changerVue();
+
                             break;
                         }
                     }
-                    if (testSiUnGagnant){
-                        control.changerVue();
-                        game.nextManche();
-                        try {
-                            sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        control.changerVue();
-                        stopAutomate();
-                    }
+
+
 
 
                       //attente de la fin du joueur
@@ -76,7 +89,6 @@ public class Automate {
     }
 
     private void actionIA(){
-        wait[0]=true;
 
         while (game.getJoueurPlay()!=0){
             for (int i=0;i<4;i++){
@@ -86,13 +98,13 @@ public class Automate {
             }
 
             try {
-                sleep(1000);
+                sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
 
-            for (int t=0; t<40 && wait[0]; t++){
+            for (int t=0; t<30; t++){
                 try {
                     sleep(100);
                 } catch (InterruptedException e) {
@@ -103,7 +115,6 @@ public class Automate {
             game.faireJouerIA();
 
 
-            //modif 3.0
             for (int i=0;i<4;i++){
                 if (game.siGagne(i)){
                     return;
@@ -116,22 +127,14 @@ public class Automate {
         }
     }
 
-    /*
-    annule le timer
-     */
-    public void stopWaitIA(){
-        wait[0]=false;
-    }
 
     public void stopAutomate(){
+        run=false;
         if (automate!=null){
             automate.interrupt();
             automate.stop();
-
+            System.out.println("State "+automate.getState());
         }
     }
 
-    public Thread getAutomate(){
-        return automate;
-    }
 }

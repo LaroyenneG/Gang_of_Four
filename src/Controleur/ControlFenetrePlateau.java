@@ -138,19 +138,6 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 changerVue();
                 break;
 
-            case "Run":
-                if(automate.getAutomate()==null){
-                    game.getTabJoueurIndex(0).resetCombinaison(c);
-                    fenetre.panelFenetrePlateau.creerBouton();
-                    fenetre.panelFenetrePlateau.jouer.setVisible(false);
-                    fenetre.panelFenetrePlateau.annuler.setVisible(false);
-                    changerVue();
-                    automate.auto();
-                    System.out.println("run");
-                }else {
-                    System.out.println("already run !");
-                }
-                break;
         }
     }
 }

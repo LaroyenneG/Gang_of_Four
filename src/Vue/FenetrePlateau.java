@@ -20,7 +20,7 @@ public class FenetrePlateau extends JPanel{
     public JButton passertour;
     public JButton annuler;
     public JButton envoyer;
-    public JButton runIa;
+
     public Game game;
     public JButton[] cartesMain;
     public JButton[] cartesChoixMulti;
@@ -43,8 +43,7 @@ public class FenetrePlateau extends JPanel{
         passertour = new JButton("Passer le Tour");
         passertour.setActionCommand("Passer le Tour");
 
-        runIa =new JButton("Run IA");
-        runIa.setActionCommand("Run");
+
 
         texteDontCarte = new JLabel("Votre Meilleur Carte a été donné !");
 
@@ -52,9 +51,6 @@ public class FenetrePlateau extends JPanel{
         add(annuler);
         add(passertour);
         add(texteDontCarte);
-
-        add(runIa);
-
 
 
 
@@ -108,6 +104,7 @@ public class FenetrePlateau extends JPanel{
         }
     }
 
+    /*
     public int unMultiColor(){
         if (cartesChoixMulti[0].isSelected()){
             return 1;
@@ -117,6 +114,8 @@ public class FenetrePlateau extends JPanel{
             return 3;
         }
     }
+    */
+
 
     public void setControl(ControlFenetrePlateau controlFenetrePlateau) {
 
@@ -124,7 +123,6 @@ public class FenetrePlateau extends JPanel{
         jouer.addActionListener(controlFenetrePlateau);
         annuler.addActionListener(controlFenetrePlateau);
         passertour.addActionListener(controlFenetrePlateau);
-        runIa.addActionListener(controlFenetrePlateau);
 
         //Bouton des Cartes
         for (int i = 0; i<game.getTabJoueurIndex(0).getMain().size();i++ )
@@ -172,28 +170,6 @@ public class FenetrePlateau extends JPanel{
         annuler.setBorder(null);
 
 
-        //score
-/*
-        score.setBounds((int) (20 / 30.0 * X), (int) (0.5 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
-        score.setFont(f);
-        score.setForeground(Color.WHITE);
-
-        scorej1.setBounds((int) (20 / 30.0 * X), (int) (1 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
-        scorej1.setFont(f);
-        scorej1.setForeground(Color.WHITE);
-
-        scorej2.setBounds((int) (20 / 30.0 * X), (int) (1.5 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
-        scorej2.setFont(f);
-        scorej2.setForeground(Color.WHITE);
-
-        scorej3.setBounds((int) (20 / 30.0 * X), (int) (2 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
-        scorej3.setFont(f);
-        scorej3.setForeground(Color.WHITE);
-
-        scorej4.setBounds((int) (20 / 30.0 * X), (int) (2.5 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
-        scorej4.setFont(f);
-        scorej4.setForeground(Color.WHITE);
-*/
         //Fond
 
         Image img = getToolkit().getImage("image/fondplateau.jpg");
@@ -222,13 +198,13 @@ public class FenetrePlateau extends JPanel{
         g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 
         g.drawString((Integer.toString(game.getTabJoueurIndex(3).getMain().size())),(int)(X*0.85)+posX,300);
-        g.drawString(ia3.getName()  ,(int)(X*0.85)+posX-100,295);
+        g.drawString(ia3.getName()  ,(int)(X*0.85)+posX-150,295);
 
         g.drawString((Integer.toString(game.getTabJoueurIndex(1).getMain().size())),(int)(X*0.1)+posX,300);
-        g.drawString(ia1.getName()  ,(int)(X*0.1)+posX-100,295);
+        g.drawString(ia1.getName()  ,(int)(X*0.1)+posX-150,295);
 
         g.drawString((Integer.toString(game.getTabJoueurIndex(2).getMain().size())),(X/2-(posX/2))+posX, 100);
-        g.drawString(ia2.getName()  ,(X/2-(posX/2))+posX-100, 95);
+        g.drawString(ia2.getName()  ,(int)(X/2-(posX/2))+posX-150, 95);
 
 
         g.setColor(Color.WHITE);
@@ -253,9 +229,14 @@ public class FenetrePlateau extends JPanel{
 
         for (int i=0; i<game.getTable().size();i++) // on récupére la taille de la main du j1 de game
         {
-            // pour chaque cartes en main
-            Image imgi = getToolkit().getImage("cartes/"+game.getTable().get(i).getFileName());// on récup le nom de la carte
-            g.drawImage(imgi, (650+((posX+5)*i)), (int)(Y*0.37), posX, (int) (posX*1.5), this); // on dessine
+            try{
+                // pour chaque cartes en main
+                Image imgi = getToolkit().getImage("cartes/"+game.getTable().get(i).getFileName());// on récup le nom de la carte
+                g.drawImage(imgi, (650+((posX+5)*i)), (int)(Y*0.37), posX, (int) (posX*1.5), this); // on dessine
+
+            }catch (IndexOutOfBoundsException ignored){
+
+            }
         }
 
         //Carte à Jouer
@@ -313,13 +294,6 @@ public class FenetrePlateau extends JPanel{
             g.drawImage(imgi, (posX+((posX+5)*i)), (int)(Y*0.74), posX, (int) (posX*1.5), this); // on dessine
         }
 
-        runIa.setBounds((int) (1 / 30.0 * X), (int) (1 / 15.0 * Y), (int) (1 / 6.0 * X), (int) (1 / 12.0 * Y));
-        runIa.setBackground(new Color(0, 0, 0, 0));
-        runIa.setFont(f);
-        runIa.setForeground(Color.WHITE);
-        runIa.setFocusable(false);
-        runIa.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        runIa.setBorder(null);
 
     }
 }
