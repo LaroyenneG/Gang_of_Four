@@ -38,17 +38,21 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 fenetre.panelFenetrePlateau.jouer.setVisible(true);
                 fenetre.panelFenetrePlateau.annuler.setVisible(true);
 
+                try {
+                    //Selection de la couleur du 1 Multicolor
+                    if (game.getTabJoueurIndex(0).getMain().get(i).couleur.equals(MULTI)){
 
-                //Selection de la couleur du 1 Multicolor
-                if (game.getTabJoueurIndex(0).getMain().get(i).couleur.equals(MULTI)){
+                        for (int j = 0; j < 3; j++) {
+                            fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(true);
+                            fenetre.autorisationDessiner = true;
+                        }
 
-                    for (int j = 0; j < 3; j++) {
-                        fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(true);
-                        fenetre.autorisationDessiner = true;
+                        changerVue();
                     }
-                    
-                    changerVue();
+                }catch (IndexOutOfBoundsException ignored){
+
                 }
+
 
                 if (game.getTabJoueur()[0].addCombinaisonEnCours(game.getTabJoueurIndex(0).getMain().get(i))) {
                     game.getTabJoueur()[0].getMain().remove(i);
