@@ -21,7 +21,6 @@ public class ControlBarreMenu extends Control implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Nouvelle Partie":
-                automate.stopAutomate();
                 game.clearTable();
                 game.distribuerCarte();
                 game.getTabJoueur()[0].ordoMain();
@@ -31,7 +30,7 @@ public class ControlBarreMenu extends Control implements ActionListener {
                 fenetre.setContentPane(fenetre.panelFenetrePlateau);
                 fenetre.barreMenu.setVisible(true);
                 changerVue();
-                automate.auto();
+
                 break;
 
             case "Menu Principal":

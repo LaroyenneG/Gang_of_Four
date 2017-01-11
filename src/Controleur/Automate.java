@@ -75,7 +75,7 @@ public class Automate {
                         try {
                             sleep(400);
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            //e.printStackTrace();
                         }
                     }
 
