@@ -193,7 +193,7 @@ public class FenetrePlateau extends JPanel{
         else
         {
             IA ia = (IA) game.getTabJoueur()[game.getJoueurPlay()];
-            g.drawString("Tour de l'IA "+ia.getName(),(int)(X/2)-50,300);
+            g.drawString("Tour de "+ia.getName(),(int)(X/2)-50,300);
         }
 
         //Piles Plateau

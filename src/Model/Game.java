@@ -94,8 +94,9 @@ public class Game {
             tabJoueur[i].peutJouer=true;
         }
         distribuerCarte();
+        donDeLaMeilleurCarte();
+        donDeLaCarteNulle(tabJoueur[perdantDernierePartie].getMain().get(0));
         manche++;
-
         table.clear();
         for(int i=0; i<tabJoueur.length;i++){
             tabJoueur[i].ordoMain();
@@ -168,14 +169,21 @@ public class Game {
     }
 
     public void donDeLaMeilleurCarte(){
-        tabJoueur[dernierGagnant].addALaMain(tabJoueur[perdantDernierePartie].plusForteCarte());
-        tabJoueur[perdantDernierePartie].getMain().remove(tabJoueur[perdantDernierePartie].plusForteCarte());
         AlgoCarte.trierCarte(tabJoueur[dernierGagnant].getMain());
+        AlgoCarte.trierCarte(tabJoueur[perdantDernierePartie].getMain());
+        tabJoueur[dernierGagnant].addALaMain(tabJoueur[perdantDernierePartie].getMain().get(tabJoueur[perdantDernierePartie].getMain().size()-1));
+        tabJoueur[perdantDernierePartie].getMain().remove(tabJoueur[perdantDernierePartie].getMain().get(15));
+        AlgoCarte.trierCarte(tabJoueur[dernierGagnant].getMain());
+        AlgoCarte.trierCarte(tabJoueur[perdantDernierePartie].getMain());
     }
 
     public void donDeLaCarteNulle(Carte carteADonner){
+        AlgoCarte.trierCarte(tabJoueur[dernierGagnant].getMain());
+        AlgoCarte.trierCarte(tabJoueur[perdantDernierePartie].getMain());
         tabJoueur[perdantDernierePartie].addALaMain(carteADonner);
-        tabJoueur[dernierGagnant].getMain().remove(carteADonner);
+        tabJoueur[dernierGagnant].getMain().remove(tabJoueur[dernierGagnant].getMain().get(0));
+        AlgoCarte.trierCarte(tabJoueur[dernierGagnant].getMain());
+        AlgoCarte.trierCarte(tabJoueur[perdantDernierePartie].getMain());
     }
 
     public void nextJoueur(){

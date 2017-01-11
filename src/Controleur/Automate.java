@@ -19,7 +19,7 @@ public class Automate {
     private Thread automate;
     private boolean run;
 
-    private static final int timeSleep=0;
+    private static final int timeSleep=30;
 
     public Automate(Control control){
         this.control=control;

@@ -77,40 +77,6 @@ public class TestGame {
         Assert.assertTrue(game.getTabJoueur()[3].peutJouer);
     }
 
-    /*@Test
-    public void testNextJoueur(){
-        Game game = new Game();
-        int manche = game.getManche();
-        for (int i=0; i<20;i++){
-            int player=game.getJoueurPlay();
-            game.nextJoueur();
-            if(manche%2==1){
-                if (!game.getTabJoueurIndex(after(player,true)).peutJouer){
-                    Assert.assertNotEquals(game.getJoueurPlay(),after(player,true));
-                }
-            }else {
-                if (game.getTabJoueurIndex(after(player, false)).peutJouer) {
-                    Assert.assertEquals(game.getJoueurPlay(), after(player, false));
-                } else {
-                    Assert.assertNotEquals(game.getJoueurPlay(), after(player, false));
-                }
-            }
-            if(i==2||i==12){
-                game.getTabJoueurIndex(2).peutJouer=false;
-            }
-            if(i==3||i==13){
-                game.getTabJoueurIndex(1).peutJouer=false;
-            }
-            if(i==8||i==18){
-                game.getTabJoueurIndex(0).peutJouer=false;
-            }
-            if(i==10){
-                game.nextManche();
-                manche = game.getManche();
-            }
-        }
-    }*/
-
     @Test
     public void testQuiGagne(){
         Joueur j1 = new Joueur();
@@ -646,6 +612,7 @@ public class TestGame {
         tabJoueur[0].addALaMain(new Carte(Carte.Couleur.MULTI));
         game.setQuiPerd();
         Assert.assertEquals(0,game.getPerdantDernierePartie());
+        Assert.assertNotEquals(1,game.getPerdantDernierePartie());
     }
 
     @Test
@@ -665,6 +632,7 @@ public class TestGame {
         AlgoCarte.trierCarte(j1.getMain());
         game.donDeLaMeilleurCarte();
         Assert.assertTrue(j2.getMain().get(0).equals(new Carte(Carte.Figure.DRAGON, Carte.Couleur.ROUGE)));
+        Assert.assertTrue(j2.getMain().size()==1);
         Assert.assertTrue(j1.getMain().size()==19);
     }
 
@@ -683,6 +651,7 @@ public class TestGame {
         j2.addALaMain(new Carte(3, Carte.Couleur.ROUGE));
         game.donDeLaCarteNulle(j2.getMain().get(0));
         Assert.assertTrue(j1.getMain().get(0).equals(new Carte(3,Carte.Couleur.ROUGE)));
+        Assert.assertTrue(j1.getMain().size()==1);
         Assert.assertTrue(j2.getMain().size()==0);
     }
 }
