@@ -109,8 +109,7 @@ public class IA extends Joueur {
     }
 
     public String toString(){
-        String chaine = super.toString()+"name="+name;
-        return chaine;
+        return super.toString()+"name="+name;
     }
 
     public String getName() {

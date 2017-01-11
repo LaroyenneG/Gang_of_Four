@@ -95,8 +95,7 @@ public class Game {
         }
         distribuerCarte();
         manche++;
-        //donDeLaMeilleurCarte();
-        //donDeLaCarteNulle(tabJoueur[perdantDernierePartie].getMain().get(0));
+
         table.clear();
         for(int i=0; i<tabJoueur.length;i++){
             tabJoueur[i].ordoMain();

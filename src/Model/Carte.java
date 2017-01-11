@@ -7,10 +7,6 @@ import java.util.Objects;
  */
 
 
-/*
-    Il n'y a pas de getter et de setter dans cette classe, les attribue de la classe sont en public.
-    Car les données des cartes non pas besoin d'etre modifié en dehors du constructeur. Donc pas besoin de faire un contrôle des données.
- */
 public class Carte {
 
     public enum Couleur {
@@ -104,7 +100,6 @@ public class Carte {
     }
 
     public String toString(){
-        String message="\nCarte : \n valeur="+valeur+"\n couleur="+couleur+"\n figure="+figure+"\n";
-        return message;
+        return "\nCarte : \n valeur="+valeur+"\n couleur="+couleur+"\n figure="+figure+"\n";
     }
 }

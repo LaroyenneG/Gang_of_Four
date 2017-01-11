@@ -95,7 +95,7 @@ public class Automate {
             }
 
             try {
-                sleep(0);
+                sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
