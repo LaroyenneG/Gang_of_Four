@@ -122,6 +122,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
             case "Annuler":
 
                 game.getTabJoueurIndex(0).resetCombinaison(c);
+                fenetre.panelFenetrePlateau.creerBouton();
                 fenetre.panelFenetrePlateau.jouer.setVisible(false);
                 fenetre.panelFenetrePlateau.annuler.setVisible(false);
                 Fenetre.autorisationDessiner = false;
