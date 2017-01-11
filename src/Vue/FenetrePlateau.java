@@ -53,24 +53,6 @@ public class FenetrePlateau extends JPanel{
         add(texteDontCarte);
 
 
-
-        /*score = new JLabel("Score :");
-        IA ia1 = (IA) game.getTabJoueur()[1];
-        IA ia2 = (IA) game.getTabJoueur()[2];
-        IA ia3 = (IA) game.getTabJoueur()[3];
-        scorej1 = new JLabel("Vous : " + game.getTabJoueur()[0].getScore());
-        scorej2 = new JLabel(ia1.getName()+": " + game.getTabJoueur()[1].getScore());
-        scorej3 = new JLabel(ia2.getName()+": " + game.getTabJoueur()[2].getScore());
-        scorej4 = new JLabel(ia3.getName()+": " + game.getTabJoueur()[3].getScore());
-
-        //ScoreItem
-        add(score);
-        add(scorej1);
-        add(scorej2);
-        add(scorej3);
-        add(scorej4);*/
-
-
     }
 
     public void supprimerBouton(){
@@ -104,17 +86,6 @@ public class FenetrePlateau extends JPanel{
         }
     }
 
-    /*
-    public int unMultiColor(){
-        if (cartesChoixMulti[0].isSelected()){
-            return 1;
-        }else if(cartesChoixMulti[1].isSelected()){
-            return 2;
-        }else{
-            return 3;
-        }
-    }
-    */
 
 
     public void setControl(ControlFenetrePlateau controlFenetrePlateau) {
@@ -178,7 +149,7 @@ public class FenetrePlateau extends JPanel{
         //Cartes des autres joueurs
         Image[] imgJ2 = new Image[3];
         for (int i =0; i<3;i++)
-        if (game.getTabJoueur()[i+1].peutJouer == false)
+        if (!game.getTabJoueur()[i + 1].peutJouer)
         {
             imgJ2[i] = getToolkit().getImage("cartes/carteDosPasse.jpg");
         }
@@ -250,33 +221,33 @@ public class FenetrePlateau extends JPanel{
 
         //Carte pour le choixn de la couleur du 1 Multi
 
-            // on propose que 3 cartes
         if (Fenetre.autorisationDessiner) {
+            this.jouer.setVisible(false);
             for (int i = 0; i < 3; i++) {
                 if (i == 0) {
                     Image img1 = getToolkit().getImage("cartes/" + "1vert.jpg");// on donne le nom de la carte
-                    cartesChoixMulti[i].setBounds((650 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5));
+                    cartesChoixMulti[i].setBounds((250 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5));
                     cartesChoixMulti[i].setBackground(new Color(0, 0, 0, 0));
                     cartesChoixMulti[i].setFocusable(false);
                     cartesChoixMulti[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
                     cartesChoixMulti[i].setBorder(null);
-                    g.drawImage(img1, (650 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5), this); // on dessine
+                    g.drawImage(img1, (250 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5), this); // on dessine
                 } else if (i == 1) {
                     Image img2 = getToolkit().getImage("cartes/" + "1jaune.jpg");// on donne le nom de la carte
-                    cartesChoixMulti[i].setBounds((650 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5));
+                    cartesChoixMulti[i].setBounds((250 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5));
                     cartesChoixMulti[i].setBackground(new Color(0, 0, 0, 0));
                     cartesChoixMulti[i].setFocusable(false);
                     cartesChoixMulti[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
                     cartesChoixMulti[i].setBorder(null);
-                    g.drawImage(img2, (650 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5), this); // on dessine
+                    g.drawImage(img2, (250 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5), this); // on dessine
                 } else {
                     Image img3 = getToolkit().getImage("cartes/" + "1rouge.jpg");// on donne le nom de la carte
-                    cartesChoixMulti[i].setBounds((650 + ((posX + 5) * 2)), (int) (Y * 0.57), posX, (int) (posX * 1.5));
+                    cartesChoixMulti[i].setBounds((250 + ((posX + 5) * 2)), (int) (Y * 0.57), posX, (int) (posX * 1.5));
                     cartesChoixMulti[i].setBackground(new Color(0, 0, 0, 0));
                     cartesChoixMulti[i].setFocusable(false);
                     cartesChoixMulti[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
                     cartesChoixMulti[i].setBorder(null);
-                    g.drawImage(img3, (650 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5), this); // on dessine
+                    g.drawImage(img3, (250 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5), this); // on dessine
                 }
             }
         }

@@ -81,6 +81,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
             }
 
             fenetre.autorisationDessiner = false;
+            fenetre.panelFenetrePlateau.jouer.setVisible(true);
 
             for (int k = 0; k<game.getTabJoueur()[0].getCombinaisonEnCours().size();k++)
             {
