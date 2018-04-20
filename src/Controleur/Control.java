@@ -1,7 +1,7 @@
 package Controleur;
 
-import Model.Game;
-import Model.IA;
+import Modele.Game;
+import Modele.IA;
 import Vue.Fenetre;
 
 /**

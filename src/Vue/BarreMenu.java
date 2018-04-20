@@ -1,8 +1,8 @@
 package Vue;
 
 import Controleur.ControlBarreMenu;
-import Model.Game;
-import Model.IA;
+import Modele.Game;
+import Modele.IA;
 
 import javax.swing.*;
 

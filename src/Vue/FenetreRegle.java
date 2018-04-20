@@ -1,17 +1,9 @@
 package Vue;
 
-import Controleur.ControlFenetreAccueil;
-import Controleur.ControlFenetreCredits;
-import Controleur.ControlFenetrePlateau;
 import Controleur.ControlFenetreRegle;
-import Model.*;
-import Model.Carte;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 
 import static Vue.Fenetre.X;
 import static Vue.Fenetre.Y;

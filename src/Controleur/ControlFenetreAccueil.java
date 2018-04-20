@@ -1,6 +1,6 @@
 package Controleur;
 
-import Model.Game;
+import Modele.Game;
 import Vue.Fenetre;
 
 import java.awt.event.ActionEvent;

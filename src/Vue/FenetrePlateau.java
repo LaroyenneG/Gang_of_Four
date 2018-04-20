@@ -1,8 +1,8 @@
 package Vue;
 
 import Controleur.ControlFenetrePlateau;
-import Model.Game;
-import Model.IA;
+import Modele.Game;
+import Modele.IA;
 
 import javax.swing.*;
 import java.awt.*;
@@ -175,11 +175,11 @@ public class FenetrePlateau extends JPanel{
         g.drawString(ia1.getName()  ,(int)(X*0.1)+posX-150,295);
 
         g.drawString((Integer.toString(game.getTabJoueurIndex(2).getMain().size())),(X/2-(posX/2))+posX, 100);
-        g.drawString(ia2.getName()  ,(int)(X/2-(posX/2))+posX-150, 95);
+        g.drawString(ia2.getName(), X / 2 - (posX / 2) + posX - 150, 95);
 
 
         g.setColor(Color.WHITE);
-        g.setFont(new Font("TimesRoman", Font.PLAIN, 20));;
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
         g.drawString((Integer.toString(game.getTabJoueurIndex(1).getMain().size())),(int)(X*0.1)+posX,300);
         g.drawString((Integer.toString(game.getTabJoueurIndex(3).getMain().size())),(int)(X*0.85)+posX,300);
         g.drawString((Integer.toString(game.getTabJoueurIndex(2).getMain().size())),(X/2-(posX/2))+posX, 100);
@@ -188,12 +188,12 @@ public class FenetrePlateau extends JPanel{
         //Affiche si tour Joueur ou IA
         if (game.getJoueurPlay() == 0)
         {
-            g.drawString("Tour du Joueur",(int)(X/2)-50,300);
+            g.drawString("Tour du Joueur", X / 2 - 50, 300);
         }
         else
         {
             IA ia = (IA) game.getTabJoueur()[game.getJoueurPlay()];
-            g.drawString("Tour de "+ia.getName(),(int)(X/2)-50,300);
+            g.drawString("Tour de " + ia.getName(), X / 2 - 50, 300);
         }
 
         //Piles Plateau

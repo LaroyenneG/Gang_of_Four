@@ -1,15 +1,13 @@
 package Controleur;
 
-import Model.Carte;
-import Model.Game;
-import Model.Joueur;
+import Modele.Carte;
+import Modele.Game;
 import Vue.Fenetre;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static Model.Carte.Couleur.MULTI;
-import static java.lang.Thread.sleep;
+import static Modele.Carte.Couleur.MULTI;
 
 /**
  * Created by Florian Vaissiere on 21/11/2016.
@@ -44,7 +42,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
                         for (int j = 0; j < 3; j++) {
                             fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(true);
-                            fenetre.autorisationDessiner = true;
+                            Fenetre.autorisationDessiner = true;
                         }
 
                         changerVue();
@@ -84,7 +82,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
                 fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(false);
             }
 
-            fenetre.autorisationDessiner = false;
+            Fenetre.autorisationDessiner = false;
             fenetre.panelFenetrePlateau.jouer.setVisible(true);
 
             for (int k = 0; k<game.getTabJoueur()[0].getCombinaisonEnCours().size();k++)

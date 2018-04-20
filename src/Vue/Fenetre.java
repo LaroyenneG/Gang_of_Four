@@ -1,7 +1,7 @@
 package Vue;
 
 import Controleur.*;
-import Model.Game;
+import Modele.Game;
 
 import javax.swing.*;
 import java.awt.*;
