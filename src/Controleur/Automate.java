@@ -12,48 +12,46 @@ import static java.lang.Thread.sleep;
  */
 public class Automate {
 
+    private static final int timeSleep = 30;
     private Control control;
     private Game game;
-
     private Thread automate;
     private boolean run;
 
-    private static final int timeSleep=30;
-
-    public Automate(Control control){
-        this.control=control;
-        game=control.game;
-        run=false;
-        automate=null;
+    public Automate(Control control) {
+        this.control = control;
+        game = control.game;
+        run = false;
+        automate = null;
     }
 
-    public void auto(){
+    public void auto() {
 
-        run=true;
+        run = true;
 
-        if(automate!=null){
+        if (automate != null) {
             automate.interrupt();
         }
 
         automate = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (run){
+                while (run) {
 
-                    for (int i=0;i<4;i++){
-                        if (game.siGagne(i)){
+                    for (int i = 0; i < 4; i++) {
+                        if (game.siGagne(i)) {
 
                             game.nextManche();
 
-                            String messageWin="";
+                            String messageWin = "";
 
-                            if(i==0){
-                                messageWin="vous avez gagné";
-                            }else {
-                                messageWin=((IA)game.getTabJoueurIndex(i)).getName()+" à gagné";
+                            if (i == 0) {
+                                messageWin = "vous avez gagné";
+                            } else {
+                                messageWin = ((IA) game.getTabJoueurIndex(i)).getName() + " à gagné";
                             }
                             JOptionPane dialog = new JOptionPane();
-                            JOptionPane.showMessageDialog(dialog, "Nouvelle manche\n"+messageWin, "Manche terminé", 1);
+                            JOptionPane.showMessageDialog(dialog, "Nouvelle manche\n" + messageWin, "Manche terminé", 1);
 
 
                             control.fenetre.panelFenetrePlateau.creerBouton();
@@ -64,10 +62,8 @@ public class Automate {
                     }
 
 
-
-
-                      //attente de la fin du joueur
-                    while (game.getJoueurPlay()==0){
+                    //attente de la fin du joueur
+                    while (game.getJoueurPlay() == 0) {
                         try {
                             sleep(400);
                         } catch (InterruptedException e) {
@@ -84,11 +80,11 @@ public class Automate {
         automate.start();
     }
 
-    private void actionIA(){
+    private void actionIA() {
 
-        while (game.getJoueurPlay()!=0){
-            for (int i=0;i<4;i++){
-                if (game.siGagne(i)){
+        while (game.getJoueurPlay() != 0) {
+            for (int i = 0; i < 4; i++) {
+                if (game.siGagne(i)) {
                     return;
                 }
             }
@@ -100,7 +96,7 @@ public class Automate {
             }
 
 
-            for (int t=0; t<timeSleep; t++){
+            for (int t = 0; t < timeSleep; t++) {
                 try {
                     sleep(100);
                 } catch (InterruptedException e) {
@@ -111,8 +107,8 @@ public class Automate {
             game.faireJouerIA();
 
 
-            for (int i=0;i<4;i++){
-                if (game.siGagne(i)){
+            for (int i = 0; i < 4; i++) {
+                if (game.siGagne(i)) {
                     return;
                 }
             }
@@ -124,17 +120,17 @@ public class Automate {
     }
 
 
-    public void stopAutomate(){
-        run=false;
-        if (automate!=null){
+    public void stopAutomate() {
+        run = false;
+        if (automate != null) {
             automate.interrupt();
-            System.out.println("State "+automate.getState());
+            System.out.println("State " + automate.getState());
         }
     }
 
 
-    public boolean isRun(){
-        if(automate==null){
+    public boolean isRun() {
+        if (automate == null) {
             return false;
         }
 

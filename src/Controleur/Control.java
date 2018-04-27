@@ -18,7 +18,7 @@ public abstract class Control {
     public Control(Fenetre fenetre, Game game) {
         this.fenetre = fenetre;
         this.game = game;
-        automate=new Automate(this);
+        automate = new Automate(this);
     }
 
 
@@ -30,13 +30,13 @@ public abstract class Control {
         IA ia1 = (IA) game.getTabJoueur()[1];
         IA ia2 = (IA) game.getTabJoueur()[2];
         IA ia3 = (IA) game.getTabJoueur()[3];
-        fenetre.barreMenu.scorej1.setText("Vous : "  + game.getTabJoueur()[0].getScore());
-        fenetre.barreMenu.scorej2.setText(ia1.getName()+": " + game.getTabJoueur()[1].getScore());
-        fenetre.barreMenu.scorej3.setText(ia2.getName()+": " + game.getTabJoueur()[2].getScore());
-        fenetre.barreMenu.scorej4.setText(ia3.getName()+": " + game.getTabJoueur()[3].getScore());
-        if(game.getTabJoueurIndex(0).peutJouer){
+        fenetre.barreMenu.scorej1.setText("Vous : " + game.getTabJoueur()[0].getScore());
+        fenetre.barreMenu.scorej2.setText(ia1.getName() + ": " + game.getTabJoueur()[1].getScore());
+        fenetre.barreMenu.scorej3.setText(ia2.getName() + ": " + game.getTabJoueur()[2].getScore());
+        fenetre.barreMenu.scorej4.setText(ia3.getName() + ": " + game.getTabJoueur()[3].getScore());
+        if (game.getTabJoueurIndex(0).peutJouer) {
             fenetre.panelFenetrePlateau.passertour.setText("Passer le tour");
-        }else {
+        } else {
             fenetre.panelFenetrePlateau.passertour.setText("Tour Passé!");
         }
     }

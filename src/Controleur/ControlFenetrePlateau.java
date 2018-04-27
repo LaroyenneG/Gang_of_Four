@@ -16,20 +16,21 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
     Carte c;
 
 
-    public ControlFenetrePlateau(Fenetre fenetre, Game game){
+    public ControlFenetrePlateau(Fenetre fenetre, Game game) {
         super(fenetre, game);
         fenetre.setControlFenetrePlateau(this);
-        c =null;
+        c = null;
     }
+
     public void actionPerformed(ActionEvent e) {
 
-        if(e.getActionCommand().contains("Carte")){
+        if (e.getActionCommand().contains("Carte")) {
             if (game.getTabJoueur()[0].peutJouer) {
 
-                String nombre="";
+                String nombre = "";
 
-                for (int i=5;i<e.getActionCommand().length();i++){
-                    nombre+=e.getActionCommand().charAt(i);
+                for (int i = 5; i < e.getActionCommand().length(); i++) {
+                    nombre += e.getActionCommand().charAt(i);
                 }
 
                 int i = Integer.valueOf(nombre);
@@ -38,7 +39,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
                 try {
                     //Selection de la couleur du 1 Multicolor
-                    if (game.getTabJoueurIndex(0).getMain().get(i).couleur.equals(MULTI)){
+                    if (game.getTabJoueurIndex(0).getMain().get(i).couleur.equals(MULTI)) {
 
                         for (int j = 0; j < 3; j++) {
                             fenetre.panelFenetrePlateau.cartesChoixMulti[j].setVisible(true);
@@ -47,7 +48,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
                         changerVue();
                     }
-                }catch (IndexOutOfBoundsException ignored){
+                } catch (IndexOutOfBoundsException ignored) {
 
                 }
 
@@ -67,11 +68,11 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
             }
         }
 
-        if (e.getActionCommand().contains("Multi")){
-            String nombre="";
+        if (e.getActionCommand().contains("Multi")) {
+            String nombre = "";
 
-            for (int i=5;i<e.getActionCommand().length();i++){
-                nombre+=e.getActionCommand().charAt(i);
+            for (int i = 5; i < e.getActionCommand().length(); i++) {
+                nombre += e.getActionCommand().charAt(i);
             }
 
             int i = Integer.valueOf(nombre);
@@ -85,9 +86,8 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
             Fenetre.autorisationDessiner = false;
             fenetre.panelFenetrePlateau.jouer.setVisible(true);
 
-            for (int k = 0; k<game.getTabJoueur()[0].getCombinaisonEnCours().size();k++)
-            {
-                if (game.getTabJoueur()[0].getCombinaisonEnCours().get(k).couleur.equals(MULTI)){
+            for (int k = 0; k < game.getTabJoueur()[0].getCombinaisonEnCours().size(); k++) {
+                if (game.getTabJoueur()[0].getCombinaisonEnCours().get(k).couleur.equals(MULTI)) {
                     game.getTabJoueur()[0].getCombinaisonEnCours().remove(k);
                 }
             }
@@ -100,7 +100,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
         switch (e.getActionCommand()) {
             case "Passer le Tour":
-                if(game.getJoueurPlay()==0) {
+                if (game.getJoueurPlay() == 0) {
                     game.passerSonTour(0);
                     changerVue();
                     game.nextJoueur();
@@ -109,7 +109,7 @@ public class ControlFenetrePlateau extends Control implements ActionListener {
 
             case "Jouer":
 
-                if (game.joueurCanPlayCombinaison(0)&&game.getJoueurPlay()==0) {
+                if (game.joueurCanPlayCombinaison(0) && game.getJoueurPlay() == 0) {
                     game.clearTable();
                     game.poseTable(game.getTabJoueur()[0].getCombinaisonEnCours());
 

@@ -12,7 +12,7 @@ import static Vue.Fenetre.Y;
 /**
  * Created by Florian Vaissiere on 21/11/2016.
  */
-public class FenetreAccueil extends JPanel{
+public class FenetreAccueil extends JPanel {
 
     public JButton jouer, credits, quitter;
 
@@ -43,7 +43,7 @@ public class FenetreAccueil extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        Font f=new Font("Arial", Font.BOLD, 18);
+        Font f = new Font("Arial", Font.BOLD, 18);
 
         jouer.setBounds((int) (11 / 30.0 * X), (int) (11 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
         jouer.setBackground(new Color(0, 0, 0, 0));

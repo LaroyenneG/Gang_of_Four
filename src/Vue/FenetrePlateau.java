@@ -14,7 +14,7 @@ import static Vue.Fenetre.Y;
 /**
  * Created by Florian Vaissiere on 21/11/2016.
  */
-public class FenetrePlateau extends JPanel{
+public class FenetrePlateau extends JPanel {
 
     public JButton jouer;
     public JButton passertour;
@@ -44,7 +44,6 @@ public class FenetrePlateau extends JPanel{
         passertour.setActionCommand("Passer le Tour");
 
 
-
         texteDontCarte = new JLabel("Votre Meilleur Carte a été donné !");
 
         add(jouer);
@@ -55,37 +54,34 @@ public class FenetrePlateau extends JPanel{
 
     }
 
-    public void supprimerBouton(){
+    public void supprimerBouton() {
 
         for (int i = 0; i < cartesMain.length; i++) {
             remove(cartesMain[i]);
         }
     }
 
-    public void creerBouton1Multi (){
+    public void creerBouton1Multi() {
 
         cartesChoixMulti = new JButton[3];
 
-        for (int i = 0; i < 3;i++ )
-        {
+        for (int i = 0; i < 3; i++) {
             cartesChoixMulti[i] = new JButton();
-            cartesChoixMulti[i].setActionCommand("Multi"+i);
+            cartesChoixMulti[i].setActionCommand("Multi" + i);
             add(cartesChoixMulti[i]);
         }
     }
 
-    public void creerBouton (){
+    public void creerBouton() {
 
         cartesMain = new JButton[game.getTabJoueurIndex(0).getMain().size()];
 
-        for (int i = 0; i < game.getTabJoueurIndex(0).getMain().size();i++ )
-        {
+        for (int i = 0; i < game.getTabJoueurIndex(0).getMain().size(); i++) {
             cartesMain[i] = new JButton();
-            cartesMain[i].setActionCommand("Carte"+i);
+            cartesMain[i].setActionCommand("Carte" + i);
             add(cartesMain[i]);
         }
     }
-
 
 
     public void setControl(ControlFenetrePlateau controlFenetrePlateau) {
@@ -96,23 +92,21 @@ public class FenetrePlateau extends JPanel{
         passertour.addActionListener(controlFenetrePlateau);
 
         //Bouton des Cartes
-        for (int i = 0; i<game.getTabJoueurIndex(0).getMain().size();i++ )
-        {
+        for (int i = 0; i < game.getTabJoueurIndex(0).getMain().size(); i++) {
             cartesMain[i].addActionListener(controlFenetrePlateau);
         }
 
         //Bouton des CartesMulti
-        for (int i = 0; i <3 ;i++ )
-        {
+        for (int i = 0; i < 3; i++) {
             cartesChoixMulti[i].addActionListener(controlFenetrePlateau);
         }
     }
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        int posX = ((((X-200))-5*16)/16);
+        int posX = ((((X - 200)) - 5 * 16) / 16);
 
-        Font f=new Font("Arial", Font.BOLD, 18);
+        Font f = new Font("Arial", Font.BOLD, 18);
 
         //Bouton (11 / 30.0 * X), (int) (13.5 / 15.0 * Y), (int) (1 / 4.0 * X), (int) (1 / 12.0 * Y));
 
@@ -148,19 +142,16 @@ public class FenetrePlateau extends JPanel{
 
         //Cartes des autres joueurs
         Image[] imgJ2 = new Image[3];
-        for (int i =0; i<3;i++)
-        if (!game.getTabJoueur()[i + 1].peutJouer)
-        {
-            imgJ2[i] = getToolkit().getImage("cartes/carteDosPasse.jpg");
-        }
-        else
-        {
-            imgJ2[i] = getToolkit().getImage("cartes/carteDos.jpg");
-        }
+        for (int i = 0; i < 3; i++)
+            if (!game.getTabJoueur()[i + 1].peutJouer) {
+                imgJ2[i] = getToolkit().getImage("cartes/carteDosPasse.jpg");
+            } else {
+                imgJ2[i] = getToolkit().getImage("cartes/carteDos.jpg");
+            }
 
-        g.drawImage(imgJ2[0],  (int)(X*0.1), 300, posX, (int) (posX*1.5), this);
-        g.drawImage(imgJ2[2], (int)(X*0.85),300, posX, (int) (posX*1.5), this);
-        g.drawImage(imgJ2[1], (X/2-(posX/2)), 100, posX, (int) (posX*1.5), this);
+        g.drawImage(imgJ2[0], (int) (X * 0.1), 300, posX, (int) (posX * 1.5), this);
+        g.drawImage(imgJ2[2], (int) (X * 0.85), 300, posX, (int) (posX * 1.5), this);
+        g.drawImage(imgJ2[1], (X / 2 - (posX / 2)), 100, posX, (int) (posX * 1.5), this);
 
         IA ia1 = (IA) game.getTabJoueur()[1];
         IA ia2 = (IA) game.getTabJoueur()[2];
@@ -168,55 +159,52 @@ public class FenetrePlateau extends JPanel{
         g.setColor(Color.WHITE);
         g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 
-        g.drawString((Integer.toString(game.getTabJoueurIndex(3).getMain().size())),(int)(X*0.85)+posX,300);
-        g.drawString(ia3.getName()  ,(int)(X*0.85)+posX-150,295);
+        g.drawString((Integer.toString(game.getTabJoueurIndex(3).getMain().size())), (int) (X * 0.85) + posX, 300);
+        g.drawString(ia3.getName(), (int) (X * 0.85) + posX - 150, 295);
 
-        g.drawString((Integer.toString(game.getTabJoueurIndex(1).getMain().size())),(int)(X*0.1)+posX,300);
-        g.drawString(ia1.getName()  ,(int)(X*0.1)+posX-150,295);
+        g.drawString((Integer.toString(game.getTabJoueurIndex(1).getMain().size())), (int) (X * 0.1) + posX, 300);
+        g.drawString(ia1.getName(), (int) (X * 0.1) + posX - 150, 295);
 
-        g.drawString((Integer.toString(game.getTabJoueurIndex(2).getMain().size())),(X/2-(posX/2))+posX, 100);
+        g.drawString((Integer.toString(game.getTabJoueurIndex(2).getMain().size())), (X / 2 - (posX / 2)) + posX, 100);
         g.drawString(ia2.getName(), X / 2 - (posX / 2) + posX - 150, 95);
 
 
         g.setColor(Color.WHITE);
         g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-        g.drawString((Integer.toString(game.getTabJoueurIndex(1).getMain().size())),(int)(X*0.1)+posX,300);
-        g.drawString((Integer.toString(game.getTabJoueurIndex(3).getMain().size())),(int)(X*0.85)+posX,300);
-        g.drawString((Integer.toString(game.getTabJoueurIndex(2).getMain().size())),(X/2-(posX/2))+posX, 100);
+        g.drawString((Integer.toString(game.getTabJoueurIndex(1).getMain().size())), (int) (X * 0.1) + posX, 300);
+        g.drawString((Integer.toString(game.getTabJoueurIndex(3).getMain().size())), (int) (X * 0.85) + posX, 300);
+        g.drawString((Integer.toString(game.getTabJoueurIndex(2).getMain().size())), (X / 2 - (posX / 2)) + posX, 100);
 
 
         //Affiche si tour Joueur ou IA
-        if (game.getJoueurPlay() == 0)
-        {
+        if (game.getJoueurPlay() == 0) {
             g.drawString("Tour du Joueur", X / 2 - 50, 300);
-        }
-        else
-        {
+        } else {
             IA ia = (IA) game.getTabJoueur()[game.getJoueurPlay()];
             g.drawString("Tour de " + ia.getName(), X / 2 - 50, 300);
         }
 
         //Piles Plateau
 
-        for (int i=0; i<game.getTable().size();i++) // on récupére la taille de la main du j1 de game
+        for (int i = 0; i < game.getTable().size(); i++) // on récupére la taille de la main du j1 de game
         {
-            try{
+            try {
                 // pour chaque cartes en main
-                Image imgi = getToolkit().getImage("cartes/"+game.getTable().get(i).getFileName());// on récup le nom de la carte
-                g.drawImage(imgi, (650+((posX+5)*i)), (int)(Y*0.37), posX, (int) (posX*1.5), this); // on dessine
+                Image imgi = getToolkit().getImage("cartes/" + game.getTable().get(i).getFileName());// on récup le nom de la carte
+                g.drawImage(imgi, (650 + ((posX + 5) * i)), (int) (Y * 0.37), posX, (int) (posX * 1.5), this); // on dessine
 
-            }catch (IndexOutOfBoundsException | NullPointerException ignored){
+            } catch (IndexOutOfBoundsException | NullPointerException ignored) {
 
             }
         }
 
         //Carte à Jouer
 
-        for (int i=0; i<game.getTabJoueur()[0].getCombinaisonEnCours().size();i++) // on récupére la taille de la main du j1 de game
+        for (int i = 0; i < game.getTabJoueur()[0].getCombinaisonEnCours().size(); i++) // on récupére la taille de la main du j1 de game
         {
             // pour chaque cartes en main
-            Image imgi = getToolkit().getImage("cartes/"+game.getTabJoueur()[0].getCombinaisonEnCours().get(i).getFileName());// on récup le nom de la carte
-            g.drawImage(imgi, (650+((posX+5)*i)), (int)(Y*0.57), posX, (int) (posX*1.5), this); // on dessine
+            Image imgi = getToolkit().getImage("cartes/" + game.getTabJoueur()[0].getCombinaisonEnCours().get(i).getFileName());// on récup le nom de la carte
+            g.drawImage(imgi, (650 + ((posX + 5) * i)), (int) (Y * 0.57), posX, (int) (posX * 1.5), this); // on dessine
         }
 
         //Carte pour le choixn de la couleur du 1 Multi
@@ -253,7 +241,7 @@ public class FenetrePlateau extends JPanel{
         }
         //Main du Joueur
 
-        for (int i=0; i<game.getTabJoueurIndex(0).getMain().size();i++) // on récupére la taille de la main du j1 de game
+        for (int i = 0; i < game.getTabJoueurIndex(0).getMain().size(); i++) // on récupére la taille de la main du j1 de game
         {
             try {
                 // pour chaque cartes en main
@@ -264,7 +252,7 @@ public class FenetrePlateau extends JPanel{
                 cartesMain[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
                 cartesMain[i].setBorder(null);
                 g.drawImage(imgi, (posX + ((posX + 5) * i)), (int) (Y * 0.74), posX, (int) (posX * 1.5), this); // on dessine
-            }catch (ArrayIndexOutOfBoundsException ignored){
+            } catch (ArrayIndexOutOfBoundsException ignored) {
 
             }
         }

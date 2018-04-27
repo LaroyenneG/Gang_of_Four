@@ -11,14 +11,15 @@ import java.awt.event.ActionListener;
  */
 public class ControlFenetreAccueil extends Control implements ActionListener {
 
-    public ControlFenetreAccueil(Fenetre fenetre, Game game){
+    public ControlFenetreAccueil(Fenetre fenetre, Game game) {
         super(fenetre, game);
         fenetre.setControlFenetreAccueil(this);
     }
+
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Jouer":
-                if(!automate.isRun()){
+                if (!automate.isRun()) {
                     automate.auto();
                 }
                 fenetre.setContentPane(fenetre.panelFenetrePlateau);

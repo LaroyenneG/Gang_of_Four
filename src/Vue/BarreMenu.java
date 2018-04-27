@@ -11,10 +11,9 @@ import javax.swing.*;
  */
 public class BarreMenu extends JMenuBar {
 
-    private Game game;
-
     public JMenu menu, score;
-    public JMenuItem nouvellePartie, menuPrincipal, quitter, regle, scorej1, scorej2, scorej3, scorej4 ;
+    public JMenuItem nouvellePartie, menuPrincipal, quitter, regle, scorej1, scorej2, scorej3, scorej4;
+    private Game game;
 
     public BarreMenu(Game game) {
 
@@ -49,9 +48,9 @@ public class BarreMenu extends JMenuBar {
         IA ia2 = (IA) game.getTabJoueur()[2];
         IA ia3 = (IA) game.getTabJoueur()[3];
         scorej1 = new JMenuItem("Vous : " + game.getTabJoueur()[0].getScore());
-        scorej2 = new JMenuItem(ia1.getName()+": " + game.getTabJoueur()[1].getScore());
-        scorej3 = new JMenuItem(ia2.getName()+": " + game.getTabJoueur()[2].getScore());
-        scorej4 = new JMenuItem(ia3.getName()+": " + game.getTabJoueur()[3].getScore());
+        scorej2 = new JMenuItem(ia1.getName() + ": " + game.getTabJoueur()[1].getScore());
+        scorej3 = new JMenuItem(ia2.getName() + ": " + game.getTabJoueur()[2].getScore());
+        scorej4 = new JMenuItem(ia3.getName() + ": " + game.getTabJoueur()[3].getScore());
 
         //ScoreItem
         score.add(scorej1);
@@ -61,7 +60,7 @@ public class BarreMenu extends JMenuBar {
 
     }
 
-    public void setControl(ControlBarreMenu controlBarreMenu){
+    public void setControl(ControlBarreMenu controlBarreMenu) {
 
         //JMenu
         menu.addActionListener(controlBarreMenu);

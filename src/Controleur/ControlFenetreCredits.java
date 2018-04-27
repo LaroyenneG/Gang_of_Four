@@ -11,10 +11,11 @@ import java.awt.event.ActionListener;
  */
 public class ControlFenetreCredits extends Control implements ActionListener {
 
-    public ControlFenetreCredits(Fenetre fenetre, Game game){
+    public ControlFenetreCredits(Fenetre fenetre, Game game) {
         super(fenetre, game);
         fenetre.setControlFenetreCredits(this);
     }
+
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Retour":

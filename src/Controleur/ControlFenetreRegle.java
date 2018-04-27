@@ -11,10 +11,11 @@ import java.awt.event.ActionListener;
  */
 public class ControlFenetreRegle extends Control implements ActionListener {
 
-    public ControlFenetreRegle(Fenetre fenetre, Game game){
+    public ControlFenetreRegle(Fenetre fenetre, Game game) {
         super(fenetre, game);
         fenetre.setControlFenetreRegle(this);
     }
+
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Retour":
