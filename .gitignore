@@ -1,4 +1,4 @@
 *.xml
-out/production/TestS3/Appli.class
+out/
 *.class
 *.iml
