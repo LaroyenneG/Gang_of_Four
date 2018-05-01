@@ -19,24 +19,25 @@ public class ControlFenetreAccueil extends Control implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Jouer":
+
                 if (!automate.isRun()) {
                     automate.auto();
                 }
                 fenetre.setContentPane(fenetre.panelFenetrePlateau);
-                fenetre.barreMenu.setVisible(true);
-                changerVue();
+
                 break;
 
             case "Credits":
                 fenetre.setContentPane(fenetre.panelFenetreCredits);
-                fenetre.barreMenu.setVisible(false);
-                changerVue();
                 break;
 
             case "Quitter":
                 System.exit(0);
                 break;
         }
+
+        fenetre.barreMenu.setVisible(false);
+        changerVue();
     }
 }
 

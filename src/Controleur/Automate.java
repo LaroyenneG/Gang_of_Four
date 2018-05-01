@@ -10,9 +10,10 @@ import static java.lang.Thread.sleep;
 /**
  * Created by guillaume on 19/12/16.
  */
+
 public class Automate {
 
-    private static final int timeSleep = 30;
+    private static final int TIME_SLEEP = 3000;
     private Control control;
     private Game game;
     private Thread automate;
@@ -30,7 +31,7 @@ public class Automate {
         run = true;
 
         if (automate != null) {
-            automate.interrupt();
+            stopAutomate();
         }
 
         automate = new Thread(new Runnable() {
@@ -39,6 +40,7 @@ public class Automate {
                 while (run) {
 
                     for (int i = 0; i < 4; i++) {
+
                         if (game.siGagne(i)) {
 
                             game.nextManche();
@@ -50,6 +52,7 @@ public class Automate {
                             } else {
                                 messageWin = ((IA) game.getTabJoueurIndex(i)).getName() + " à gagné";
                             }
+
                             JOptionPane dialog = new JOptionPane();
                             JOptionPane.showMessageDialog(dialog, "Nouvelle manche\n" + messageWin, "Manche terminé", 1);
 
@@ -65,9 +68,9 @@ public class Automate {
                     //attente de la fin du joueur
                     while (game.getJoueurPlay() == 0) {
                         try {
-                            sleep(400);
+                            sleep(500);
                         } catch (InterruptedException e) {
-                            //e.printStackTrace();
+                            e.printStackTrace();
                         }
                     }
 
@@ -90,18 +93,9 @@ public class Automate {
             }
 
             try {
-                sleep(1000);
+                sleep(TIME_SLEEP);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
-
-
-            for (int t = 0; t < timeSleep; t++) {
-                try {
-                    sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
 
             game.faireJouerIA();
@@ -120,21 +114,28 @@ public class Automate {
     }
 
 
-    public void stopAutomate() {
+    private void stopAutomate() {
+
         run = false;
+
         if (automate != null) {
-            automate.interrupt();
+            try {
+                automate.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             System.out.println("State " + automate.getState());
         }
     }
 
 
     public boolean isRun() {
+
         if (automate == null) {
             return false;
         }
 
         return run;
     }
-
 }

@@ -290,7 +290,7 @@ public class Game {
 
         if (joueurPlay != 0) {
 
-            ((IA) tabJoueur[joueurPlay]).findBestCombinaison(table);
+            ((IA) tabJoueur[joueurPlay]).findBestCombination(table);
 
             List<Carte> combi = tabJoueur[joueurPlay].getCombinaisonEnCours();
             if (combi.size() > 0) {

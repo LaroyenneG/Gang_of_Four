@@ -19,7 +19,8 @@ public class IA extends Joueur {
         createName();
     }
 
-    public void findBestCombinaison(List<Carte> table) {
+    public void findBestCombination(List<Carte> table) {
+
         peutJouer = true;
 
         List<Carte>[] goodList = AlgoIA.getCombinaisonJouable(table, main);
@@ -82,10 +83,12 @@ public class IA extends Joueur {
     }
 
     public void createName() {
+
         try {
+
             int time = (int) (System.currentTimeMillis() % 1000);
 
-            File file = new File("name/listName.txt");
+            File file = new File("names/listName.txt");
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 
             String line = "";
@@ -103,7 +106,7 @@ public class IA extends Joueur {
             bufferedReader.close();
         } catch (Exception e) {
             e.printStackTrace();
-            name = "noName";
+            name = "no name";
         }
     }
 

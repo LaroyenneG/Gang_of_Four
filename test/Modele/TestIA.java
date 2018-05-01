@@ -21,7 +21,7 @@ public class TestIA {
             game.poseTable(table);
 
             Assert.assertTrue(game.playerHasAnPossibilityToPlay(1));
-            ia.findBestCombinaison(game.getTable());
+            ia.findBestCombination(game.getTable());
             Assert.assertTrue(game.joueurCanPlayCombinaison(1));
         }
 
@@ -36,7 +36,7 @@ public class TestIA {
 
 
             if (game.playerHasAnPossibilityToPlay(1)) {
-                ia.findBestCombinaison(game.getTable());
+                ia.findBestCombination(game.getTable());
 
                 if (!game.joueurCanPlayCombinaison(1)) {
                     System.err.println("Anomaly :");
