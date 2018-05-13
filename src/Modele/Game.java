@@ -89,19 +89,17 @@ public class Game {
 
     public void nextManche() {
         setQuiPerd();
-        for (int i = 0; i < tabJoueur.length; i++) {
-            AlgoCarte.incrementScore(tabJoueur[i]);
-            tabJoueur[i].clearMain();
-            tabJoueur[i].peutJouer = true;
+        for (Joueur aTabJoueur : tabJoueur) {
+            AlgoCarte.incrementScore(aTabJoueur);
+            aTabJoueur.clearMain();
+            aTabJoueur.peutJouer = true;
         }
         distribuerCarte();
         donDeLaMeilleurCarte();
         donDeLaCarteNulle(tabJoueur[perdantDernierePartie].getMain().get(0));
         manche++;
         table.clear();
-        for (int i = 0; i < tabJoueur.length; i++) {
-            tabJoueur[i].ordoMain();
-        }
+        for (Joueur aTabJoueur : tabJoueur) aTabJoueur.ordoMain();
     }
 
     public int firstPlayer() {
@@ -115,7 +113,7 @@ public class Game {
         } else {
             return dernierGagnant;
         }
-        System.err.println("Error in firstPlayer()");
+
         return -1;
     }
 
@@ -323,20 +321,16 @@ public class Game {
         joueurPlay = j;
     }
 
-    public int getManche() {
-        return manche;
-    }
-
     public List<Carte> getTable() {
         return table;
     }
 
     public String toString() {
-        String chaine = "Game\n manche=" + manche + "\n joueurPlay=" + joueurPlay + "\n dernierGagnant=" + dernierGagnant + "\n perdantDernierePartie=" + perdantDernierePartie + "\n table=" + table.size() + "\n next joueur oracle=" + nextJoueurOracle() + "\n joueurs :\n";
+        StringBuilder chaine = new StringBuilder("Game\n manche=" + manche + "\n joueurPlay=" + joueurPlay + "\n dernierGagnant=" + dernierGagnant + "\n perdantDernierePartie=" + perdantDernierePartie + "\n table=" + table.size() + "\n next joueur oracle=" + nextJoueurOracle() + "\n joueurs :\n");
         for (Joueur joueur : tabJoueur) {
-            chaine += joueur;
+            chaine.append(joueur);
         }
-        return chaine;
+        return chaine.toString();
     }
 }
 

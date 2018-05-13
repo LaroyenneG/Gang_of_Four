@@ -1,10 +1,11 @@
 package Modele;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by guillaume on 12/11/16.
+ * Created by Guillaume LAROYENNE on 12/11/16.
  */
 public class AlgoCarte {
 
@@ -15,9 +16,7 @@ public class AlgoCarte {
         }
         carteList.clear();
         tabcarte = trierCarte(tabcarte);
-        for (Carte aTabcarte : tabcarte) {
-            carteList.add(aTabcarte);
-        }
+        carteList.addAll(Arrays.asList(tabcarte));
         return carteList;
     }
 
@@ -94,9 +93,7 @@ public class AlgoCarte {
     public static boolean combinaisonDe5Cartes(List<Carte> carteAJouerNonTriees) {
         List<Carte> carteAJouer = trierCarte(carteAJouerNonTriees);
         if (carteAJouer.size() != 5) return false;
-        if (estUneSuite(carteAJouer) || estUneCouleur(carteAJouer) || estUneSuiteCouleur(carteAJouer) || estUnFull(carteAJouer))
-            return true;
-        else return false;
+        return estUneSuite(carteAJouer) || estUneCouleur(carteAJouer) || estUneSuiteCouleur(carteAJouer) || estUnFull(carteAJouer);
     }
 
     public static boolean estUneSuite(List<Carte> carteAJouerNonTriees) { // A tester après le test de la suite Couleur
@@ -136,9 +133,7 @@ public class AlgoCarte {
     public static boolean estUnFull(List<Carte> carteAJouerNonTriees) {
         List<Carte> carteAJouer = trierCarte(carteAJouerNonTriees);
         if ((carteAJouer.get(0).valeur == carteAJouer.get(1).valeur) && (carteAJouer.get(3).valeur == carteAJouer.get(4).valeur) && (carteAJouer.get(0).valeur != carteAJouer.get(4).valeur)) {
-            if (carteAJouer.get(2).valeur == carteAJouer.get(1).valeur || carteAJouer.get(2).valeur == carteAJouer.get(3).valeur) {
-                return true;
-            }
+            return carteAJouer.get(2).valeur == carteAJouer.get(1).valeur || carteAJouer.get(2).valeur == carteAJouer.get(3).valeur;
         }
         return false;
     }
@@ -255,9 +250,7 @@ public class AlgoCarte {
     public static boolean canPlayCombinaison(List<Carte> table, List<Carte> combinaisonAtester) {
 
         if (table.size() == 0) {
-            if (AlgoCarte.cestQuoi(combinaisonAtester) != -1 && AlgoCarte.cestQuoi(combinaisonAtester) != 0) {
-                return true;
-            }
+            return AlgoCarte.cestQuoi(combinaisonAtester) != -1 && AlgoCarte.cestQuoi(combinaisonAtester) != 0;
         } else {
             if (AlgoCarte.cestQuoi(table) == -1) {
                 System.err.println("Error master, combinator invalid in the table");
@@ -271,11 +264,7 @@ public class AlgoCarte {
                 if (AlgoCarte.cestQuoi(table) == 6 && AlgoCarte.cestQuoi(combinaisonAtester) == 6) {
                     if (table.size() == combinaisonAtester.size()) {
                         return AlgoCarte.estPlusFort(combinaisonAtester, table);
-                    } else if (table.size() < combinaisonAtester.size()) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    } else return table.size() < combinaisonAtester.size();
                 }
                 return false;
             }
@@ -296,9 +285,7 @@ public class AlgoCarte {
                 if (levelTable == levelcombi) {
                     return AlgoCarte.estPlusFort(combinaisonAtester, table);
                 }
-                if (levelTable < levelcombi) {
-                    return true;
-                }
+                return levelTable < levelcombi;
             }
 
         }
@@ -307,9 +294,6 @@ public class AlgoCarte {
     }
 
 
-    /*
-    maths
-     */
 
 
     public static long fact(int n) {
@@ -335,11 +319,7 @@ public class AlgoCarte {
 
         for (int l = 1; l <= carteList.size(); l++) {
 
-            List<Carte> copyList = new ArrayList<>();
-
-            for (Carte aCarteList : carteList) {
-                copyList.add(aCarteList);
-            }
+            List<Carte> copyList = new ArrayList<>(carteList);
 
             List<Carte> combiN = combinaisonCarte(copyList, l, copyList.size() - l);
             Carte[][] tabCombo = new Carte[(int) combi(carteList.size(), l)][l];
@@ -379,9 +359,7 @@ public class AlgoCarte {
                 s.add(list.get(i));
                 i = i + 1;
             }
-            for (Carte value : s) {
-                g.add(value);
-            }
+            g.addAll(s);
         } else if (list.size() > N) {
             int l = (int) (fact(list.size() - 1) / (fact(N - 1) * fact((list.size() - 1) - (N - 1))));
             while (i < l) {
@@ -410,9 +388,7 @@ public class AlgoCarte {
             }
             list.remove(list.size() - 1);
             List<Carte> newList = combinaisonCarte(list, N, k - 1);
-            for (Carte aNewList : newList) {
-                g.add(aNewList);
-            }
+            g.addAll(newList);
 
         }
         return g;

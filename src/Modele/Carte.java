@@ -1,7 +1,7 @@
 package Modele;
 
 /**
- * Created by guillaume on 11/11/16.
+ * Created by Guillaume LAROYENNE on 11/11/16.
  */
 
 
@@ -22,6 +22,7 @@ public class Carte {
         this.valeur = valeur;
         this.couleur = couleur;
     }
+
     public Carte(Couleur couleur) {
         figure = Figure.NOMBRE;
         if (couleur != Couleur.MULTI) {
@@ -55,6 +56,7 @@ public class Carte {
     PS : ne pas oublier de completer les tests dans la methode testGetFileName.
      */
     public String getFileName() {
+
         String color = "";
         String fileName = "";
         if (couleur == Couleur.VERT) color = "vert";
@@ -76,10 +78,7 @@ public class Carte {
 
         Carte test = (Carte) carte;
 
-        if (valeur == test.valeur && figure == test.figure && couleur == test.couleur) {
-            return true;
-        }
-        return false;
+        return valeur == test.valeur && figure == test.figure && couleur == test.couleur;
     }
 
     public String toString() {
@@ -90,12 +89,12 @@ public class Carte {
         ROUGE,
         JAUNE,
         MULTI,
-        VERT;
+        VERT
     }
 
     public enum Figure {
         NOMBRE,
         DRAGON,
-        PHENIX;
+        PHENIX
     }
 }

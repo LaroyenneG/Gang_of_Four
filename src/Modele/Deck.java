@@ -1,12 +1,9 @@
 package Modele;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
- * Created by guillaume on 11/11/16.
+ * Created by Guillaume LAROYENNE on 11/11/16.
  */
 public class Deck {
     private Carte[] carteList;
@@ -53,22 +50,18 @@ public class Deck {
     }
 
     public String toString() {
-        String message = "Deck =\n";
-        message += "Size=" + carteList.length;
-        for (int i = 0; i < carteList.length; i++) {
-            message += carteList[i].toString();
+        StringBuilder message = new StringBuilder("Deck =\n");
+        message.append("Size=").append(carteList.length);
+        for (Carte aCarteList : carteList) {
+            message.append(aCarteList.toString());
 
         }
-        message += "end deck";
-        return message;
+        message.append("end deck");
+        return message.toString();
     }
 
     public List<Carte> getCarteList() {
-        List<Carte> list = new ArrayList<>();
-        for (int i = 0; i < carteList.length; i++) {
-            list.add(carteList[i]);
-        }
-        return list;
+        return new ArrayList<>(Arrays.asList(carteList));
     }
 
     public void ordoDeck() {

@@ -8,7 +8,7 @@ import java.util.List;
 import static java.lang.Thread.sleep;
 
 /**
- * Created by guillaume on 09/12/16.
+ * Created by Guillaume LAROYENNE on 09/12/16.
  */
 public class IA extends Joueur {
 
@@ -23,7 +23,7 @@ public class IA extends Joueur {
 
         peutJouer = true;
 
-        List<Carte>[] goodList = AlgoIA.getCombinaisonJouable(table, main);
+        List[] goodList = AlgoIA.getCombinaisonJouable(table, main);
 
         int theBest = 0;
 

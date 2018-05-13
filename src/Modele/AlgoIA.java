@@ -5,11 +5,11 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by guillaume on 09/12/16.
+ * Created by Guillaume LAROYENNE on 09/12/16.
  */
 public class AlgoIA {
 
-    public static List<Carte>[] getCombinaisonJouable(List<Carte> table, List<Carte> main) {
+    public static List[] getCombinaisonJouable(List<Carte> table, List<Carte> main) {
 
         List<Carte[][]> combinaison = AlgoCarte.getCombinaison(main);
 
@@ -50,7 +50,7 @@ public class AlgoIA {
             }
         }
 
-        List<Carte>[] tabGoodCombi = new List[isGood.size()];
+        List[] tabGoodCombi = new List[isGood.size()];
 
         for (int i = 0; i < tabGoodCombi.length; i++) {
             tabGoodCombi[i] = isGood.get(i);

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by guillaume on 12/11/16.
+ * Created by Guillaume LAROYENNE on 12/11/16.
  */
 public class Joueur {
     public boolean peutJouer;
     public boolean combiMulti;
     protected List<Carte> main;
-    protected List<Carte> combinaisonEnCours;
+    protected List combinaisonEnCours;
     protected int score;
 
     public Joueur() {
